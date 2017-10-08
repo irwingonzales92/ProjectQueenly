@@ -34,9 +34,14 @@ class RootVC: UIViewController
     
 // Table View
 
-    @IBAction func postButtonPressed(_ sender: Any)
+    @IBAction func contactBtnPressed(_ sender: Any)
     {
         
+    }
+    
+    @IBAction func postButtonPressed(_ sender: Any)
+    {
+
     }
 }
 
@@ -66,14 +71,10 @@ extension RootVC: UITableViewDelegate, UITableViewDataSource
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-//    {
-//        <#code#>
-//    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 150
+        return 374
     }
     
 }
