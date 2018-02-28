@@ -8,12 +8,4 @@
 
 import Foundation
 
-struct Post
-{
-    let title: String
-    let name: String
-    let price: Int
-    let size: Int
-    let image: String
-    
-}
+

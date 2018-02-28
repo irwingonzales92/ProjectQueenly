@@ -7,21 +7,34 @@
 //
 
 import UIKit
-import FCAlertView
+import Firebase
 
-class LoginVC: UIViewController
+class LoginVC: UIViewController, Alertable
 {
 
     @IBOutlet var loginWithFbButton: UIButton!
     
-    let alert = FCAlertView()
+    var emailTextField = UITextField()
+    var passwordTextField = UITextField()
+    var confirmPasswordTextfield = UITextField()
+    var usernameTextField = UITextField()
+    
+//    let alert = FCAlertView()
     
     override func viewDidLoad()
     {
-        self.alert.delegate = self as! FCAlertViewDelegate
+//        self.alert.delegate = self as! FCAlertViewDelegate
         super.viewDidLoad()
+        
+        view.bindToKeyboard()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(true)
+        NotificationCenter.default.post(name: Notification.Name.init(rawValue: "UserLoggedIn"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,56 +48,141 @@ class LoginVC: UIViewController
     }
     @IBAction func loginWithEmailBtnPressed(_ sender: Any)
     {
-        self.alert.addTextField(withPlaceholder: "Email", andTextReturn: nil)
-        self.alert.addTextField(withPlaceholder: "Password", andTextReturn: nil)
-        self.alert.cornerRadius = 0.1
-//        self.alert.colorScheme = UIColor(red: 95, green: 0, blue: 131, alpha: 1)
+        let alert = UIAlertController(title: "Login", message: nil, preferredStyle: UIAlertControllerStyle.alert)
         
-        self.alert.showAlert(inView: self,
-                        withTitle: "Use Your Own Email",
-                        withSubtitle: nil,
-                        withCustomImage: nil,
-                        withDoneButtonTitle: "Done",
-                        andButtons: nil)
-    }
-    
-    
-    func FCAlertDoneButtonClicked(alertView: FCAlertView){
-        // Done Button was Pressed, Perform the Action you'd like here.
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
-
-extension LoginVC: FCAlertViewDelegate {
-    private func alertView(alertView: FCAlertView, clickedButtonIndex index: Int, buttonTitle title: String) {
-        print("\(title) : \(index)")
+        alert.addTextField { (textfield) in
+                    self.emailTextField = textfield
+                    textfield.placeholder = "Email"
+                }
         
-        if title == "OK"
-        {
-            // Perform Action for Button 1
+        alert.addTextField { (textfield) in
+                    self.passwordTextField = textfield
+                    textfield.placeholder = "Password"
+                }
+        
+        let save = UIAlertAction(title: "Submit", style: .default) { (alert) in
+            AuthService.instance.loginUser(withEmail: self.emailTextField.text!, andPassword: self.passwordTextField.text!) { (completed, error) in
+                if completed
+                {
+                    print("It works!")
+                    self.showAlert("Login Successful")
+                    
+                    print("User Successfully Logged in")
+                    NotificationCenter.default.post(name: USER_IS_LOGGED_IN, object: nil)
+                    
+//                    NotificationCenter.default.addObserver(self, selector: #selector(self.dismissView), name: USER_IS_LOGGED_IN, object: nil)
+                }
+                else
+                {
+                    print("Something went wrong")
+                    debugPrint(error)
+                    
+                    if error != nil
+                    {
+                        if let errorCode = AuthErrorCode(rawValue: error!._code)
+                        {
+                            
+                            switch errorCode
+                            {
+                            case .emailAlreadyInUse:
+                                self.showAlert("Email is in use")
+                                
+                            case .invalidEmail:
+                                self.showAlert(ERROR_MSG_INVALID_EMAIL)
+                                
+                            default:
+                                self.showAlert(ERROR_MSG_UNEXPECTED_ERROR)
+                                print(error as Any)
+                                debugPrint(error)
+                            }
+                        }
+                    }
+                }
+            }
         }
-        else
-        {
-            // Perform Action for Button 2
+
+        alert.addAction(save)
+
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func signupBtnPressed(_ sender: Any)
+    {
+        
+        let alert = UIAlertController(title: "Signup", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addTextField { (textfield) in
+            self.emailTextField = textfield
+            textfield.placeholder = "Email"
         }
+        
+        alert.addTextField { (textfield) in
+            self.passwordTextField = textfield
+            textfield.placeholder = "Password"
+        }
+        
+        alert.addTextField { (textfield) in
+            self.confirmPasswordTextfield = textfield
+            textfield.placeholder = "Confirm Password"
+        }
+        
+        let save = UIAlertAction(title: "Submit", style: .default) { (alert) in
+            AuthService.instance.registerUser(withEmail: self.emailTextField.text!, Password: self.passwordTextField.text!, userCreationComplete: { (completed, error) in
+                
+                if completed && self.confirmPasswordTextfield.text! == self.passwordTextField.text!
+                {
+                    print("It works!")
+                    self.showAlert("Signup Successful")
+                    
+                    print("User Successfully Signed up")
+//                    NotificationCenter.default.addObserver(self, selector: #selector(self.dismissView), name: USER_IS_LOGGED_IN, object: nil)
+                    self.perform(#selector(self.dismissView))
+                    self.viewWillAppear(true)
+                }
+                else
+                {
+                    print("Something went wrong")
+                    debugPrint(error)
+                    
+                    if error != nil
+                    {
+                        if let errorCode = AuthErrorCode(rawValue: error!._code)
+                        {
+                            
+                            switch errorCode
+                            {
+                            case .emailAlreadyInUse:
+                                self.showAlert("Email is in use")
+                                
+                            case .invalidEmail:
+                                self.showAlert(ERROR_MSG_INVALID_EMAIL)
+                                
+                            default:
+                                self.showAlert(ERROR_MSG_UNEXPECTED_ERROR)
+                                print(error as Any)
+                                debugPrint(error)
+                            }
+                        }
+                    }
+                }
+            })
+        }
+        
+        alert.addAction(save)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
         
     }
     
-    func fcAlertViewDismissed(_ alertView: FCAlertView) {
-        print("Delegate handling dismiss")
+    @objc func dismissView()
+    {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func fcAlertViewWillAppear(_ alertView: FCAlertView) {
-        print("Delegate handling appearance")
-    }
 }
