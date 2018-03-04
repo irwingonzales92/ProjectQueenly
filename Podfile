@@ -25,5 +25,6 @@ target 'ProjectQueenly' do
 	pod 'Alamofire'
 	pod 'TRMosaicLayout'
 	pod 'VideoSplashKit'
+	pod 'UIEmptyState'
 
 end

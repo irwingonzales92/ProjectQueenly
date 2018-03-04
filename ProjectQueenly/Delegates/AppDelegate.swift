@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate var containerVC = ContainerVC()
     fileprivate var loginVC = LoginVC()
     fileprivate var welcomeVC = WelcomeVC()
+    fileprivate var onboardingOne = OnboardingOneVC()
 
     var window: UIWindow?
     
@@ -50,18 +51,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if Auth.auth().currentUser == nil
         {
-//            vc.storyboard?.instantiateViewController(withIdentifier: "LoginVC")
-////            window?.rootViewController = welcomeVC
-//            window?.makeKeyAndVisible()
-            
+            vc = storyboard.instantiateViewController(withIdentifier: "LoginVC")
+            window?.rootViewController = vc
+            window?.makeKeyAndVisible()
+
+        }
+        else
+        {
             if (UserDefaults.standard.value(forKey: "name") as? String) == nil
+//            if Auth.auth().currentUser?.displayName == nil
             {
                 // Show onboarding
-                print("User is NOT logged in")
+                print("Has not onboarded")
                 print(UserDefaults.standard.value(forKey: "name") as! String)
                 vc = storyboard.instantiateViewController(withIdentifier: "OnboardingOneVC")
                 //            self.window.present(vc!, animated: true, completion: nil)
-//                window?.rootViewController = vc
+                window?.rootViewController = vc
                 window?.makeKeyAndVisible()
             }
             else

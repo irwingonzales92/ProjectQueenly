@@ -97,7 +97,6 @@ class AddPostVC: UIViewController {
             debugPrint(isoData)
             return isoData
         }
-        
 //        return nil
     }
     
@@ -109,6 +108,7 @@ class AddPostVC: UIViewController {
         self.priceTxtField.delegate = self
     }
     
+    // UI Buttons
     func presentWarningAlertController(error:String)
     {
         let alert = UIAlertController(title: error, message: nil, preferredStyle: .alert)
@@ -176,8 +176,6 @@ class AddPostVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         if segue.identifier == "toConfirmVC"
         {
