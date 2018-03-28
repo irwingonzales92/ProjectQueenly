@@ -14,7 +14,6 @@
 		5734939D1FB445BE0039853E /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734939C1FB445BE0039853E /* Alertable.swift */; };
 		5734939F1FB5F95D0039853E /* AddPostVCHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734939E1FB5F95D0039853E /* AddPostVCHandlers.swift */; };
 		5749522E206B5074001A966C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749522D206B5074001A966C /* CustomTableViewCell.swift */; };
-		57495230206B7F31001A966C /* SecretKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5749522F206B7F31001A966C /* SecretKey.plist */; };
 		57513FAB2069BC1A00773DFB /* queenlysplash3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57513FAA2069BC1700773DFB /* queenlysplash3.gif */; };
 		57513FAD2069BDD100773DFB /* WebViewContent.html in Resources */ = {isa = PBXBuildFile; fileRef = 57513FAC2069BDD000773DFB /* WebViewContent.html */; };
 		57513FB12069C6CD00773DFB /* RoundedBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57513FB02069C6CD00773DFB /* RoundedBlurView.swift */; };
@@ -57,6 +56,7 @@
 		57A48A441F9A860900C7E654 /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A48A431F9A860900C7E654 /* PostDetailVC.swift */; };
 		57A48A4A1F9BA42C00C7E654 /* Dresses.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A48A491F9BA42B00C7E654 /* Dresses.xcassets */; };
 		57A48A4C1F9BA51100C7E654 /* Dress.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A48A4B1F9BA51100C7E654 /* Dress.plist */; };
+		57AF5268206B9BE00097D511 /* Key.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57AF5267206B9BE00097D511 /* Key.plist */; };
 		57C871361FBF8A3D009DF3EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C871351FBF8A3D009DF3EF /* Constants.swift */; };
 		57E747852030324300A750C9 /* RoundedCornerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E747802030324000A750C9 /* RoundedCornerTextField.swift */; };
 		57E747862030324300A750C9 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E747812030324100A750C9 /* RoundImageView.swift */; };
@@ -87,7 +87,6 @@
 		5734939C1FB445BE0039853E /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		5734939E1FB5F95D0039853E /* AddPostVCHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostVCHandlers.swift; sourceTree = "<group>"; };
 		5749522D206B5074001A966C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		5749522F206B7F31001A966C /* SecretKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SecretKey.plist; sourceTree = "<group>"; };
 		57513FAA2069BC1700773DFB /* queenlysplash3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = queenlysplash3.gif; sourceTree = "<group>"; };
 		57513FAC2069BDD000773DFB /* WebViewContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WebViewContent.html; sourceTree = "<group>"; };
 		57513FB02069C6CD00773DFB /* RoundedBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBlurView.swift; sourceTree = "<group>"; };
@@ -131,6 +130,7 @@
 		57A48A431F9A860900C7E654 /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostDetailVC.swift; path = ../../PostDetailVC.swift; sourceTree = "<group>"; };
 		57A48A491F9BA42B00C7E654 /* Dresses.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Dresses.xcassets; sourceTree = "<group>"; };
 		57A48A4B1F9BA51100C7E654 /* Dress.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dress.plist; sourceTree = "<group>"; };
+		57AF5267206B9BE00097D511 /* Key.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Key.plist; sourceTree = "<group>"; };
 		57C871351FBF8A3D009DF3EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		57E747802030324000A750C9 /* RoundedCornerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornerTextField.swift; sourceTree = "<group>"; };
 		57E747812030324100A750C9 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 			children = (
 				575284811FB6CE9400599963 /* GoogleService-Info.plist */,
 				5752847F1FB687FF00599963 /* Info.plist */,
-				5749522F206B7F31001A966C /* SecretKey.plist */,
+				57AF5267206B9BE00097D511 /* Key.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -468,9 +468,9 @@
 			files = (
 				57513FAD2069BDD100773DFB /* WebViewContent.html in Resources */,
 				57F97CD31F7DDFEC00D71826 /* LaunchScreen.storyboard in Resources */,
+				57AF5268206B9BE00097D511 /* Key.plist in Resources */,
 				575284821FB6CE9400599963 /* GoogleService-Info.plist in Resources */,
 				57A48A4A1F9BA42C00C7E654 /* Dresses.xcassets in Resources */,
-				57495230206B7F31001A966C /* SecretKey.plist in Resources */,
 				57A48A4C1F9BA51100C7E654 /* Dress.plist in Resources */,
 				57513FAB2069BC1A00773DFB /* queenlysplash3.gif in Resources */,
 				57F97CD01F7DDFEC00D71826 /* Assets.xcassets in Resources */,

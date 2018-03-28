@@ -5,7 +5,6 @@
 ## Build generated
 build/
 DerivedData/
-SecretKeys.plist/
 
 ## Various settings
 *.pbxuser
@@ -39,6 +38,7 @@ playground.xcworkspace
 # Packages/
 # Package.pins
 .build/
+Key.plist
 
 # CocoaPods
 #

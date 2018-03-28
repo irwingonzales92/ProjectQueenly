@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var keys: NSDictionary?
         
-        if let path = Bundle.main.path(forResource: "SecretKeys", ofType: "plist") {
+        if let path = Bundle.main.path(forResource: "SecretKey", ofType: "plist") {
             keys = NSDictionary(contentsOfFile: path)
         }
         
