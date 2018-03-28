@@ -35,6 +35,13 @@ let WARDROBE_OFFER = Notification.Name("WardrobeOffered")
 //View Stuff
 let VIEW_DRESS_POST = NSNotification.Name("viewDress")
 
+// Cell Identifiers
+let CELL_DISPLAYNAME_ID = "userDisplayNameCell"
+let CELL_PRICE_ID = "gownPriceCell"
+let CELL_COLOR_ID = "gownColorCell"
+let CELL_DESCRIPTION_ID = "gownDescriptionCell"
+let CELL_MEASUREMENT_ID =  "gownMeasurementCell"
+
 
 // FROM WHERE
 let FROM_PROFILE_VC = NSNotification.Name("fromProfileVC")

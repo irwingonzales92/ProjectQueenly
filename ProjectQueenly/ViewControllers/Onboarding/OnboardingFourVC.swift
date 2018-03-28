@@ -8,17 +8,19 @@
 
 import UIKit
 import Firebase
+import SkyFloatingLabelTextField
 
 
 class OnboardingFourVC: UIViewController {
 
-    @IBOutlet var designerTxtField: RoundedCornerTextField!
-    @IBOutlet var sizeTxtFld: RoundedCornerTextField!
-    @IBOutlet var favoriteColorTxtField: RoundedCornerTextField!
-    @IBOutlet var shilouetteTxtField: RoundedCornerTextField!
-    @IBOutlet var waistTxtField: RoundedCornerTextField!
-    @IBOutlet var bustTxtField: RoundedCornerTextField!
-    @IBOutlet var hipTxtField: RoundedCornerTextField!
+    @IBOutlet var designerTxtField: SkyFloatingLabelTextField!
+    @IBOutlet var sizeTxtFld: SkyFloatingLabelTextField!
+    @IBOutlet var favoriteColorTxtField: SkyFloatingLabelTextField!
+    @IBOutlet var shilouetteTxtField: SkyFloatingLabelTextField!
+    @IBOutlet var waistTxtField: SkyFloatingLabelTextField!
+    @IBOutlet var bustTxtField: SkyFloatingLabelTextField!
+    @IBOutlet var hipTxtField: SkyFloatingLabelTextField!
+    @IBOutlet var heightTxtField: SkyFloatingLabelTextField!
     
     var designer = String()
     var size = Int()
@@ -27,67 +29,52 @@ class OnboardingFourVC: UIViewController {
     var waist = Int()
     var bust = Int()
     var hip = Int()
+    var height = Int()
     var image = UIImage()
+    var imageString = String()
+    var username = String()
+    var userOnborded = Bool()
     
-    var userInfo = [String:Any?]()
+    
+    var girl = Girl()
     
     var userRef = Firestore.firestore().collection("Users")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(userInfo)
+        print(girl)
+        print(self.username)
 
         // Do any additional setup after loading the view.
     }
+
     
-    
-    func setStuff() -> [String: Any?]
+    func addParamsToUser()
     {
+
+        self.userOnborded = true
+        
         self.size = ((self.sizeTxtFld.text! as NSString).integerValue)
         self.bust = ((self.bustTxtField.text! as NSString).integerValue)
         self.waist = ((self.waistTxtField.text! as NSString).integerValue)
         self.hip = ((self.hipTxtField.text! as NSString).integerValue)
+        self.height = ((self.heightTxtField.text! as NSString).integerValue)
         
-        self.shilouette = self.shilouetteTxtField.text!
-        self.designer = self.designerTxtField.text!
-        self.color = self.favoriteColorTxtField.text!
+        self.girl = Girl(designer: self.designerTxtField.text, shilouette: self.shilouetteTxtField.text, color: self.favoriteColorTxtField.text, image: self.transformImageToDataString(image: self.image), name: self.username, uid: Auth.auth().currentUser?.uid, email: Auth.auth().currentUser?.email, displayName: self.username, size: self.size, waist: self.waist, bust: self.bust, hip: self.hip, height: self.height, onboarded: self.userOnborded)
         
-        let array = ["size": self.size, "bust": self.bust, "waist": self.waist, "hip":self.hip, "shilouette":self.shilouette, "designer":self.designer, "color":self.color] as [String:Any?]
+        userRef.document().setModel(self.girl)
+        print("Model Set")
+        print(self.girl)
         
-        return array
+        
     }
     
-    func setUserProfileUpdate()
+    func transformImageToDataString(image:UIImage) -> Data
     {
-        let user = Auth.auth().currentUser
-        if let user = user {
-            let changeRequest = user.createProfileChangeRequest()
-            
-//            changeRequest.displayName = self.userDisplayName
-            changeRequest.displayName = self.userInfo["displayName"] as! String
-        }
-    }
-    
-    func addParamsToUser()
-    {
-        var addedDict = self.setStuff()
-        addedDict.merge(dict: self.userInfo)
-        debugPrint(addedDict)
+        let metaData = UIImagePNGRepresentation(image)
         
-//        DataService.instance.createFirestoreUser(uid: (Auth.auth().currentUser?.uid)!, userData:addedDict ?? [String:Any?])
-        
-        self.setUserProfileUpdate()
-        self.userRef.addDocument(data: addedDict) { (err) in
-            if err == nil
-            {
-                debugPrint("User info successfully saved")
-            }
-            else
-            {
-                debugPrint(err?.localizedDescription ?? String())
-            }
-        }
+        return metaData!
     }
 
     
@@ -99,11 +86,11 @@ class OnboardingFourVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-//        if segue.identifier == "toOnboardingVCFiveSegue"
-//        {
-//            var nextVC = segue.destination as? OnboardingTwoVC
-////            nextVC?.recievedGown = self.gown
-//        }
+        if segue.identifier == "toOnboardingVCFiveSegue"
+        {
+            var nextVC = segue.destination as? OnboardingTwoVC
+//            nextVC?.recievedGown = self.gown
+        }
     }
 
 }

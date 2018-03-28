@@ -13,10 +13,26 @@
 		572B42342044DDA1001FB708 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B42332044DDA1001FB708 /* WelcomeVC.swift */; };
 		5734939D1FB445BE0039853E /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734939C1FB445BE0039853E /* Alertable.swift */; };
 		5734939F1FB5F95D0039853E /* AddPostVCHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734939E1FB5F95D0039853E /* AddPostVCHandlers.swift */; };
+		5749522E206B5074001A966C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749522D206B5074001A966C /* CustomTableViewCell.swift */; };
+		57495230206B7F31001A966C /* SecretKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5749522F206B7F31001A966C /* SecretKey.plist */; };
+		57513FAB2069BC1A00773DFB /* queenlysplash3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57513FAA2069BC1700773DFB /* queenlysplash3.gif */; };
+		57513FAD2069BDD100773DFB /* WebViewContent.html in Resources */ = {isa = PBXBuildFile; fileRef = 57513FAC2069BDD000773DFB /* WebViewContent.html */; };
+		57513FB12069C6CD00773DFB /* RoundedBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57513FB02069C6CD00773DFB /* RoundedBlurView.swift */; };
 		575284821FB6CE9400599963 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 575284811FB6CE9400599963 /* GoogleService-Info.plist */; };
 		575284841FB8F31D00599963 /* PostConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575284831FB8F31D00599963 /* PostConfirmVC.swift */; };
+		57630E23204E84AF00A68F63 /* RootVCHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57630E22204E84AF00A68F63 /* RootVCHandlers.swift */; };
 		576A9B3C1FF8FBB500FE44E0 /* BackendStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A9B3B1FF8FBB500FE44E0 /* BackendStuff.swift */; };
+		576B782A206597510051A473 /* GownDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B7829206597510051A473 /* GownDataTableViewController.swift */; };
+		576B782C20664D330051A473 /* GownDataTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B782B20664D330051A473 /* GownDataTableView.swift */; };
+		576B782E206768440051A473 /* LoginVCHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B782D206768440051A473 /* LoginVCHandlers.swift */; };
+		576B783120678E820051A473 /* UserDisplayNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B783020678E820051A473 /* UserDisplayNameCell.swift */; };
+		576B783320678EA70051A473 /* GownPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B783220678EA70051A473 /* GownPriceTableViewCell.swift */; };
+		576B783520678ECB0051A473 /* GownColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B783420678ECB0051A473 /* GownColorTableViewCell.swift */; };
+		576B783720678EE00051A473 /* GownDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B783620678EE00051A473 /* GownDescriptionTableViewCell.swift */; };
+		576B783920678FF60051A473 /* GownMeasurementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B783820678FF60051A473 /* GownMeasurementsTableViewCell.swift */; };
+		576B783C206818000051A473 /* GownViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B783B206818000051A473 /* GownViewModel.swift */; };
 		576F8D481FAAAADA006A9A4E /* Gown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576F8D471FAAAADA006A9A4E /* Gown.swift */; };
+		5771BFAF20526AD000FC89F3 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771BFAE20526AD000FC89F3 /* RoundedImageView.swift */; };
 		5773B8C01F9BE29A00715821 /* PostCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5773B8BF1F9BE29A00715821 /* PostCVC.swift */; };
 		57750137200F2D4400FCCCB0 /* ISOOffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57750136200F2D4400FCCCB0 /* ISOOffersVC.swift */; };
 		577501392012900C00FCCCB0 /* GownTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577501382012900C00FCCCB0 /* GownTVC.swift */; };
@@ -25,6 +41,7 @@
 		578B34FC202BE8B200B2A14B /* OnboardingThreeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B34FB202BE8B200B2A14B /* OnboardingThreeVC.swift */; };
 		578B34FE202BE90800B2A14B /* OnboardingFourVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B34FD202BE90800B2A14B /* OnboardingFourVC.swift */; };
 		578B3500202BE91800B2A14B /* OnboardingFiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578B34FF202BE91800B2A14B /* OnboardingFiveVC.swift */; };
+		578EAC59204D37BB00506792 /* FirestoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578EAC58204D37BB00506792 /* FirestoreModel.swift */; };
 		579310E51F904DF000418136 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579310E41F904DF000418136 /* FeedCollectionViewCell.swift */; };
 		5793110D1F94A40C00418136 /* ProjectQueenly.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5793110B1F94A40C00418136 /* ProjectQueenly.xcdatamodeld */; };
 		5797F01A1F8A09FE00906E4C /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5797F0191F8A09FE00906E4C /* LoginVC.swift */; };
@@ -69,11 +86,27 @@
 		572B42332044DDA1001FB708 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		5734939C1FB445BE0039853E /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		5734939E1FB5F95D0039853E /* AddPostVCHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostVCHandlers.swift; sourceTree = "<group>"; };
+		5749522D206B5074001A966C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		5749522F206B7F31001A966C /* SecretKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SecretKey.plist; sourceTree = "<group>"; };
+		57513FAA2069BC1700773DFB /* queenlysplash3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = queenlysplash3.gif; sourceTree = "<group>"; };
+		57513FAC2069BDD000773DFB /* WebViewContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WebViewContent.html; sourceTree = "<group>"; };
+		57513FB02069C6CD00773DFB /* RoundedBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBlurView.swift; sourceTree = "<group>"; };
 		5752847F1FB687FF00599963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		575284811FB6CE9400599963 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		575284831FB8F31D00599963 /* PostConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostConfirmVC.swift; sourceTree = "<group>"; };
+		57630E22204E84AF00A68F63 /* RootVCHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCHandlers.swift; sourceTree = "<group>"; };
 		576A9B3B1FF8FBB500FE44E0 /* BackendStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendStuff.swift; sourceTree = "<group>"; };
+		576B7829206597510051A473 /* GownDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownDataTableViewController.swift; sourceTree = "<group>"; };
+		576B782B20664D330051A473 /* GownDataTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownDataTableView.swift; sourceTree = "<group>"; };
+		576B782D206768440051A473 /* LoginVCHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCHandlers.swift; sourceTree = "<group>"; };
+		576B783020678E820051A473 /* UserDisplayNameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDisplayNameCell.swift; sourceTree = "<group>"; };
+		576B783220678EA70051A473 /* GownPriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownPriceTableViewCell.swift; sourceTree = "<group>"; };
+		576B783420678ECB0051A473 /* GownColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownColorTableViewCell.swift; sourceTree = "<group>"; };
+		576B783620678EE00051A473 /* GownDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		576B783820678FF60051A473 /* GownMeasurementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownMeasurementsTableViewCell.swift; sourceTree = "<group>"; };
+		576B783B206818000051A473 /* GownViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownViewModel.swift; sourceTree = "<group>"; };
 		576F8D471FAAAADA006A9A4E /* Gown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gown.swift; sourceTree = "<group>"; };
+		5771BFAE20526AD000FC89F3 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		5773B8BF1F9BE29A00715821 /* PostCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCVC.swift; sourceTree = "<group>"; };
 		57750136200F2D4400FCCCB0 /* ISOOffersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISOOffersVC.swift; sourceTree = "<group>"; };
 		577501382012900C00FCCCB0 /* GownTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownTVC.swift; sourceTree = "<group>"; };
@@ -82,6 +115,7 @@
 		578B34FB202BE8B200B2A14B /* OnboardingThreeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThreeVC.swift; sourceTree = "<group>"; };
 		578B34FD202BE90800B2A14B /* OnboardingFourVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFourVC.swift; sourceTree = "<group>"; };
 		578B34FF202BE91800B2A14B /* OnboardingFiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFiveVC.swift; sourceTree = "<group>"; };
+		578EAC58204D37BB00506792 /* FirestoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreModel.swift; sourceTree = "<group>"; };
 		579310E41F904DF000418136 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		5793110C1F94A40C00418136 /* ProjectQueenly.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProjectQueenly.xcdatamodel; sourceTree = "<group>"; };
 		5797F0191F8A09FE00906E4C /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -116,6 +150,7 @@
 		57F97CCD1F7DDFEC00D71826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		57F97CCF1F7DDFEC00D71826 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57F97CD21F7DDFEC00D71826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		57F9CFD320555011005DC45C /* ProjectQueenly.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProjectQueenly.entitlements; sourceTree = "<group>"; };
 		7197955E5A136882AEB9EE0F /* Pods-ProjectQueenly.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectQueenly.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectQueenly/Pods-ProjectQueenly.release.xcconfig"; sourceTree = "<group>"; };
 		8D4EE2642AD383247DB281D8 /* Pods-ProjectQueenly.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectQueenly.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectQueenly/Pods-ProjectQueenly.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,7 +188,9 @@
 			isa = PBXGroup;
 			children = (
 				5734939E1FB5F95D0039853E /* AddPostVCHandlers.swift */,
+				576B782D206768440051A473 /* LoginVCHandlers.swift */,
 				572B4231203E1B2F001FB708 /* OnboardingImageHandlers.swift */,
+				57630E22204E84AF00A68F63 /* RootVCHandlers.swift */,
 				5797F03A1F8C8FFC00906E4C /* UIViewExt.swift */,
 				5734939C1FB445BE0039853E /* Alertable.swift */,
 			);
@@ -163,6 +200,7 @@
 		573493A11FB60B770039853E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				578EAC58204D37BB00506792 /* FirestoreModel.swift */,
 				5797F01F1F8A17EA00906E4C /* DataService.swift */,
 				5797F0381F8C897200906E4C /* AuthService.swift */,
 				576A9B3B1FF8FBB500FE44E0 /* BackendStuff.swift */,
@@ -194,6 +232,7 @@
 			children = (
 				575284811FB6CE9400599963 /* GoogleService-Info.plist */,
 				5752847F1FB687FF00599963 /* Info.plist */,
+				5749522F206B7F31001A966C /* SecretKey.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -205,6 +244,36 @@
 				5797F0341F8C841800906E4C /* ContainerVC.swift */,
 			);
 			path = NonViewVCs;
+			sourceTree = "<group>";
+		};
+		576B782F20678E330051A473 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				576B783020678E820051A473 /* UserDisplayNameCell.swift */,
+				576B783220678EA70051A473 /* GownPriceTableViewCell.swift */,
+				576B783420678ECB0051A473 /* GownColorTableViewCell.swift */,
+				576B783620678EE00051A473 /* GownDescriptionTableViewCell.swift */,
+				576B783820678FF60051A473 /* GownMeasurementsTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		576B783A2068162D0051A473 /* GownDetailTableView */ = {
+			isa = PBXGroup;
+			children = (
+				576B783B206818000051A473 /* GownViewModel.swift */,
+				5749522D206B5074001A966C /* CustomTableViewCell.swift */,
+			);
+			path = GownDetailTableView;
+			sourceTree = "<group>";
+		};
+		576B783E206894FE0051A473 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				57513FAC2069BDD000773DFB /* WebViewContent.html */,
+				57513FAA2069BC1700773DFB /* queenlysplash3.gif */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		578B3501202BE95300B2A14B /* Onboarding */ = {
@@ -248,13 +317,19 @@
 		5797F01D1F8A0A2900906E4C /* UI Components */ = {
 			isa = PBXGroup;
 			children = (
+				576B782F20678E330051A473 /* TableViewCells */,
 				57E747822030324200A750C9 /* CircleView.swift */,
 				57E747802030324000A750C9 /* RoundedCornerTextField.swift */,
 				57E747842030324300A750C9 /* RoundedShadowButton.swift */,
 				57E747832030324200A750C9 /* RoundedShadowView.swift */,
+				5771BFAE20526AD000FC89F3 /* RoundedImageView.swift */,
+				57513FB02069C6CD00773DFB /* RoundedBlurView.swift */,
 				57E747812030324100A750C9 /* RoundImageView.swift */,
 				579310E41F904DF000418136 /* FeedCollectionViewCell.swift */,
 				5773B8BF1F9BE29A00715821 /* PostCVC.swift */,
+				576B7829206597510051A473 /* GownDataTableViewController.swift */,
+				576B782B20664D330051A473 /* GownDataTableView.swift */,
+				576B783A2068162D0051A473 /* GownDetailTableView */,
 				57296C601FFC3C1700C96C6A /* WardrobeCVC.swift */,
 				577501382012900C00FCCCB0 /* GownTVC.swift */,
 			);
@@ -306,6 +381,7 @@
 		57F97CC71F7DDFEC00D71826 /* ProjectQueenly */ = {
 			isa = PBXGroup;
 			children = (
+				57F9CFD320555011005DC45C /* ProjectQueenly.entitlements */,
 				573493A21FB60B8D0039853E /* Delegates */,
 				57E7478A2036707200A750C9 /* Stripe */,
 				573493A11FB60B770039853E /* Services */,
@@ -314,6 +390,7 @@
 				573493A01FB5F9650039853E /* Handlers */,
 				5797F01C1F8A0A1B00906E4C /* Models */,
 				5797F01D1F8A0A2900906E4C /* UI Components */,
+				576B783E206894FE0051A473 /* Resources */,
 				573493A31FB60BC10039853E /* Storyboard */,
 				57A48A4D1F9BA52300C7E654 /* Assets */,
 				573493A41FB60BD80039853E /* Plists */,
@@ -358,6 +435,11 @@
 					57F97CC41F7DDFEC00D71826 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -384,10 +466,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57513FAD2069BDD100773DFB /* WebViewContent.html in Resources */,
 				57F97CD31F7DDFEC00D71826 /* LaunchScreen.storyboard in Resources */,
 				575284821FB6CE9400599963 /* GoogleService-Info.plist in Resources */,
 				57A48A4A1F9BA42C00C7E654 /* Dresses.xcassets in Resources */,
+				57495230206B7F31001A966C /* SecretKey.plist in Resources */,
 				57A48A4C1F9BA51100C7E654 /* Dress.plist in Resources */,
+				57513FAB2069BC1A00773DFB /* queenlysplash3.gif in Resources */,
 				57F97CD01F7DDFEC00D71826 /* Assets.xcassets in Resources */,
 				57F97CCE1F7DDFEC00D71826 /* Main.storyboard in Resources */,
 			);
@@ -418,6 +503,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ProjectQueenly/Pods-ProjectQueenly-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AZEmptyState/AZEmptyState.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
@@ -432,10 +518,11 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/PMAlertController/PMAlertController.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RSKPlaceholderTextView/RSKPlaceholderTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/TRMosaicLayout/TRMosaicLayout.framework",
-				"${BUILT_PRODUCTS_DIR}/UIEmptyState/UIEmptyState.framework",
 				"${BUILT_PRODUCTS_DIR}/VideoSplashKit/VideoSplashKit.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -446,6 +533,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AZEmptyState.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
@@ -460,10 +548,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PMAlertController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKPlaceholderTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TRMosaicLayout.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIEmptyState.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VideoSplashKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
@@ -509,8 +598,10 @@
 				579310E51F904DF000418136 /* FeedCollectionViewCell.swift in Sources */,
 				576F8D481FAAAADA006A9A4E /* Gown.swift in Sources */,
 				572B42342044DDA1001FB708 /* WelcomeVC.swift in Sources */,
+				576B782E206768440051A473 /* LoginVCHandlers.swift in Sources */,
 				577501392012900C00FCCCB0 /* GownTVC.swift in Sources */,
 				5797F0331F8B41EB00906E4C /* OrderSummaryVC.swift in Sources */,
+				576B783720678EE00051A473 /* GownDescriptionTableViewCell.swift in Sources */,
 				5797F0291F8AF75E00906E4C /* AddPostVC.swift in Sources */,
 				57C871361FBF8A3D009DF3EF /* Constants.swift in Sources */,
 				5797F03B1F8C8FFC00906E4C /* UIViewExt.swift in Sources */,
@@ -519,33 +610,45 @@
 				57F97CCB1F7DDFEC00D71826 /* RootVC.swift in Sources */,
 				57E74794203670F200A750C9 /* MyAPIClient.swift in Sources */,
 				57E74796203670F200A750C9 /* CheckoutRowView.swift in Sources */,
+				576B783520678ECB0051A473 /* GownColorTableViewCell.swift in Sources */,
 				57A48A441F9A860900C7E654 /* PostDetailVC.swift in Sources */,
 				57E74792203670F200A750C9 /* Buttons.swift in Sources */,
 				5793110D1F94A40C00418136 /* ProjectQueenly.xcdatamodeld in Sources */,
 				578B34F8202BE7B600B2A14B /* OnboardingOneVC.swift in Sources */,
+				576B783120678E820051A473 /* UserDisplayNameCell.swift in Sources */,
 				57E74793203670F200A750C9 /* PaymentContextFooterView.swift in Sources */,
+				57630E23204E84AF00A68F63 /* RootVCHandlers.swift in Sources */,
 				57F97CC91F7DDFEC00D71826 /* AppDelegate.swift in Sources */,
 				5797F0201F8A17EA00906E4C /* DataService.swift in Sources */,
+				5749522E206B5074001A966C /* CustomTableViewCell.swift in Sources */,
 				5797F0351F8C841800906E4C /* ContainerVC.swift in Sources */,
 				57E74797203670F200A750C9 /* BrowseProductsViewController.swift in Sources */,
+				576B783C206818000051A473 /* GownViewModel.swift in Sources */,
 				57750137200F2D4400FCCCB0 /* ISOOffersVC.swift in Sources */,
 				576A9B3C1FF8FBB500FE44E0 /* BackendStuff.swift in Sources */,
 				5797F0311F8B41C800906E4C /* ProfileVC.swift in Sources */,
 				57E747892030324300A750C9 /* RoundedShadowButton.swift in Sources */,
 				575284841FB8F31D00599963 /* PostConfirmVC.swift in Sources */,
+				5771BFAF20526AD000FC89F3 /* RoundedImageView.swift in Sources */,
+				576B783920678FF60051A473 /* GownMeasurementsTableViewCell.swift in Sources */,
 				57E74795203670F200A750C9 /* CheckoutViewController.swift in Sources */,
 				572B4232203E1B2F001FB708 /* OnboardingImageHandlers.swift in Sources */,
 				5734939F1FB5F95D0039853E /* AddPostVCHandlers.swift in Sources */,
 				5797F0391F8C897200906E4C /* AuthService.swift in Sources */,
+				578EAC59204D37BB00506792 /* FirestoreModel.swift in Sources */,
+				576B783320678EA70051A473 /* GownPriceTableViewCell.swift in Sources */,
 				57E74798203670F200A750C9 /* SettingsViewController.swift in Sources */,
 				578B34FE202BE90800B2A14B /* OnboardingFourVC.swift in Sources */,
 				57E747882030324300A750C9 /* RoundedShadowView.swift in Sources */,
+				576B782A206597510051A473 /* GownDataTableViewController.swift in Sources */,
 				57E747852030324300A750C9 /* RoundedCornerTextField.swift in Sources */,
 				57E747872030324300A750C9 /* CircleView.swift in Sources */,
 				578B3500202BE91800B2A14B /* OnboardingFiveVC.swift in Sources */,
 				5797F0371F8C846C00906E4C /* CenterVCDelegate.swift in Sources */,
 				57296C611FFC3C1700C96C6A /* WardrobeCVC.swift in Sources */,
 				5797F01A1F8A09FE00906E4C /* LoginVC.swift in Sources */,
+				57513FB12069C6CD00773DFB /* RoundedBlurView.swift in Sources */,
+				576B782C20664D330051A473 /* GownDataTableView.swift in Sources */,
 				578B34FC202BE8B200B2A14B /* OnboardingThreeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,7 +678,7 @@
 		57F97CD51F7DDFEC00D71826 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -632,7 +735,7 @@
 		57F97CD61F7DDFEC00D71826 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -684,6 +787,7 @@
 			baseConfigurationReference = 8D4EE2642AD383247DB281D8 /* Pods-ProjectQueenly.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ProjectQueenly/ProjectQueenly.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8RP384RY66;
@@ -702,6 +806,7 @@
 			baseConfigurationReference = 7197955E5A136882AEB9EE0F /* Pods-ProjectQueenly.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ProjectQueenly/ProjectQueenly.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8RP384RY66;

@@ -6,22 +6,44 @@
 //  Copyright © 2017 Irwin Gonzales. All rights reserved.
 //
 
+/*
+ 
+ **** POST RE-WIRE TASK LIST ****
+ 
+ ** To Do Now **
+ 
+ 1. Finish establishing user model through onboarding.
+ 2. Configure Stripe - (Already installed) - HALTED UNTIL ORDERING PROCESS IS COMPLETE
+ 3. Complete ordering process
+ 4. Bug Sweep
+ 
+ ---. Done! .---
+ 
+ ** TO-DO Tomororow **
+ 
+ 
+ */
+
 import UIKit
 import CoreData
 import RevealingSplashView
 import Firebase
 import TRMosaicLayout
+import AZEmptyState
+
 
 class RootVC: UIViewController
 {
     
-    @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var postBtn: RoundedShadowButton!
     
     // Object Container Types
-    var gowns = [[String:Any]]()
-    var gownObj = Gown()
-    var selectedGown: UIImage!
+//    var gowns = [[String:Any]]()
+    var gowns = [Gown]()
+    var gownObj: Gown?
+    var selectedGown: UIImage?
+    var girl: Girl?
     
     // DB Refrence & Delegate
     let appDelegate = AppDelegate.getAppDelegate()
@@ -32,6 +54,8 @@ class RootVC: UIViewController
     var refreshControl = UIRefreshControl()
     var cell = PostCVC()
     let mosaicLayout = TRMosaicLayout()
+    var alert = UIAlertController(title: "Error", message: nil, preferredStyle: .alert)
+    
     
     // Dress Objects
     var designer = String()
@@ -46,29 +70,17 @@ class RootVC: UIViewController
     var key = String()
     var gown = [String: Any?]()
     
+    var emptyStateView = AZEmptyStateView()
+    
+    // App State
+//    fileprivate var state = State.self
+    
 //    var postDetailVc = PostDetailVC()
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        
-        /*
-         
-         **** POST RE-WIRE TASK LIST ****
-         
-         ** To Do **
-         
-         1. Configure Stripe
-         2. Finish the offer wardrobe functions (after Stripe)
-         3. Cleanup UI.
-         4. Bug Sweep
-         
-         ---. Done! .---
-         
-         ** Incomplete Shit TO-DO **
-                  
-         */
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: NSNotification.Name.init(rawValue: "UserLoggedIn"), object: nil)
         
@@ -83,6 +95,7 @@ class RootVC: UIViewController
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: ISO_POST, object: nil)
         BackendStuff.instance.insertDressToOwner()
+        self.collectionView.reloadData()
     }
 
     
@@ -97,10 +110,15 @@ class RootVC: UIViewController
         }
         else
         {
-            debugPrint(Auth.auth().currentUser?.email as! String)
+//            debugPrint(Auth.auth().currentUser?.email as! String)
             //            gowns = self.pullSavedDress()
             
+//            userRef.document((Auth.auth().currentUser?.uid)!).setModel(self.girl!)
+//            debugPrint(self.girl?.uid)
+            debugPrint(self.girl?.email)
+            
             self.pullSavedDress()
+//            self.gown = self.gownObj.dictionary
             print(gowns.count)
         }
         
@@ -112,6 +130,45 @@ class RootVC: UIViewController
         refreshControl.addTarget(self, action: #selector(refreshOptions(sender:)), for: UIControlEvents.valueChanged)
         //        collectionView.addSubview(refreshControl)
         collectionView.refreshControl = self.refreshControl
+        
+        
+        
+    }
+    
+    // * MAKE INTO CUSTOM OBJECT! *
+    func displayEmptyStateView()
+    {
+        // If empty, display the empty message viewcontroller
+        
+        if self.gowns.count == 0
+        {
+            //init var
+            
+            //customize
+            self.emptyStateView.image = UIImage.init(named: "sad")!
+            self.emptyStateView.message = "No Dresses Up Yet!"
+            self.emptyStateView.buttonText = "Search For One!"
+            self.emptyStateView.buttonTint = .purple
+            self.emptyStateView.addTarget(self, action: #selector(postButtonPressed(_:)), for: .touchUpInside)
+            
+            self.postBtn.isHidden = true
+            
+            //add subview
+            view.addSubview(emptyStateView)
+            
+            //add autolayout
+            self.emptyStateView.translatesAutoresizingMaskIntoConstraints = false
+            self.emptyStateView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            self.emptyStateView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            self.emptyStateView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
+            self.emptyStateView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.55).isActive = true
+        }
+        else
+        {
+            debugPrint(self.gowns.count)
+            self.collectionView.reloadData()
+            self.emptyStateView.removeFromSuperview()
+        }
     }
     
     func setUpDelegates()
@@ -157,16 +214,40 @@ class RootVC: UIViewController
             {
                 for document in querySnapshot!.documents
                 {
-//                    print("\(document.documentID) => \(document.data())")
                     let documentData = document.data()
-                    
-                    
-                    self.gowns.append(documentData)
+
+                    let ref = self.storageRef.document()
+                    ref.setModel(self.gownObj!)
+
                     print(self.gowns.count)
                     self.collectionView.reloadData()
                 }
             }
         }
+        
+//        storageRef.getModels(Gown.self) { (pulledGowns, err) in
+//
+//            if err == nil
+//            {
+//                if pulledGowns?.count == 0
+//                {
+//                    debugPrint("pulledGowns == 0")
+//                }
+//                else
+//                {
+//                    for gown in pulledGowns!
+//                    {
+//                        self.gownObj = gown
+//                        self.gowns.append(self.gownObj!)
+//                        self.collectionView.reloadData()
+//                    }
+//                }
+//            }
+//            else
+//            {
+//                debugPrint(err?.localizedDescription as! String)
+//            }
+//        }
     }
     
     
@@ -176,8 +257,9 @@ class RootVC: UIViewController
 
         if segue.identifier == "toDetailVC"
         {
-            var nextVC = segue.destination as? PostDetailVC
-            nextVC?.recievedGown = self.gown
+            let nextVC = segue.destination as? PostDetailVC
+//            nextVC?.recievedGown = self.gown
+            nextVC?.gown = self.gownObj
         }
         else
         {
@@ -185,14 +267,32 @@ class RootVC: UIViewController
             print("View Notification Posted")
         }
      }
+    
+    // MARK: - Alerts
+    
+    func displayAlertController(alert: UIAlertController, title: String, message: String?)
+    {
+        self.alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    }
+    
+
+    
+    
+//    self.present(alert, animated: true, completion: nil)
  
 
-
+    // MARK: - Actions
     
     @IBAction func postButtonPressed(_ sender: Any)
     {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let postVC = storyboard.instantiateViewController(withIdentifier: "AddPostVC") as? AddPostVC
+        
+        NotificationCenter.default.post(name: FROM_ROOT_VC, object: nil)
+        print(FROM_ROOT_VC)
         present(postVC!, animated: true, completion: nil)
 
     }
@@ -216,7 +316,7 @@ extension RootVC: UICollectionViewDataSource, UICollectionViewDelegate
         self.cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PostCVC
         
         
-        self.gown = gowns[indexPath.row]
+        self.gownObj = gowns[indexPath.row]
         self.cell.designerLabel.text = self.gown["designer"] as? String
         print(self.cell.designerLabel.text)
         self.cell.backgroundColor = UIColor.red
@@ -235,7 +335,7 @@ extension RootVC: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        self.gown = gowns[indexPath.row]
+        self.gownObj = gowns[indexPath.row]
         self.performSegue(withIdentifier: "toDetailVC", sender: self.cell)
     }
 }
@@ -256,3 +356,13 @@ extension RootVC: TRMosaicLayoutDelegate
     }
 }
 
+
+// WORK ON THIS EXTENSTION LATER
+extension Girl
+{
+    enum Status
+    {
+        case girlIsLoggedIn, girlIsLoggedOut, girlIsPostingIso
+    }
+    
+}

@@ -17,6 +17,9 @@ class BackendStuff
     var documentId = String()
     var dressArray = [String]()
     var gownDict = [[String:Any]]()
+    var user: Girl?
+    var closet: [Gown]?
+    var dress: Gown?
     
     func insertDressToOwner()
     {
@@ -25,44 +28,77 @@ class BackendStuff
         
         var dressArray = [String]()
         
-        storageRef.getDocuments() { (querySnapshot, err) in
-            if let err = err
-            {
-                print("Error getting documents: \(err)")
-            }
-            else
-            {
-                for document in querySnapshot!.documents
+        
+        storageRef.getModels(Gown.self) { (closet, err) in
+            guard let pulledCloset = closet else {return}
+
+            self.closet = closet
+
+            userRef.document((Auth.auth().currentUser?.uid)!).getModel(Girl.self) { (girl, err) in
+                guard let pulledGirl = girl else {return}
+
+                self.user = pulledGirl
+                
+                if Auth.auth().currentUser?.uid != self.user?.documentID && self.closet?.count == 0
                 {
-                    //                    print("\(document.documentID) => \(document.data())")
-                    let documentData = document.data()
-                    
-                    poster = documentData["poster"] as! String
-                    documentId = documentData["key"] as! String
-                    
-                    if Auth.auth().currentUser?.uid == poster
-                    {
-                        dressArray.append(documentId)
-                        print(dressArray)
-//                        userRef.document((Auth.auth().currentUser?.uid)!).setValue(dressArray, forKeyPath: "Dresses")
-                        userRef.document((Auth.auth().currentUser?.uid)!).updateData(["Dresses" : dressArray], completion: { (err) in
-                            if err == nil
-                            {
-                                print("Save is good")
-                            }
-                            else
-                            {
-                                print(err?.localizedDescription ?? String())
-                            }
-                        })
-                    }
-                    
-                    print(poster)
-                    print(documentId)
+                    debugPrint("error")
+                }
+                else
+                {
+                    userRef.document((self.user?.documentID)!).setModel(self.closet as! FirestoreModel)
                 }
             }
         }
-    }
+        
+//            userRef.document((Auth.auth().currentUser?.uid)!).getModel(Girl.self) { (girl, err) in
+//                guard let pulledGirl = girl else {return}
+//
+//                self.user = pulledGirl
+//
+//            }
+//
+//        }
+    
+//        storageRef.getDocuments() { (querySnapshot, err) in
+//            if let err = err
+//            {
+//                print("Error getting documents: \(err)")
+//            }
+//            else
+//            {
+//                for document in querySnapshot!.documents
+//                {
+//                    //                    print("\(document.documentID) => \(document.data())")
+//                    let documentData = document.data()
+//
+//                    
+//
+//                    poster = documentData["poster"] as! String
+//                    documentId = documentData["key"] as! String
+//
+//                    if Auth.auth().currentUser?.uid == poster
+//                    {
+//                        dressArray.append(documentId)
+//                        print(dressArray)
+////                        userRef.document((Auth.auth().currentUser?.uid)!).setValue(dressArray, forKeyPath: "Dresses")
+//                        userRef.document((Auth.auth().currentUser?.uid)!).updateData(["Dresses" : dressArray], completion: { (err) in
+//                            if err == nil
+//                            {
+//                                print("Save is good")
+//                            }
+//                            else
+//                            {
+//                                print(err?.localizedDescription ?? String())
+//                            }
+//                        })
+//                    }
+//
+//                    print(poster)
+//                    print(documentId)
+//                }
+//            }
+//        }
+//    }
     
 //    func pullUserProfileDress(dataArray: [[String:Any]])
 //    {
@@ -152,4 +188,6 @@ class BackendStuff
         secondData.updateValue(metaData, forKey: "image")
         secondData = data
     }
+
+  }
 }

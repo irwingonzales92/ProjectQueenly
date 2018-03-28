@@ -14,6 +14,7 @@ private struct Property {
     let value: Any
 }
 
+
 struct FirestoreModelData {
     
     let snapshot: DocumentSnapshot
@@ -23,7 +24,7 @@ struct FirestoreModelData {
     }
     
     var data: [String : Any] {
-        return snapshot.data()!
+        return snapshot.data() ?? [:]
     }
     
     func value<T>(forKey key: String) throws -> T {

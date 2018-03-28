@@ -9,6 +9,8 @@
 import UIKit
 
 class OnboardingOneVC: UIViewController {
+    
+    var girl = Girl()
 
     override func viewDidLoad() {
         super.viewDidLoad()

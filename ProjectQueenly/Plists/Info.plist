@@ -65,5 +65,25 @@
         <string>fbauth2</string>
         <string>fbshareextension</string>
     </array>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>fb191433238102014</string>
+            </array>
+        </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>191433238102014</string>
+    <key>FacebookDisplayName</key>
+    <string>Queenly</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-share-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
 </dict>
 </plist>

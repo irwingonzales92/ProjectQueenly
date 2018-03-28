@@ -7,185 +7,129 @@
 
 import UIKit
 import CoreData
+import FirebaseFirestore
 import Firebase
+import SkyFloatingLabelTextField
+import RSKPlaceholderTextView
 
-class AddPostVC: UIViewController {
-
+class AddPostVC: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet var descriptionTextView: RSKPlaceholderTextView!
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet var titleTxtField: UITextField!
-    @IBOutlet var sizeTxtField: UITextField!
-    @IBOutlet var priceTxtField: UITextField!
+    @IBOutlet var titleTxtField: SkyFloatingLabelTextField!
+    @IBOutlet var priceTxtField: SkyFloatingLabelTextField!
+    @IBOutlet var price2TxtField: SkyFloatingLabelTextField!
     @IBOutlet var submitBtn: UIButton!
-    @IBOutlet var addMeasurementsBtn: UIButton!
-    @IBOutlet var shilouetteTxtField: UITextField!
-    @IBOutlet var colorTxtField: UITextField!
+    @IBOutlet var addMeasurementsBtn: RoundedShadowButton!
     var waistTxtField = UITextField()
     var hipTxtField = UITextField()
     var bustTxtField = UITextField()
+    var picker: PickerType?
+    var poster: PostKind?
+    
+    @IBOutlet var addColorBtn: RoundedShadowButton!
+    
+    // Popup UI Elements
+    @IBOutlet var conditionalPickerView: UIView!
+    @IBOutlet var setDressConditionsBtn: UIView!
+    @IBOutlet var cancelConditionBtn: UIButton!
+    @IBOutlet var popUpCenterConstraint: NSLayoutConstraint!
+    @IBOutlet var blurBackgroundConstraint: NSLayoutConstraint!
+    @IBOutlet var conditionPopUpView: UIView!
+    @IBOutlet var pickerView: UIPickerView!
+    @IBOutlet var blurView: UIVisualEffectView!
+    
+    let conditionsArray = ["Brand New", "Very Good", "Good", "Fair", "Poor"]
+    let colorsArray = ["Black", "White", "Red", "Blue", "Yellow", "Green", "Purple", "Orange", "Gold", "Silver", "Pink", "Beige"]
     
     
-    var designer = String()
+    var girl = Girl()
+    
+    var dressTitle = String()
     var size = Int()
-    var price = Int()
+    var priceRange1 = Int()
+    var priceRange2 = Int()
     var shilouette = String()
     var color = String()
     var waist = Int()
     var bust = Int()
     var hip = Int()
     var image = UIImage()
+    var postType = String()
+    
+    var gown: Gown?
+    
+    var aSender: RoundedShadowButton?
+
+    var gownCondition: String?
+    var gownDescription = String()
     
     var addToWardrobe = Bool()
+    var isWardrobe = Bool()
     
     var key = DataService.instance.REF_DRESS.childByAutoId().key
     
     var imagePickerController = UIImagePickerController()
     var storageRef = Firestore.firestore().collection("Dress")
     
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        view.bindToKeyboard()
+        self.setupView()
         
-        self.addDelegates()
-        // Do any additional setup after loading the view.
+//        NotificationCenter.default.addObserver(self, selector: #selector(setWardrobeParams(notificationName:)), name: FROM_ROOT_VC, object: nil)
+//        print("Notification Observed")
         
-        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlerSelectedImageView)))
-        imageView.isUserInteractionEnabled = true
-        imageView.image = UIImage(named: "dressicon")
         
-        NotificationCenter.default.addObserver(self, selector: #selector(setWardrobeParams), name: FROM_PROFILE_VC, object: nil)
-    }
-    
-    @objc func setWardrobeParams()
-    {
-        self.addToWardrobe = true
-//        NotificationCenter.default.post(name: FROM_PROFILE_VC, object: nil)
-    }
-    
-    func setObjects() -> [String : Any]?
-    {
-        if self.addToWardrobe == true
-        {
-            self.color = self.colorTxtField.text!
-            self.shilouette = self.shilouetteTxtField.text!
-            self.designer = self.titleTxtField.text!
-            self.size = ((self.sizeTxtField.text as NSString?)?.integerValue)!
-            self.bust = ((self.bustTxtField.text as NSString?)?.integerValue)!
-            self.waist = ((self.waistTxtField.text as NSString?)?.integerValue)!
-            self.hip = ((self.hipTxtField.text as NSString?)?.integerValue)!
-            self.price = ((self.priceTxtField.text as NSString?)?.integerValue)!
-            
-            let wardrobeData = ["poster": Auth.auth().currentUser?.uid, "key": self.key, "designer":self.designer, "size":self.size, "color":self.color, "shilouette":self.shilouette, "waist":self.waist, "bust":self.bust, "hip":self.hip, "price": self.price, "isWardrobe": true, "image":self.imageView.image] as [String : Any]
-            
-            debugPrint(wardrobeData)
-            return wardrobeData
-        }
-        else
-        {
-            self.color = self.colorTxtField.text!
-            self.shilouette = self.shilouetteTxtField.text!
-            self.designer = self.titleTxtField.text!
-            self.size = ((self.sizeTxtField.text as NSString?)?.integerValue)!
-            self.bust = ((self.bustTxtField.text as NSString?)?.integerValue)!
-            self.waist = ((self.waistTxtField.text as NSString?)?.integerValue)!
-            self.hip = ((self.hipTxtField.text as NSString?)?.integerValue)!
-            self.price = ((self.priceTxtField.text as NSString?)?.integerValue)!
-            
-            let isoData = ["poster": Auth.auth().currentUser?.uid, "key": self.key, "designer":self.designer, "size":self.size, "color":self.color, "shilouette":self.shilouette, "waist":self.waist, "bust":self.bust, "hip":self.hip, "price": self.price, "isWardrobe": false, "image":self.imageView.image] as [String : Any]
-            
-            debugPrint(isoData)
-            return isoData
-        }
-//        return nil
-    }
-    
-    func addDelegates()
-    {
-        self.imagePickerController.delegate = self
-        self.titleTxtField.delegate = self
-        self.sizeTxtField.delegate = self
-        self.priceTxtField.delegate = self
-    }
-    
-    // UI Buttons
-    func presentWarningAlertController(error:String)
-    {
-        let alert = UIAlertController(title: error, message: nil, preferredStyle: .alert)
-        
-        let cancel = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
-        alert.addAction(cancel)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func addMeasurementsOnBtnPressed()
-    {
-        let alert = UIAlertController(title: "Add Measurements", message: nil, preferredStyle: .alert)
-        
-        alert.addTextField { (textField) in
-            self.waistTxtField = textField
-            textField.placeholder = "Waist"
-        }
-        
-        alert.addTextField { (textField) in
-            self.hipTxtField = textField
-            textField.placeholder = "Hip"
-        }
-        
-        alert.addTextField { (textField) in
-            self.bustTxtField = textField
-            textField.placeholder = "Bust"
-        }
-        
-        let save = UIAlertAction(title: "Set", style: .default) { (alert) in
-//            self.setObjects()
-            if self.imageView.image == nil || self.imageView.image == UIImage(named: "dressicon")
-            {
-                self.presentWarningAlertController(error: "Missing an Image!!")
-            }
-            else
-            {
-                print("Things are good here")
-                self.performSegue(withIdentifier: "toConfirmVC", sender: self)
-            }
-        }
-        alert.addAction(save)
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(cancel)
-        
-        self.present(alert, animated: true, completion: nil)
-    }
+        //                let isFromRootVC = note.name == FROM_ROOT_VC
+        //                let postFromVc = isFromRootVC ? "IsoPost" : "WardrobePost"
 
+        
+//        self.addColorBtn.tag = 0
+//        self.addMeasurementsBtn.tag = 1
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(true)
+    }
+    
+
+    @IBAction func exitConditionBtnPressed(_ sender: Any)
+    {
+        self.dismissConditionViewController()
+    }
+    
     @IBAction func cancelBtnPressed(_ sender: Any)
     {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func addColorOnBtnPressed(_ sender: Any)
+    {
+        self.checkButtonTag(sender: self.addColorBtn)
+    }
+    
     @IBAction func addMeasurementsOnBtnPressed(_ sender: Any)
     {
-        self.addMeasurementsOnBtnPressed()
+        self.checkButtonTag(sender: self.addMeasurementsBtn)
+    }
+    @IBAction func setDressMeasurementsOnBtnPressed(_ sender: Any)
+    {
+        self.dismissConditionViewController()
     }
     
     @IBAction func submitBtnPressed(_ sender: Any)
     {
-//        self.setObjects()
-
-        
+        self.performSegue(withIdentifier: "toConfirmVC", sender: nil)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "toConfirmVC"
-        {
-            var nextVC = segue.destination as? PostConfirmVC
-            nextVC?.key = self.key
-            nextVC?.data = self.setObjects()!
-            debugPrint(nextVC?.data)
 
-        }
-    }
-    
 }
+
 

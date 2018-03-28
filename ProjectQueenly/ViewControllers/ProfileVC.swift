@@ -14,9 +14,20 @@ class ProfileVC: UIViewController
 {
     @IBOutlet var collectionView: UICollectionView!
     
+    enum makingOffer
+    {
+        case isMakingOffer
+    }
+    
     var gowns = [[String:Any]]()
     var gown = [String: Any?]()
     var recievedGown = [String:Any?]()
+    
+    @IBOutlet var tabBarNameLabel: UILabel!
+    @IBOutlet var addToWardrobeBtn: UIButton!
+    
+    var girl = Girl()
+    
     
     var designer = String()
     var size = Int()
@@ -43,9 +54,16 @@ class ProfileVC: UIViewController
     {
         super.viewDidLoad()
         
+        self.updateUI()
+    }
+    
+    func updateUI()
+    {
         self.initalizeStuff()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(setWardrobeParams), name: FROM_POST_DETAIL_VC, object: nil)
+        //        NotificationCenter.default.addObserver(self, selector: #selector(setWardrobeParams), name: FROM_POST_DETAIL_VC, object: nil)
+        
+//        self.userRef.setModel
         
         NotificationCenter.default.addObserver(forName: FROM_POST_DETAIL_VC, object: nil, queue: OperationQueue.main) { (notification) in
             self.makingOffer = true
@@ -57,11 +75,11 @@ class ProfileVC: UIViewController
             }
             else
             {
-                print("Everything is smooth")
+                print("Offer Made")
                 
                 var note = notification.object as? String
                 note = self.recievedGown["id"] as? String
-//                print(note)
+                //                print(note)
             }
         }
     }
@@ -133,9 +151,9 @@ class ProfileVC: UIViewController
     {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let postVC = storyboard.instantiateViewController(withIdentifier: "AddPostVC") as? AddPostVC
+        NotificationCenter.default.post(name: FROM_PROFILE_VC, object: nil)
         present(postVC!, animated: true, completion: nil)
         
-        NotificationCenter.default.post(name: FROM_PROFILE_VC, object: nil)
     }
 }
 
@@ -218,6 +236,11 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate
 //        dressStorageRef.document(dressId).setValue(offeredDress, forKeyPath: "isooffers")
         
 //        NotificationCenter.default.post(name: WARDROBE_OFFER, object: self.key, userInfo: nil)
+        
+//        self.userRef.getModel(self.girl) { (girl, err) in
+//            <#code#>
+//        }
+        
         NotificationCenter.default.post(name: WARDROBE_OFFER, object: nil, userInfo: self.gown)
     }
 }

@@ -8,11 +8,14 @@
 
 import UIKit
 import Firebase
+import SkyFloatingLabelTextField
 
 class OnboardingThreeVC: UIViewController {
 
     @IBOutlet var imageView: RoundImageView!
-    @IBOutlet var usernameTxtField: RoundedCornerTextField!
+    @IBOutlet var usernameTxtField: SkyFloatingLabelTextField!
+    
+    var girl = Girl()
     
     var imagePickerController = UIImagePickerController()
     
@@ -21,6 +24,8 @@ class OnboardingThreeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.usernameTxtField.text = self.userDisplayName
         
         self.setDelegates()
         
@@ -37,19 +42,30 @@ class OnboardingThreeVC: UIViewController {
 
     }
     
-    func setUserParams() -> [String: Any]?
+    func setUserParams()
     {
-        self.userProfileImage = self.imageView.image!
-        self.userDisplayName = self.usernameTxtField.text!
+//        self.userProfileImage = self.imageView.image!
+//        self.userDisplayName = self.usernameTxtField.text!
+//
+//        let metaData = UIImagePNGRepresentation(self.userProfileImage)
+//
+//        let userData = ["userId": Auth.auth().currentUser?.uid ?? String(), "displayName": self.userDisplayName, "userImage": metaData] as [String : Any]
+//
+//        UserDefaults.standard.set(self.userDisplayName, forKey: "name")
         
-        let metaData = UIImagePNGRepresentation(self.userProfileImage)
         
-        let userData = ["userId": Auth.auth().currentUser?.uid ?? String(), "displayName": self.userDisplayName, "userImage": metaData] as [String : Any]
+//        let ref = userRef.document((Auth.auth().currentUser?.uid)!)
+////        ref.getModel(Girl.self) { (girl, err) in
+////            if err == nil
+////            {
+////
+////            }
+//        ref.setModel(girl as! FirestoreModel)
         
-        UserDefaults.standard.set(self.userDisplayName, forKey: "name")
+        
 
         
-        return userData
+//        return userData
     }
     
     func setDelegates()
@@ -57,6 +73,8 @@ class OnboardingThreeVC: UIViewController {
         self.imagePickerController.delegate = self
         self.usernameTxtField.delegate = self
     }
+    
+    
     
     @IBAction func buildProfileBtnPressed(_ sender: Any)
     {
@@ -69,8 +87,10 @@ class OnboardingThreeVC: UIViewController {
         if segue.identifier == "toOnboardingVCFourSegue"
         {
             var nextVC = segue.destination as? OnboardingFourVC
-            nextVC?.userInfo = self.setUserParams()!
-            debugPrint(nextVC?.userInfo)
+//            nextVC?.userInfo = self.setUserParams()
+            nextVC?.image = self.imageView.image!
+            nextVC?.username = self.userDisplayName
+            debugPrint(nextVC?.girl)
         }
     }
 

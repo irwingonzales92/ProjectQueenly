@@ -12,6 +12,7 @@ target 'ProjectQueenly' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Core'
 	pod 'Firebase/Firestore'
+	pod 'FirebaseStorage'
 	
     	pod 'FBSDKLoginKit'
 	pod 'FacebookCore'
@@ -25,6 +26,8 @@ target 'ProjectQueenly' do
 	pod 'Alamofire'
 	pod 'TRMosaicLayout'
 	pod 'VideoSplashKit'
-	pod 'UIEmptyState'
+	pod 'AZEmptyState'
+	pod 'SkyFloatingLabelTextField'
+	pod 'RSKPlaceholderTextView'
 
 end

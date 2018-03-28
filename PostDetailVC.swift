@@ -19,7 +19,7 @@ class PostDetailVC: UIViewController
     @IBOutlet var backgroundView: UIView!
     @IBOutlet var offerBtn: UIButton!
     var offerDressArray = [[String:Any?]]()
-    var gown = Gown()
+    var gown: Gown?
 
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var designerLabel: UILabel!

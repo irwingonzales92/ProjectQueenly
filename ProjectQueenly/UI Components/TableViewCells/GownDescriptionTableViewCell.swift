@@ -10,6 +10,16 @@ import UIKit
 
 class GownDescriptionTableViewCell: UITableViewCell {
 
+    @IBOutlet var descriptionLabel: UILabel!
+    
+    var item: GownDataViewModelItem?
+    {
+        didSet
+        {
+            guard let item = item as? GownDataDescriptionItem else {return}
+            descriptionLabel.text = item.description
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PMAlertController
 import Firebase
 
 
@@ -82,7 +81,9 @@ class LeftPanelVC: UIViewController {
                 catch (let error)
                 {
                     print(error)
-                }            }))
+                }
+                
+            }))
             
             self.present(alertVC, animated: true, completion: nil)
             

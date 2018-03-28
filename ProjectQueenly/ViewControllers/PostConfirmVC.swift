@@ -10,21 +10,32 @@
 import UIKit
 import Firebase
 
+enum GownElementType: String
+{
+    case displayName, price, color, description
+}
+
+protocol GownElement
+{
+    var type: GownElementType {get}
+}
+
+protocol CustomElementCell {
+    func configure(withGown: Gown)
+}
+
 class PostConfirmVC: UIViewController {
     
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet var priceLabel: UILabel!
-    @IBOutlet var waistLabel: UILabel!
-    @IBOutlet var bustLabel: UILabel!
-    @IBOutlet var hipLabel: UILabel!
     @IBOutlet var designerLabel: UILabel!
-    @IBOutlet var sizeLabel: UILabel!
-    @IBOutlet var colorLabel: UILabel!
-    @IBOutlet var shilouetteLabel: UILabel!
     @IBOutlet var postBtn: UIButton!
     
+    var girl: Girl?
+    var gown: Gown?
+        
     var data = [String: Any]()
     var dressArray = [String]()
+    @IBOutlet var tableView: UITableView!
     
     var designer = String()
     var size = Int()
@@ -39,6 +50,8 @@ class PostConfirmVC: UIViewController {
     var poster = String()
     var wardrobe = Bool()
     
+    var gownArray = [GownElement]()
+    
     var storageRef = Firestore.firestore().collection("Dress")
     var userRef = Firestore.firestore().collection("Users")
 
@@ -49,62 +62,54 @@ class PostConfirmVC: UIViewController {
         // Do any additional setup after loading the view.
         
         print("Object Passed")
-        print(self.key)
+        print(self.gown?.documentID ?? "")
+//        delegate.didRecieveGown(gown: self.gown!)
+//        self.gownModel.delegate = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         
-//        NotificationCenter.default.addObserver(self, selector: <#T##Selector#>, name: <#T##NSNotification.Name?#>, object: <#T##Any?#>)
-//        print(self.data.keys)
+        // save for optimizing
+//        self.tableView.dataSource = GownViewModel() as UITableViewDataSource
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
-        self.openDictionary(dict: data)
+//        self.openDictionary(dict: data)
         self.setStuff()
     }
     
-    func openDictionary(dict: [String: Any])
+    func openGownObj(gown: Gown)
     {
-        self.bust = dict["bust"] as! Int
-        self.hip = dict["hip"] as! Int
-        self.size = dict["size"] as! Int
-        self.price = dict["price"] as! Int
-        self.color = dict["color"] as! String
-        self.shilouette = dict["shilouette"] as! String
-        self.designer = dict["designer"] as! String
-        self.color = dict["color"] as! String
-        self.image = dict["image"] as! UIImage
-        self.wardrobe = dict["isWardrobe"] as! Bool
+
     }
     
+    func saveDressToDB(savingGown: Gown)
+    {
+    self.storageRef.document(savingGown.documentID).setModel(savingGown)
+    }
+//
     func setStuff()
     {
-        self.designerLabel.text = self.designer
-        self.shilouetteLabel.text = self.shilouette
-        self.colorLabel.text = self.color
-        self.imageView.image = self.image
-        self.poster = (Auth.auth().currentUser?.uid)!
-        
-        let sizeString = String(self.size)
-        self.sizeLabel.text = sizeString
-        
-        let priceString = String(self.price)
-        self.priceLabel.text = priceString
-        
-        let waistString = String(self.waist)
-        self.waistLabel.text = waistString
-        
-        let hipString = String(self.hip)
-        self.hipLabel.text = hipString
-        
-        let bustString = String(self.bust)
-        self.bustLabel.text = bustString
-        
+        self.designerLabel.text = self.gown?.title
+
+
     }
     
     func transformImageToDataString()
     {
         let metaData = UIImagePNGRepresentation(self.imageView.image!)
         self.data.updateValue(metaData, forKey: "image")
+    }
+    
+    
+    ///////// YOU ARE TRYING TO CONVERT STRING TO IMAGE
+    func transferDataStringToImage()
+    {
+        let encodedData = self.gown?.image
+        let decodedimage = UIImage(data: encodedData!)
+        self.imageView.image = decodedimage
     }
     
     func addWardrobeToUser(poster: String, dress: [String: Any])
@@ -123,30 +128,32 @@ class PostConfirmVC: UIViewController {
     @IBAction func actionBtnPressed(_ sender: Any)
     {
         self.transformImageToDataString()
+        self.saveDressToDB(savingGown: self.gown!)
+//        self.storageRef.document((self.gown?.documentID)!).setModel(self.gown!)
         
-        self.storageRef.addDocument(data: self.data) { (error) in
-            if error != nil
-            {
-                print("Error Saving To Storage")
-                debugPrint(error?.localizedDescription ?? String())
-                self.presentAlertController(error: error?.localizedDescription ?? String())
-            }
-            else
-            {
-                print("Saved!!")
-                print(self.poster)
-        //                print("\(document.documentID) => \(document.data())")
-//                self.dismiss(animated: true, completion: nil)
-
-                NotificationCenter.default.post(name: ISO_POST, object: nil)
-                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let homeVC = storyboard.instantiateViewController(withIdentifier: "RootVC") as? RootVC
-                self.present(homeVC!, animated: true, completion: nil)
-            }
-//            DataService.instance.addWardrobeToUser(dress: ["Dresses": self.dressArray])
-            self.dressArray.append(self.key)
-            DataService.instance.addWardrobeToUser(poster: self.poster, dress: ["Dresses":self.dressArray])
-        }
+//        self.storageRef.addDocument(data: self.data) { (error) in
+//            if error != nil
+//            {
+//                print("Error Saving To Storage")
+//                debugPrint(error?.localizedDescription ?? String())
+//                self.presentAlertController(error: error?.localizedDescription ?? String())
+//            }
+//            else
+//            {
+//                print("Saved!!")
+//                print(self.poster)
+//        //                print("\(document.documentID) => \(document.data())")
+////                self.dismiss(animated: true, completion: nil)
+//
+//                NotificationCenter.default.post(name: ISO_POST, object: nil)
+//                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//                let homeVC = storyboard.instantiateViewController(withIdentifier: "RootVC") as? RootVC
+//                self.present(homeVC!, animated: true, completion: nil)
+//            }
+////            DataService.instance.addWardrobeToUser(dress: ["Dresses": self.dressArray])
+//            self.dressArray.append(self.key)
+//            DataService.instance.addWardrobeToUser(poster: self.poster, dress: ["Dresses":self.dressArray])
+//        }
         
         
         
@@ -186,3 +193,25 @@ class PostConfirmVC: UIViewController {
 
 }
 
+
+extension PostConfirmVC: UITableViewDelegate, UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return gownArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cellModel = gownArray[indexPath.row]
+        let cellIdentifier = cellModel.type.rawValue
+        let customCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CustomElementCell
+        
+        customCell?.configure(withGown: cellModel as! Gown)
+        
+        return customCell as! UITableViewCell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 0
+    }
+}

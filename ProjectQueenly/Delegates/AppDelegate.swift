@@ -11,6 +11,7 @@ import CoreData
 import Firebase
 import Stripe
 import Alamofire
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     fileprivate var loginVC = LoginVC()
     fileprivate var welcomeVC = WelcomeVC()
     fileprivate var onboardingOne = OnboardingOneVC()
+    
+//    let appDelegate = AppDelegate.getAppDelegate()
+
 
     var window: UIWindow?
     
@@ -34,9 +38,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_eBdf9X3x9WEV63PEQkhRF8zH"
+        
+        var keys: NSDictionary?
+        
+        if let path = Bundle.main.path(forResource: "SecretKeys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        
+        if let dict = keys
+        {
+            let stripeKey = dict["stripeKey"] as? String
+            STPPaymentConfiguration.shared().publishableKey = stripeKey!
+        }
+        
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         
         let defaultStore = Firestore.firestore()
+        
+        var storageRef = Firestore.firestore().collection("Dress")
+        var userRef = Firestore.firestore().collection("Users")
         
         
         // Window and container elements
@@ -48,6 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        window?.rootViewController = containerVC
 //        window?.makeKeyAndVisible()
+        
+        
+        
+        
+        
         
         if Auth.auth().currentUser == nil
         {
@@ -79,7 +106,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 window?.makeKeyAndVisible()
             }
         }
+
         
+    
+        
+        
+        
+        
+//
 //        if (UserDefaults.standard.value(forKey: "name") as? String) == nil
 //        {
 //            // Show onboarding
@@ -184,16 +218,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // This method is where you handle URL opens if you are using a native scheme URLs (eg "yourexampleapp://")
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let stripeHandled = Stripe.handleURLCallback(with: url)
+
+        let handled  = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String, annotation: options[UIApplicationOpenURLOptionsKey.annotation])
         
         if (stripeHandled) {
             return true
         }
         else {
-            // This was not a stripe url, do whatever url handling your app
-            // normally does, if any.
+            
         }
         
-        return false
+        return handled
     }
     
     // This method is where you handle URL opens if you are using univeral link URLs (eg "https://example.com/stripe_ios_callback")

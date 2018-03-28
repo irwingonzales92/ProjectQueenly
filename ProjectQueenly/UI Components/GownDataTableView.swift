@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
 class GownDataTableView: UITableView {
-
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -19,3 +20,11 @@ class GownDataTableView: UITableView {
     */
 
 }
+
+
+
+
+
+
+
+

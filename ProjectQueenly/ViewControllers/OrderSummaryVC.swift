@@ -10,6 +10,33 @@ import UIKit
 
 class OrderSummaryVC: UIViewController {
 
+    @IBOutlet var cancelBtn: UIButton!
+    @IBOutlet var imageView: UIImageView!
+    
+    // Static Labels
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var orderedLabel: UILabel!
+    @IBOutlet var sellerLabel: UILabel!
+    @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var priceTotalLabel: UILabel!
+    
+    // Reactive Labels
+    @IBOutlet var buyerLabel: UILabel!
+    @IBOutlet var orderedDateLabel: UILabel!
+//    @IBOutlet var sellerLabel: UILabel!
+    @IBOutlet var shippedLabel: UILabel!
+//    @IBOutlet var priceTotalLabel: UILabel!
+    
+    
+    // Progress View
+    @IBOutlet var progressView: UIProgressView!
+    
+    // Buttons
+    @IBOutlet var detailsBtn: UIButton!
+    @IBOutlet var measurementsBtn: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

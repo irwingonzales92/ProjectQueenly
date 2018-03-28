@@ -25,12 +25,16 @@ class OnboardingFiveVC: UIViewController {
     
     @IBAction func letsMakeAPostBtnPressed(_ sender: Any)
     {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let postVC = storyboard.instantiateViewController(withIdentifier: "AddPostVC") as? AddPostVC
+        present(postVC!, animated: true, completion: nil)
     }
     
     @IBAction func navigateToHomeVCOnBtnPressed(_ sender: Any)
     {
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let rootVC = storyboard.instantiateViewController(withIdentifier: "RootVC") as? RootVC
+        present(rootVC!, animated: true, completion: nil)
     }
     
     /*

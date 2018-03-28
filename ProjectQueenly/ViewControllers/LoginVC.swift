@@ -8,44 +8,78 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FacebookCore
+import VideoSplashKit
 
-class LoginVC: UIViewController, Alertable
+class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
 {
 
-    @IBOutlet var loginWithFbButton: UIButton!
+    var girl: Girl? = nil
     
+//    @IBOutlet var webView: WKWebView!
+    @IBOutlet var logoImgView: UIImageView!
+    @IBOutlet var webView: UIWebView!
+    @IBOutlet var signupBtn: UIButton!
+    @IBOutlet var toLbl: UILabel!
+    @IBOutlet var loginBtn: RoundedShadowButton!
     var emailTextField = UITextField()
     var passwordTextField = UITextField()
     var confirmPasswordTextfield = UITextField()
     var usernameTextField = UITextField()
+    let fbBtn = FBSDKLoginButton()
+
+    var window: UIWindow?
     
-//    let alert = FCAlertView()
+    // Access Token
+    let accessToken = FBSDKAccessToken.current()
+    let fbParamaters = ["fields": "id, email, first_name, last_name, password, picture.type(large)"]
+    
+    
+    override var prefersStatusBarHidden:Bool { return true }
     
     override func viewDidLoad()
     {
-//        self.alert.delegate = self as! FCAlertViewDelegate
         super.viewDidLoad()
         
         view.bindToKeyboard()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        super.viewWillAppear(true)
-        NotificationCenter.default.post(name: Notification.Name.init(rawValue: "UserLoggedIn"), object: nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func loginWithFbBtnPressed(_ sender: Any)
-    {
+        
+//        self.webView = UIWebView(frame: view.frame)
+//        let htmlPath = Bundle.main.path(forResource: "WebViewContent", ofType: "html")
+//        let htmlURL = URL(fileURLWithPath: htmlPath!)
+//        let html = try? Data(contentsOf: htmlURL)
+//        
+//        self.webView.load(html!, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: htmlURL.deletingLastPathComponent())
+//        self.webView.isUserInteractionEnabled = false;
+//        self.view.addSubview(self.webView)
+        
+        
+        
+        self.fbBtn.delegate = self
+        view.addSubview(fbBtn)
+        
+        self.fbBtn.frame = CGRect(x: 192, y: 524, width: 166, height: 48)
+        self.fbBtn.readPermissions = ["email", "public_profile"]
+        
+        self.logoImgView.frame = CGRect(x: -78, y: 0, width: 530, height: 421)
+        view.addSubview(self.logoImgView)
+        
+        self.signupBtn.frame = CGRect(x: 144, y: 607, width: 87, height: 32)
+        view.addSubview(self.signupBtn)
+        
+        self.loginBtn.frame = CGRect(x: 18, y: 524, width: 166, height: 48)
+        view.addSubview(self.loginBtn)
+        
+        
+        self.checkUserState()
         
     }
+    
+
+    
+
+    
     @IBAction func loginWithEmailBtnPressed(_ sender: Any)
     {
         let alert = UIAlertController(title: "Login", message: nil, preferredStyle: UIAlertControllerStyle.alert)
@@ -61,6 +95,9 @@ class LoginVC: UIViewController, Alertable
                 }
         
         let save = UIAlertAction(title: "Submit", style: .default) { (alert) in
+            
+            
+            
             AuthService.instance.loginUser(withEmail: self.emailTextField.text!, andPassword: self.passwordTextField.text!) { (completed, error) in
                 if completed
                 {
@@ -69,6 +106,14 @@ class LoginVC: UIViewController, Alertable
                     
                     print("User Successfully Logged in")
                     NotificationCenter.default.post(name: USER_IS_LOGGED_IN, object: nil)
+                    
+                    self.girl?.email = self.emailTextField.text
+                    self.girl?.onboarded = false
+//                    userRef.document((Auth.auth().currentUser?.uid)!).setModel(self.girl!)
+                    self.initalizeUserObject()
+                    print(self.girl?.email)
+                    
+                    self.checkUserState()
                     
 //                    NotificationCenter.default.addObserver(self, selector: #selector(self.dismissView), name: USER_IS_LOGGED_IN, object: nil)
                 }
@@ -138,14 +183,20 @@ class LoginVC: UIViewController, Alertable
                     self.showAlert("Signup Successful")
                     
                     print("User Successfully Signed up")
-//                    NotificationCenter.default.addObserver(self, selector: #selector(self.dismissView), name: USER_IS_LOGGED_IN, object: nil)
-                    self.perform(#selector(self.dismissView))
+                    
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+                    let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+                    var vc = UIViewController()
+                    vc = storyboard.instantiateViewController(withIdentifier: "OnboardingOneVC")
+                    self.window?.rootViewController = vc
+                    self.window?.makeKeyAndVisible()
                     self.viewWillAppear(true)
+                    
                 }
                 else
                 {
                     print("Something went wrong")
-                    debugPrint(error)
+                    debugPrint(error?.localizedDescription as! String)
                     
                     if error != nil
                     {
@@ -169,20 +220,16 @@ class LoginVC: UIViewController, Alertable
                     }
                 }
             })
+            
         }
         
         alert.addAction(save)
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancel)
-        
         self.present(alert, animated: true, completion: nil)
         
     }
     
-    @objc func dismissView()
-    {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
 }
+

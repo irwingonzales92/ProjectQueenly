@@ -39,6 +39,7 @@ class ContainerVC: UIViewController
     var rootVC: RootVC!
     var loginVC: LoginVC!
     var leftVC: LeftPanelVC!
+    var onboardingVC: OnboardingOneVC!
     var centerController: UIViewController!
     var currentState: SlideOutState = .collapsed
     var isHidden = false

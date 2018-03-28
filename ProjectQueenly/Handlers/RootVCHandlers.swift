@@ -7,3 +7,22 @@
 //
 
 import Foundation
+import UIKit
+import FirebaseFirestore
+import Firebase
+
+extension RootVC
+{
+    enum UserState
+    {
+        case userIsLoggedIn, userIsPostingIso
+    }
+    
+    enum DressCount
+    {
+        case empty
+    }
+    
+}
+
+
