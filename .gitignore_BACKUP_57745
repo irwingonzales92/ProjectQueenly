@@ -5,7 +5,10 @@
 ## Build generated
 build/
 DerivedData/
+<<<<<<< HEAD
 SecretKeys.plist
+=======
+>>>>>>> f2146234e35b726d2045fce1df758fded2e34e09
 
 ## Various settings
 *.pbxuser
@@ -38,6 +41,10 @@ playground.xcworkspace
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
 # Packages/
 # Package.pins
+<<<<<<< HEAD
+# Package.resolved
+=======
+>>>>>>> f2146234e35b726d2045fce1df758fded2e34e09
 .build/
 
 # CocoaPods
@@ -46,7 +53,11 @@ playground.xcworkspace
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
+<<<<<<< HEAD
+Pods/
+=======
 # Pods/
+>>>>>>> f2146234e35b726d2045fce1df758fded2e34e09
 
 # Carthage
 #
@@ -65,4 +76,8 @@ Carthage/Build
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
+<<<<<<< HEAD
 fastlane/test_output
+=======
+fastlane/test_output
+>>>>>>> f2146234e35b726d2045fce1df758fded2e34e09
