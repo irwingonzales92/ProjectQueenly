@@ -39,8 +39,15 @@ enum ModelDataValue: String
     case postType = "PostType"
 }
 
+struct GownColor: GownElement {
+    var type: GownElementType = .color
+}
+
+struct GownImage: GownElement {
+    var type: GownElementType = .description
+}
+
 struct Gown {
-    
     var title: String?
     var size: Int?
     var priceRange1: Int?
@@ -64,6 +71,10 @@ struct Gown {
 //
 //    var offerCount: Int?
     
+    func toElementArray() -> [GownElement] {
+        var elements = [GownElement]()
+        return elements
+    }
     
     enum PostType: String, StringRawRepresentable
     {

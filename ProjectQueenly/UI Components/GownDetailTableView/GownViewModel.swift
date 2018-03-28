@@ -10,8 +10,11 @@ import Foundation
 import Firebase
 import UIKit
 
-enum GownViewModelItemType {
-    case displayName, price, color, description
+enum GownViewModelItemType: String {
+    case displayName = "displayName"
+    case price = "price"
+    case color = "color"
+    case description = "description"
 }
 
 protocol GownDataViewModelItem {
@@ -20,21 +23,13 @@ protocol GownDataViewModelItem {
     var sectionTitle: String {get}
 }
 
-//protocol GownViewModelDelegate
-//{
-//    func didRecieveGown(gown: Gown)
-//}
 
-class GownViewModel: NSObject
-{
-    var items = [GownDataViewModelItem]()
-    var gownObj = Gown()
-//    var delegate: GownViewModelDelegate
+struct GownItems {
     
-    override init()
+    public var items = [GownDataViewModelItem]()
+        
+    init(gownObj: Gown)
     {
-        super.init()
-//        delegate.didRecieveGown(gown: gownObj)
         if let displayName = gownObj.poster
         {
             let gownDisplay = GownDataDisplayItem(displayName: displayName)
@@ -62,56 +57,58 @@ class GownViewModel: NSObject
 }
 
 
+
+
 // Tableview Datasource
-extension GownViewModel: UITableViewDataSource
-{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        return items[section].rowCount
-        
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let item = items[indexPath.section]
-        
-        switch item.type
-        {
-        case .displayName:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: CELL_DISPLAYNAME_ID, for: indexPath) as? UserDisplayNameCell
-            {
-                cell.item = item
-                return cell
-            }
-        case .price:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: CELL_PRICE_ID, for: indexPath) as?
-                GownColorTableViewCell
-            {
-                cell.item = item
-                return cell
-            }
-        case .color:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: CELL_COLOR_ID, for: indexPath) as?
-                GownColorTableViewCell
-            {
-                cell.item = item
-                return cell
-            }
-        case .description:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: CELL_DESCRIPTION_ID, for: indexPath) as?
-                GownDescriptionTableViewCell
-            {
-                cell.item = item
-                return cell
-            }
-        }
-        return UITableViewCell()
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return items.count
-    }
-}
+//extension GownItems: UITableViewDataSource
+//{
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+//    {
+//        return items[section].rowCount
+//
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+//    {
+//        let item = items[indexPath.section]
+//
+//        switch item.type
+//        {
+//        case .displayName:
+//            if let cell = tableView.dequeueReusableCell(withIdentifier: CELL_DISPLAYNAME_ID, for: indexPath) as? UserDisplayNameCell
+//            {
+//                cell.item = item
+//                return cell
+//            }
+//        case .price:
+//            if let cell = tableView.dequeueReusableCell(withIdentifier: CELL_PRICE_ID, for: indexPath) as?
+//                GownColorTableViewCell
+//            {
+//                cell.item = item
+//                return cell
+//            }
+//        case .color:
+//            if let cell = tableView.dequeueReusableCell(withIdentifier: CELL_COLOR_ID, for: indexPath) as?
+//                GownColorTableViewCell
+//            {
+//                cell.item = item
+//                return cell
+//            }
+//        case .description:
+//            if let cell = tableView.dequeueReusableCell(withIdentifier: CELL_DESCRIPTION_ID, for: indexPath) as?
+//                GownDescriptionTableViewCell
+//            {
+//                cell.item = item
+//                return cell
+//            }
+//        }
+//        return UITableViewCell()
+//    }
+//
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return items.count
+//    }
+//}
 
 // ConfirmPostDelegate
 

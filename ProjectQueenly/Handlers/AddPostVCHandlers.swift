@@ -90,14 +90,12 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
                 print(editedImage)
                 print(info)
                 let image = info[UIImagePickerControllerEditedImage] as! UIImage
-//                let imageData: NSData = UIImagePNGRepresentation(image) as! NSData
                 imageView.image = image
             }
         else if let originalImage = info["UIImagePickerControllerOriginalImage"]
             {
                 print(originalImage)
                 let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-//                let imageData: NSData = UIImagePNGRepresentation(image) as! NSData
                 imageView.image = image
             }
         
@@ -150,7 +148,6 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
     
     func setGownParams(type: String) -> Gown?
     {
-//        self.color = self.colorTxtField.text!
         self.gownDescription = self.descriptionTextView.text!
         self.title = self.titleTxtField.text!
         self.size = ((self.titleTxtField.text as NSString?)?.integerValue)!
@@ -161,7 +158,6 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         self.priceRange2 = ((self.price2TxtField.text as NSString?)?.integerValue)!
         
         var gown: Gown?
-        //        var dressCondition = self.DressCondition(rawValue: conditionsArray.)
         
         NotificationCenter.default.addObserver(forName: FROM_ROOT_VC, object: nil, queue: nil) { (note) in
             print(note.name)
@@ -217,9 +213,10 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
             nextVC?.key = self.key
             //            nextVC?.data = self.setObjects()!
             self.gown = self.setGownParams(type: self.postType)
-            nextVC?.gown = self.gown
-            debugPrint(nextVC?.gown)
-            
+            if let gown = gown {
+                let gownModel = GownItems(gownObj: gown)
+                nextVC?.gownArray = gownModel.items
+            }
         }
     }
     
@@ -336,15 +333,7 @@ extension AddPostVC: UIPickerViewDelegate, UIPickerViewDataSource
             switch row {
             case row:
                 self.gownCondition = self.conditionsArray[row]
-                    
-//                case 1:
-//                    self.gownCondition = self.conditionsArray[row]
-//
-//                case 2:
-//                    self.gownCondition = self.conditionsArray[row]
-//
-//                case 3:
-//                    self.gownCondition = self.conditionsArray[row]
+
                 
             default:
                 self.gownCondition = self.conditionsArray[row]
@@ -362,15 +351,6 @@ extension AddPostVC: UIPickerViewDelegate, UIPickerViewDataSource
         break
         }
 
-        
-//        switch row {
-//        case row:
-//            self.color = self.colorsArray[row]
-//
-//        default:
-//            self.color = self.colorsArray[row]
-//
-//        }
     }
     
     

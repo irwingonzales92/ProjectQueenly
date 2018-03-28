@@ -39,18 +39,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         
-        var keys: NSDictionary?
+//        var keys: NSDictionary?
+//
+//        if let path = Bundle.main.path(forResource: "SecretKey", ofType: "plist") {
+//            keys = NSDictionary(contentsOfFile: path)
+//        }
+//
+//        if let dict = keys
+//        {
+//            let stripeKey = dict["stripeKey"] as? String
+//            STPPaymentConfiguration.shared().publishableKey = stripeKey!
+//        }
         
-        if let path = Bundle.main.path(forResource: "SecretKey", ofType: "plist") {
-            keys = NSDictionary(contentsOfFile: path)
-        }
-        
-        if let dict = keys
-        {
-            let stripeKey = dict["stripeKey"] as? String
-            STPPaymentConfiguration.shared().publishableKey = stripeKey!
-        }
-        
+        STPPaymentConfiguration.shared().publishableKey = "test_dJnv13skfoa6Gs"
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         

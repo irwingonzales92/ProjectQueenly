@@ -12,8 +12,13 @@ import Firebase
 import SkyFloatingLabelTextField
 import RSKPlaceholderTextView
 
+enum State {
+    case ISO, inSearchOf, wardrobe
+}
+
 class AddPostVC: UIViewController, UITextFieldDelegate {
     
+    var state: State = .ISO
     @IBOutlet var descriptionTextView: RSKPlaceholderTextView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var titleTxtField: SkyFloatingLabelTextField!

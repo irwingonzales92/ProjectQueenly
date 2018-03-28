@@ -50,7 +50,7 @@ class PostConfirmVC: UIViewController {
     var poster = String()
     var wardrobe = Bool()
     
-    var gownArray = [GownElement]()
+    var gownArray = [GownDataViewModelItem]()
     
     var storageRef = Firestore.firestore().collection("Dress")
     var userRef = Firestore.firestore().collection("Users")
@@ -59,12 +59,8 @@ class PostConfirmVC: UIViewController {
     {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
         print("Object Passed")
         print(self.gown?.documentID ?? "")
-//        delegate.didRecieveGown(gown: self.gown!)
-//        self.gownModel.delegate = self
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -76,13 +72,12 @@ class PostConfirmVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(true)
-//        self.openDictionary(dict: data)
         self.setStuff()
     }
     
     func openGownObj(gown: Gown)
     {
-
+        
     }
     
     func saveDressToDB(savingGown: Gown)
@@ -201,17 +196,17 @@ extension PostConfirmVC: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cellModel = gownArray[indexPath.row]
         let cellIdentifier = cellModel.type.rawValue
         let customCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CustomElementCell
         
         customCell?.configure(withGown: cellModel as! Gown)
-        
         return customCell as! UITableViewCell
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 }
