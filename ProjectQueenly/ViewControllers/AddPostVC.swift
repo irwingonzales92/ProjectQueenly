@@ -11,14 +11,25 @@ import FirebaseFirestore
 import Firebase
 import SkyFloatingLabelTextField
 import RSKPlaceholderTextView
+//import RxSwift
+import RxSwift
 
 enum State {
-    case ISO, inSearchOf, wardrobe
+    case ISO, wardrobe
+}
+
+protocol AddPostVCDelegate
+{
+    func didSetPostType() -> State
 }
 
 class AddPostVC: UIViewController, UITextFieldDelegate {
     
     var state: State = .ISO
+    var disposeBag = DisposeBag()
+    
+    var delegate: AddPostVCDelegate?
+    
     @IBOutlet var descriptionTextView: RSKPlaceholderTextView!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var titleTxtField: SkyFloatingLabelTextField!
@@ -72,10 +83,21 @@ class AddPostVC: UIViewController, UITextFieldDelegate {
     var addToWardrobe = Bool()
     var isWardrobe = Bool()
     
+    var isIso = Variable<State>(.ISO)
+    var isoObservable: Observable<State> {
+        return isIso.asObservable()
+    }
+    
+    
     var key = DataService.instance.REF_DRESS.childByAutoId().key
     
     var imagePickerController = UIImagePickerController()
     var storageRef = Firestore.firestore().collection("Dress")
+    
+    let gownType = Variable<State>(.ISO)
+    var selectedType: Observable<State> {
+        return gownType.asObservable()
+    }
     
     
     deinit {
@@ -87,24 +109,14 @@ class AddPostVC: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.setupView()
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(setWardrobeParams(notificationName:)), name: FROM_ROOT_VC, object: nil)
-//        print("Notification Observed")
-        
-        
-        //                let isFromRootVC = note.name == FROM_ROOT_VC
-        //                let postFromVc = isFromRootVC ? "IsoPost" : "WardrobePost"
-
-        
-//        self.addColorBtn.tag = 0
-//        self.addMeasurementsBtn.tag = 1
+//        self.oberverSetup()
+        self.setWardrobeType()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(true)
     }
-    
 
     @IBAction func exitConditionBtnPressed(_ sender: Any)
     {
@@ -133,6 +145,20 @@ class AddPostVC: UIViewController, UITextFieldDelegate {
     @IBAction func submitBtnPressed(_ sender: Any)
     {
         self.performSegue(withIdentifier: "toConfirmVC", sender: nil)
+    }
+    
+    func setWardrobeType() {
+        self.state = (delegate?.didSetPostType())!
+        
+        switch self.state
+        {
+        case .ISO:
+            self.addMeasurementsBtn.isHidden = true
+        case .wardrobe:
+            self.addMeasurementsBtn.isHidden = false
+        }
+        
+        print(self.state)
     }
 
 }

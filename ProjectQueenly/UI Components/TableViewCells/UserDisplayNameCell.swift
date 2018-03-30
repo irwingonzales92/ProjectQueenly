@@ -12,15 +12,11 @@ class UserDisplayNameCell: UITableViewCell {
 
     @IBOutlet var userDisplayNameLabel: UILabel!
     
-    var item: GownDataViewModelItem?
-    {
-        didSet
-        {
-            guard let item = item as? GownDataDisplayItem else {return}
-            userDisplayNameLabel.text = item.name
-        }
-    }
+    var item: GownDataDisplayItem!
     
+    public func configure(with item:GownDataDisplayItem) {
+        userDisplayNameLabel.text = item.name
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

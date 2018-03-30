@@ -66,4 +66,9 @@ extension OnboardingThreeVC: UITextFieldDelegate
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.placeholder = ""
     }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UserDefaults.standard.set(textField.text, forKey: "name")
+        UserDefaults.standard.synchronize()
+        
+    }
 }

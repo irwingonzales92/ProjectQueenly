@@ -13,13 +13,10 @@ class GownColorTableViewCell: UITableViewCell {
     @IBOutlet var gownColorLabel: UILabel!
     @IBOutlet var colorLabel: UILabel!
     
-    var item: GownDataViewModelItem?
-    {
-        didSet
-        {
-            guard let item = item as? GownDataColorItem else {return}
-            gownColorLabel.text = item.color
-        }
+    var item: GownDataColorItem!
+    
+    public func configure(with item:GownDataColorItem) {
+         gownColorLabel.text = item.color
     }
     override func awakeFromNib() {
         super.awakeFromNib()

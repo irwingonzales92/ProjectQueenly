@@ -12,13 +12,11 @@ class GownPriceTableViewCell: UITableViewCell {
 
     @IBOutlet var priceRangeLabelOne: UILabel!
     
-    var item: GownDataViewModelItem?
-    {
-        didSet
-        {
-            guard let item = item as? GownDataPriceItem else {return}
-            priceRangeLabelOne.text = String(item.priceOne)
-        }
+
+    var item: GownDataPriceItem!
+    
+    public func configure(with item:GownDataPriceItem) {
+        priceRangeLabelOne.text = String(item.priceOne)
     }
     override func awakeFromNib() {
         super.awakeFromNib()

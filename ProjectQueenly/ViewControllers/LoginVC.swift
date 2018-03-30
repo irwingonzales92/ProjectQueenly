@@ -24,11 +24,11 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
     @IBOutlet var signupBtn: UIButton!
     @IBOutlet var toLbl: UILabel!
     @IBOutlet var loginBtn: RoundedShadowButton!
-    var emailTextField = UITextField()
-    var passwordTextField = UITextField()
-    var confirmPasswordTextfield = UITextField()
-    var usernameTextField = UITextField()
-    let fbBtn = FBSDKLoginButton()
+    var emailTextField: UITextField?
+    var passwordTextField: UITextField?
+    var confirmPasswordTextfield: UITextField?
+    var usernameTextField: UITextField?
+    var fbBtn: FBSDKLoginButton?
 
     var window: UIWindow?
     
@@ -55,12 +55,12 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
 //        self.view.addSubview(self.webView)
         
         
+        self.fbBtn = FBSDKLoginButton(frame: CGRect(x: 192, y: 524, width: 166, height: 48))
+        self.fbBtn?.delegate = self
+        view.addSubview(fbBtn!)
         
-        self.fbBtn.delegate = self
-        view.addSubview(fbBtn)
         
-        self.fbBtn.frame = CGRect(x: 192, y: 524, width: 166, height: 48)
-        self.fbBtn.readPermissions = ["email", "public_profile"]
+        self.fbBtn?.readPermissions = ["email", "public_profile"]
         
         self.logoImgView.frame = CGRect(x: -78, y: 0, width: 530, height: 421)
         view.addSubview(self.logoImgView)
@@ -98,7 +98,7 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
             
             
             
-            AuthService.instance.loginUser(withEmail: self.emailTextField.text!, andPassword: self.passwordTextField.text!) { (completed, error) in
+            AuthService.instance.loginUser(withEmail: (self.emailTextField?.text)!, andPassword: (self.passwordTextField?.text!)!) { (completed, error) in
                 if completed
                 {
                     print("It works!")
@@ -107,7 +107,7 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
                     print("User Successfully Logged in")
                     NotificationCenter.default.post(name: USER_IS_LOGGED_IN, object: nil)
                     
-                    self.girl?.email = self.emailTextField.text
+                    self.girl?.email = self.emailTextField?.text
                     self.girl?.onboarded = false
 //                    userRef.document((Auth.auth().currentUser?.uid)!).setModel(self.girl!)
                     self.initalizeUserObject()
@@ -175,9 +175,9 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
         }
         
         let save = UIAlertAction(title: "Submit", style: .default) { (alert) in
-            AuthService.instance.registerUser(withEmail: self.emailTextField.text!, Password: self.passwordTextField.text!, userCreationComplete: { (completed, error) in
+            AuthService.instance.registerUser(withEmail: (self.emailTextField?.text)!, Password: (self.passwordTextField?.text!)!, userCreationComplete: { (completed, error) in
                 
-                if completed && self.confirmPasswordTextfield.text! == self.passwordTextField.text!
+                if completed && self.confirmPasswordTextfield?.text! == self.passwordTextField?.text!
                 {
                     print("It works!")
                     self.showAlert("Signup Successful")

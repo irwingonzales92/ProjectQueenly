@@ -9,9 +9,14 @@
 import UIKit
 import CoreData
 import Firebase
+import RxSwift
 
-class ProfileVC: UIViewController
+class ProfileVC: UIViewController, AddPostVCDelegate
 {
+    func didSetPostType() -> State {
+        return wardrobePost.value
+    }
+    
     @IBOutlet var collectionView: UICollectionView!
     
     enum makingOffer
@@ -19,9 +24,15 @@ class ProfileVC: UIViewController
         case isMakingOffer
     }
     
+    let wardrobePost = Variable<State>(.wardrobe)
+    var selectedType: Observable<State> {
+        return wardrobePost.asObservable()
+    }
+    
     var gowns = [[String:Any]]()
     var gown = [String: Any?]()
     var recievedGown = [String:Any?]()
+    
     
     @IBOutlet var tabBarNameLabel: UILabel!
     @IBOutlet var addToWardrobeBtn: UIButton!
@@ -151,7 +162,10 @@ class ProfileVC: UIViewController
     {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let postVC = storyboard.instantiateViewController(withIdentifier: "AddPostVC") as? AddPostVC
-        NotificationCenter.default.post(name: FROM_PROFILE_VC, object: nil)
+        
+        postVC?.delegate = self
+        print("Post Type Value: \(wardrobePost.value)")
+
         present(postVC!, animated: true, completion: nil)
         
     }
@@ -244,3 +258,5 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate
         NotificationCenter.default.post(name: WARDROBE_OFFER, object: nil, userInfo: self.gown)
     }
 }
+
+

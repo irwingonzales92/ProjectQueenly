@@ -14,6 +14,10 @@ target 'ProjectQueenly' do
 	pod 'Firebase/Firestore'
 	pod 'FirebaseStorage'
 	
+	pod 'RxSwift',    '~> 4.0'
+    	pod 'RxCocoa',    '~> 4.0'
+	pod 'RxDataSources'
+
     	pod 'FBSDKLoginKit'
 	pod 'FacebookCore'
 	pod 'FacebookLogin'

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import AZEmptyState
 
 class ISOOffersVC: UIViewController
 {
@@ -30,16 +31,55 @@ class ISOOffersVC: UIViewController
     var key = String()
     var poster = String()
     var wardrobe = Bool()
- 
+    
+    var emptyStateView: AZEmptyStateView?
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
         self.initalizeDelegates()
         self.pullUserProfileDress()
+        self.displayEmptyStateView()
 
         // Do any additional setup after loading the view.
     }
+    
+    func displayEmptyStateView()
+    {
+        // If empty, display the empty message viewcontroller
+        
+        if self.dressArray.count == 0
+        {
+            //init var
+            
+            //customize
+            
+            self.emptyStateView = AZEmptyStateView(image: UIImage(named: "sad")!, message: "No Dresses Up Yet!")
+            self.emptyStateView?.buttonText = "Search For One!"
+            self.emptyStateView?.buttonTint = .purple
+//            self.emptyStateView?.addTarget(self, action: #selector(postButtonPressed(_:)), for: .touchUpInside)
+            
+//            self.postBtn.isHidden = true
+            
+            //add subview
+            view.addSubview(emptyStateView!)
+            
+            //add autolayout
+            self.emptyStateView?.translatesAutoresizingMaskIntoConstraints = false
+            self.emptyStateView?.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            self.emptyStateView?.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            self.emptyStateView?.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
+            self.emptyStateView?.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.55).isActive = true
+        }
+        else
+        {
+            debugPrint(self.dressArray.count)
+            self.tableView.reloadData()
+            self.emptyStateView?.removeFromSuperview()
+        }
+    }
+
     
     func openDictionary(dict: [String: Any])
     {

@@ -52,13 +52,8 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         imageView.isUserInteractionEnabled = true
         imageView.image = UIImage(named: "dressicon")
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(setWardrobeParams(notificationName:)), name: FROM_PROFILE_VC, object: nil)
-        
-
         
     }
-    
-
     
     
    @objc func handlerSelectedImageView()
@@ -149,13 +144,13 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
     func setGownParams(type: String) -> Gown?
     {
         self.gownDescription = self.descriptionTextView.text!
-        self.title = self.titleTxtField.text!
+        self.dressTitle = self.titleTxtField.text!
         self.size = ((self.titleTxtField.text as NSString?)?.integerValue)!
         self.bust = ((self.bustTxtField.text as NSString?)?.integerValue)!
         self.waist = ((self.waistTxtField.text as NSString?)?.integerValue)!
         self.hip = ((self.hipTxtField.text as NSString?)?.integerValue)!
-        self.priceRange1 = ((self.priceTxtField.text as NSString?)?.integerValue)!
-        self.priceRange2 = ((self.price2TxtField.text as NSString?)?.integerValue)!
+        self.priceRange1 = Int(self.priceTxtField.text!)! //((self.priceTxtField.text as NSString?)?.integerValue)!
+        self.priceRange2 = Int(self.price2TxtField.text!)! // ((self.price2TxtField.text as NSString?)?.integerValue)!
         
         var gown: Gown?
         
@@ -170,7 +165,7 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         print(self.postType)
         print("Self.PostType")
         
-        gown = Gown(title: self.dressTitle, size: self.girl.size, priceRange1: self.priceRange1, priceRange2: self.priceRange2, shilouette: self.girl.shilouette, color: self.color, waist: self.girl.waist, bust: self.girl.bust, hip: self.girl.hip, image: self.transformImageToDataString(image: self.imageView.image!), isbn: self.key, poster: self.girl.documentID , offers: nil, description: self.description, condition: self.gownCondition, postType: self.postType)
+        gown = Gown(title: self.dressTitle, size: self.girl.size, priceRange1: self.priceRange1, priceRange2: self.priceRange2, shilouette: self.girl.shilouette, color: self.color, waist: self.girl.waist, bust: self.girl.bust, hip: self.girl.hip, image: self.transformImageToDataString(image: self.imageView.image!), isbn: self.key, poster: self.girl.documentID , offers: nil, description: self.gownDescription, condition: self.gownCondition, postType: self.postType)
         
         print(gown)
         return gown
@@ -209,34 +204,62 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         
         if segue.identifier == "toConfirmVC"
         {
-            var nextVC = segue.destination as? PostConfirmVC
+            let nextVC = segue.destination as? PostConfirmVC
+            nextVC?.imageView.image = imageView.image
             nextVC?.key = self.key
-            //            nextVC?.data = self.setObjects()!
             self.gown = self.setGownParams(type: self.postType)
             if let gown = gown {
                 let gownModel = GownItems(gownObj: gown)
+                print("gownModel: \(gownModel)")
                 nextVC?.gownArray = gownModel.items
+                
+                
             }
         }
     }
-    
-    @objc func setWardrobeParams(notificationName: NSNotification.Name)
-    {
-        let isFromRootVC = notificationName == FROM_ROOT_VC
-        let postFromVc = isFromRootVC ? "IsoPost" : "WardrobePost"
         
-        self.postType = postFromVc
-//        if FROM_ROOT_VC == notificationName
-//        {
-//            self.poster = .isIsoPost
-//            print("Posting Iso Dress")
-//        }
-//        else
-//        {
-//            self.poster = .isWardobePost
-//            print("Posting Wardrobe Dress")
-//        }
+    
+    func rootVCObserver()
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
+        let rootVC = storyboard.instantiateViewController(withIdentifier: "RootVC") as? RootVC
+        
+        rootVC?.selectedType.subscribe(onNext: { (currentPostType) in
+//            self.selectedType = currentPostType
+            print("Current Post Type \(currentPostType)")
+            switch currentPostType
+            {
+            case .ISO:
+                 self.addMeasurementsBtn.backgroundColor = UIColor.red
+                
+            case .wardrobe:
+                self.addMeasurementsBtn.backgroundColor = UIColor.blue
+
+            }
+        }).disposed(by: disposeBag)
     }
+    
+    func profileVCObserver()
+    {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC
+        profileVC?.selectedType.subscribe(onNext: { (currentPostType) in
+            print("Observer: Sent from ProfileVC \(currentPostType)")
+            switch currentPostType
+            {
+            case .ISO:
+                self.addMeasurementsBtn.backgroundColor = UIColor.blue
+        
+            case .wardrobe:
+                self.addMeasurementsBtn.backgroundColor = UIColor.red
+        
+            }
+        }).disposed(by: disposeBag)
+    }
+    
+    
     
     
     func checkButtonTag(sender: RoundedShadowButton) -> RoundedShadowButton
@@ -321,12 +344,6 @@ extension AddPostVC: UIPickerViewDelegate, UIPickerViewDataSource
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-//                self.gownCondition = AddPostVC.DressCondition(rawValue: conditionsArray[row])
-        
-//        self.gownCondition = AddPostVC.DressCondition(rawValue: self.conditionsArray[row] as String)
-//        self.checkButtonTag(sender: self.aSender!)
-
-        
        switch self.picker
         {
        case .conditions?:

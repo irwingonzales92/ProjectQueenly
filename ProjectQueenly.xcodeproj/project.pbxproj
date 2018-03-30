@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		570AB4D41FB0F8D300DAB147 /* Girl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570AB4D31FB0F8D300DAB147 /* Girl.swift */; };
+		5712C6C3206C5775002DFF34 /* AppFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712C6C2206C5775002DFF34 /* AppFunctions.swift */; };
 		57296C611FFC3C1700C96C6A /* WardrobeCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57296C601FFC3C1700C96C6A /* WardrobeCVC.swift */; };
 		572B4232203E1B2F001FB708 /* OnboardingImageHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B4231203E1B2F001FB708 /* OnboardingImageHandlers.swift */; };
 		572B42342044DDA1001FB708 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B42332044DDA1001FB708 /* WelcomeVC.swift */; };
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		11FD097EC2888DA17E7E1179 /* Pods_ProjectQueenly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectQueenly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		570AB4D31FB0F8D300DAB147 /* Girl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Girl.swift; sourceTree = "<group>"; };
+		5712C6C2206C5775002DFF34 /* AppFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFunctions.swift; sourceTree = "<group>"; };
 		57296C601FFC3C1700C96C6A /* WardrobeCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardrobeCVC.swift; sourceTree = "<group>"; };
 		572B4231203E1B2F001FB708 /* OnboardingImageHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingImageHandlers.swift; sourceTree = "<group>"; };
 		572B42332044DDA1001FB708 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				57630E22204E84AF00A68F63 /* RootVCHandlers.swift */,
 				5797F03A1F8C8FFC00906E4C /* UIViewExt.swift */,
 				5734939C1FB445BE0039853E /* Alertable.swift */,
+				5712C6C2206C5775002DFF34 /* AppFunctions.swift */,
 			);
 			path = Handlers;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
@@ -520,6 +524,9 @@
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RSKPlaceholderTextView/RSKPlaceholderTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/TRMosaicLayout/TRMosaicLayout.framework",
@@ -538,6 +545,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
@@ -550,6 +558,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSKPlaceholderTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TRMosaicLayout.framework",
@@ -618,6 +629,7 @@
 				576B783120678E820051A473 /* UserDisplayNameCell.swift in Sources */,
 				57E74793203670F200A750C9 /* PaymentContextFooterView.swift in Sources */,
 				57630E23204E84AF00A68F63 /* RootVCHandlers.swift in Sources */,
+				5712C6C3206C5775002DFF34 /* AppFunctions.swift in Sources */,
 				57F97CC91F7DDFEC00D71826 /* AppDelegate.swift in Sources */,
 				5797F0201F8A17EA00906E4C /* DataService.swift in Sources */,
 				5749522E206B5074001A966C /* CustomTableViewCell.swift in Sources */,

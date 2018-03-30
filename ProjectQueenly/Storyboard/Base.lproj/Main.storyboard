@@ -876,7 +876,6 @@
                                         <state key="normal" title="Button" image="icons8-Back-50"/>
                                         <connections>
                                             <action selector="cancelBtnPressed:" destination="i2N-tc-Nga" eventType="touchUpInside" id="bt7-qh-9iN"/>
-                                            <action selector="postButtonPressed:" destination="d8k-QE-wUL" eventType="touchUpInside" id="X9m-ja-TcH"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Confirm Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duP-fO-GVj">
@@ -984,17 +983,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqh-DA-2L3">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqh-DA-2L3">
                                                     <rect key="frame" x="15" y="4" width="85" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="TU0-sR-wSe"/>
+                                                        <constraint firstAttribute="width" constant="85" id="wFZ-ei-wLN"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5y-QW-x9t">
-                                                    <rect key="frame" x="108" y="4" width="85" height="34"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5y-QW-x9t">
+                                                    <rect key="frame" x="108" y="4" width="259" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="34" id="zH4-Et-2vf"/>
                                                     </constraints>
@@ -1003,9 +1003,16 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Sqh-DA-2L3" firstAttribute="leading" secondItem="Dai-Js-TRB" secondAttribute="leading" constant="15" id="0t5-zH-AYy"/>
+                                                <constraint firstItem="i5y-QW-x9t" firstAttribute="leading" secondItem="Sqh-DA-2L3" secondAttribute="trailing" constant="8" id="5BV-i8-Ufm"/>
+                                                <constraint firstItem="Sqh-DA-2L3" firstAttribute="top" secondItem="Dai-Js-TRB" secondAttribute="top" constant="4" id="8Zc-gI-wrq"/>
+                                                <constraint firstItem="i5y-QW-x9t" firstAttribute="top" secondItem="Dai-Js-TRB" secondAttribute="top" constant="4" id="WsF-2d-eIK"/>
+                                                <constraint firstAttribute="trailing" secondItem="i5y-QW-x9t" secondAttribute="trailing" constant="8" id="tja-Kd-9EF"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="priceRangeLabelOne" destination="Sqh-DA-2L3" id="2OS-T0-Qg9"/>
+                                            <outlet property="priceRangeLabelOne" destination="i5y-QW-x9t" id="w3b-7H-QRY"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gownColorCell" id="nrV-lc-jiT" customClass="GownColorTableViewCell" customModule="ProjectQueenly" customModuleProvider="target">

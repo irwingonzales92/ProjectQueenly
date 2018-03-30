@@ -30,7 +30,7 @@ struct GownItems {
         
     init(gownObj: Gown)
     {
-        if let displayName = gownObj.poster
+        if let displayName = gownObj.title
         {
             let gownDisplay = GownDataDisplayItem(displayName: displayName)
             items.append(gownDisplay)

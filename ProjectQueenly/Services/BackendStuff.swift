@@ -21,6 +21,8 @@ class BackendStuff
     var closet: [Gown]?
     var dress: Gown?
     
+    var postState: State?
+    
     func insertDressToOwner()
     {
         var poster = String()
@@ -179,8 +181,18 @@ class BackendStuff
         }
         return self.gownDict
     }
-    
-    
+        
+    func setDressType(state: State) -> State
+    {
+        switch state
+        {
+            case .ISO:
+                return state
+            case .wardrobe:
+                return state
+        }
+    }
+        
     func transformImageToDataString(image: UIImage, data:[String: Any]) 
     {
         var secondData = [String: Any]()

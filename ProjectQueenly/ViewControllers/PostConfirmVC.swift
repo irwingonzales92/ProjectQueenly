@@ -50,7 +50,7 @@ class PostConfirmVC: UIViewController {
     var poster = String()
     var wardrobe = Bool()
     
-    var gownArray = [GownDataViewModelItem]()
+    var gownArray: [GownDataViewModelItem]?
     
     var storageRef = Firestore.firestore().collection("Dress")
     var userRef = Firestore.firestore().collection("Users")
@@ -61,8 +61,11 @@ class PostConfirmVC: UIViewController {
         
         print("Object Passed")
         print(self.gown?.documentID ?? "")
+        print(self.gownArray)
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.tableView.reloadData()
         
         // save for optimizing
 //        self.tableView.dataSource = GownViewModel() as UITableViewDataSource
@@ -94,8 +97,12 @@ class PostConfirmVC: UIViewController {
     
     func transformImageToDataString()
     {
-        let metaData = UIImagePNGRepresentation(self.imageView.image!)
-        self.data.updateValue(metaData, forKey: "image")
+        
+        if (self.imageView.image != nil) {
+            let metaData = UIImagePNGRepresentation(self.imageView.image!)
+            self.data.updateValue(metaData!, forKey: "image")
+        }
+        
     }
     
     
@@ -192,17 +199,42 @@ class PostConfirmVC: UIViewController {
 extension PostConfirmVC: UITableViewDelegate, UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gownArray.count
+        if (gownArray != nil) {
+            return gownArray!.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cellModel = gownArray[indexPath.row]
-        let cellIdentifier = cellModel.type.rawValue
-        let customCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CustomElementCell
+        let userDisplayNameCell = tableView.dequeueReusableCell(withIdentifier: "userDisplayNameCell", for: indexPath) as! UserDisplayNameCell
+        let gownPriceCell = tableView.dequeueReusableCell(withIdentifier: "gownPriceCell", for: indexPath) as! GownPriceTableViewCell
+        let gownColorCell = tableView.dequeueReusableCell(withIdentifier: "gownColorCell", for: indexPath) as! GownColorTableViewCell
+        let gownDescriptionCell = tableView.dequeueReusableCell(withIdentifier: "gownDescriptionCell", for: indexPath) as! GownDescriptionTableViewCell
         
-        customCell?.configure(withGown: cellModel as! Gown)
-        return customCell as! UITableViewCell
+        if (gownArray != nil) {
+            let gownItem = self.gownArray![indexPath.row]
+            
+            switch gownItem.type
+            {
+            case .displayName:
+                userDisplayNameCell.configure(with: gownItem as! GownDataDisplayItem)
+                return userDisplayNameCell
+            case .price:
+                gownPriceCell.configure(with: gownItem as! GownDataPriceItem)
+                return gownPriceCell
+            case .color:
+                
+                gownColorCell.configure(with: gownItem as! GownDataColorItem)
+                return gownColorCell
+                
+            case .description:
+                gownDescriptionCell.configure(with: gownItem as! GownDataDescriptionItem)
+                return gownDescriptionCell
+            }
+        }
+        
+        return UITableViewCell()
 
     }
     

@@ -30,13 +30,20 @@ import RevealingSplashView
 import Firebase
 import TRMosaicLayout
 import AZEmptyState
+import RxSwift
+import RxCocoa
 
-
-class RootVC: UIViewController
+class RootVC: UIViewController, AddPostVCDelegate
 {
+    
+    func didSetPostType() -> State {
+        return postType.value
+    }
+    
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var postBtn: RoundedShadowButton!
+    
     
     // Object Container Types
 //    var gowns = [[String:Any]]()
@@ -44,6 +51,11 @@ class RootVC: UIViewController
     var gownObj: Gown?
     var selectedGown: UIImage?
     var girl: Girl?
+    
+    let postType = Variable<State>(.ISO)
+    var selectedType: Observable<State> {
+        return postType.asObservable()
+    }
     
     // DB Refrence & Delegate
     let appDelegate = AppDelegate.getAppDelegate()
@@ -70,7 +82,9 @@ class RootVC: UIViewController
     var key = String()
     var gown = [String: Any?]()
     
-    var emptyStateView = AZEmptyStateView()
+    var disposeBag = DisposeBag()
+    
+    var emptyStateView:AZEmptyStateView?
     
     // App State
 //    fileprivate var state = State.self
@@ -86,6 +100,8 @@ class RootVC: UIViewController
         
         setUpDelegates()
         updateUI()
+        
+        
         
     }
     
@@ -110,15 +126,8 @@ class RootVC: UIViewController
         }
         else
         {
-//            debugPrint(Auth.auth().currentUser?.email as! String)
-            //            gowns = self.pullSavedDress()
-            
-//            userRef.document((Auth.auth().currentUser?.uid)!).setModel(self.girl!)
-//            debugPrint(self.girl?.uid)
             debugPrint(self.girl?.email)
-            
             self.pullSavedDress()
-//            self.gown = self.gownObj.dictionary
             print(gowns.count)
         }
         
@@ -145,29 +154,29 @@ class RootVC: UIViewController
             //init var
             
             //customize
-            self.emptyStateView.image = UIImage.init(named: "sad")!
-            self.emptyStateView.message = "No Dresses Up Yet!"
-            self.emptyStateView.buttonText = "Search For One!"
-            self.emptyStateView.buttonTint = .purple
-            self.emptyStateView.addTarget(self, action: #selector(postButtonPressed(_:)), for: .touchUpInside)
+            
+            self.emptyStateView = AZEmptyStateView(image: UIImage(named: "sad")!, message: "No Dresses Up Yet!")
+            self.emptyStateView?.buttonText = "Search For One!"
+            self.emptyStateView?.buttonTint = .purple
+            self.emptyStateView?.addTarget(self, action: #selector(postButtonPressed(_:)), for: .touchUpInside)
             
             self.postBtn.isHidden = true
             
             //add subview
-            view.addSubview(emptyStateView)
+            view.addSubview(emptyStateView!)
             
             //add autolayout
-            self.emptyStateView.translatesAutoresizingMaskIntoConstraints = false
-            self.emptyStateView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            self.emptyStateView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-            self.emptyStateView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
-            self.emptyStateView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.55).isActive = true
+            self.emptyStateView?.translatesAutoresizingMaskIntoConstraints = false
+            self.emptyStateView?.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            self.emptyStateView?.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            self.emptyStateView?.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
+            self.emptyStateView?.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.55).isActive = true
         }
         else
         {
             debugPrint(self.gowns.count)
             self.collectionView.reloadData()
-            self.emptyStateView.removeFromSuperview()
+            self.emptyStateView?.removeFromSuperview()
         }
     }
     
@@ -175,7 +184,6 @@ class RootVC: UIViewController
     {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
-        
         self.collectionView?.collectionViewLayout = mosaicLayout
         mosaicLayout.delegate = self as TRMosaicLayoutDelegate
     }
@@ -273,16 +281,9 @@ class RootVC: UIViewController
     func displayAlertController(alert: UIAlertController, title: String, message: String?)
     {
         self.alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     }
     
-
-    
-    
-//    self.present(alert, animated: true, completion: nil)
- 
 
     // MARK: - Actions
     
@@ -291,7 +292,13 @@ class RootVC: UIViewController
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let postVC = storyboard.instantiateViewController(withIdentifier: "AddPostVC") as? AddPostVC
         
-        NotificationCenter.default.post(name: FROM_ROOT_VC, object: nil)
+        postType.value = .ISO
+        print("Post Type Value: \(postType.value)")
+        
+        postVC?.delegate = self
+        
+        
+        
         print(FROM_ROOT_VC)
         present(postVC!, animated: true, completion: nil)
 
@@ -300,6 +307,12 @@ class RootVC: UIViewController
     {
         appDelegate.MenuContainerVC.toggleLeftPanel()        
     }
+    
+    func setPostType(_ type: State) -> ()
+    {
+        
+    }
+    
 }
 
 extension RootVC: UICollectionViewDataSource, UICollectionViewDelegate
@@ -355,6 +368,7 @@ extension RootVC: TRMosaicLayoutDelegate
         return 150
     }
 }
+
 
 
 // WORK ON THIS EXTENSTION LATER
