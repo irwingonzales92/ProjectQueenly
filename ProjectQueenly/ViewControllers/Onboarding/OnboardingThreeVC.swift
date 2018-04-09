@@ -25,6 +25,7 @@ class OnboardingThreeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.bindToKeyboard()
         self.usernameTxtField.text = self.userDisplayName
         
         self.setDelegates()
@@ -33,6 +34,9 @@ class OnboardingThreeVC: UIViewController {
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlerSelectedImageView)))
         imageView.isUserInteractionEnabled = true
         self.imagePickerController.delegate = self
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
     }
     
@@ -44,12 +48,14 @@ class OnboardingThreeVC: UIViewController {
     
     func setUserParams()
     {
-//        self.userProfileImage = self.imageView.image!
-//        self.userDisplayName = self.usernameTxtField.text!
-//
-//        let metaData = UIImagePNGRepresentation(self.userProfileImage)
-//
-//        let userData = ["userId": Auth.auth().currentUser?.uid ?? String(), "displayName": self.userDisplayName, "userImage": metaData] as [String : Any]
+        self.userProfileImage = self.imageView.image!
+        self.userDisplayName = self.usernameTxtField.text!
+
+        let metaData = UIImagePNGRepresentation(self.userProfileImage)
+
+        let userData = ["userId": Auth.auth().currentUser?.uid ?? String(), "displayName": self.userDisplayName, "userImage": metaData] as [String : Any]
+        
+        userRef.document((Auth.auth().currentUser?.uid)!).updateData(userData)
 //
 //        UserDefaults.standard.set(self.userDisplayName, forKey: "name")
         
@@ -87,11 +93,27 @@ class OnboardingThreeVC: UIViewController {
         if segue.identifier == "toOnboardingVCFourSegue"
         {
             var nextVC = segue.destination as? OnboardingFourVC
-//            nextVC?.userInfo = self.setUserParams()
+            self.setUserParams()
             nextVC?.image = self.imageView.image!
             nextVC?.username = self.userDisplayName
             debugPrint(nextVC?.girl)
         }
     }
+    
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0{
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//    }
+//
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y != 0{
+//                self.view.frame.origin.y += keyboardSize.height
+//            }
+//        }
+//    }
 
 }

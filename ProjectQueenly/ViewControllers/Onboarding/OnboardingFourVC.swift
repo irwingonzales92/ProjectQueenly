@@ -43,6 +43,8 @@ class OnboardingFourVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.bindToKeyboard()
+
         print(girl)
         print(self.username)
 
@@ -61,9 +63,10 @@ class OnboardingFourVC: UIViewController {
         self.hip = ((self.hipTxtField.text! as NSString).integerValue)
         self.height = ((self.heightTxtField.text! as NSString).integerValue)
         
-        self.girl = Girl(designer: self.designerTxtField.text, shilouette: self.shilouetteTxtField.text, color: self.favoriteColorTxtField.text, image: self.transformImageToDataString(image: self.image), name: self.username, uid: Auth.auth().currentUser?.uid, email: Auth.auth().currentUser?.email, displayName: self.username, size: self.size, waist: self.waist, bust: self.bust, hip: self.hip, height: self.height, onboarded: self.userOnborded)
+        var userData = ["size": self.size, "bust": self.bust, "waist": self.waist, "hip":self.hip, "height":self.height]
         
-        userRef.document().setModel(self.girl)
+            
+        userRef.document((Auth.auth().currentUser?.uid)!).updateData(userData)
         print("Model Set")
         print(self.girl)
         
@@ -88,8 +91,7 @@ class OnboardingFourVC: UIViewController {
     {
         if segue.identifier == "toOnboardingVCFiveSegue"
         {
-            var nextVC = segue.destination as? OnboardingTwoVC
-//            nextVC?.recievedGown = self.gown
+            var nextVC = segue.destination as? OnboardingFiveVC
         }
     }
 

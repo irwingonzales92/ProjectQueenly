@@ -25,32 +25,32 @@ class BackendStuff
     
     func insertDressToOwner()
     {
-        var poster = String()
-        var documentId = String()
-        
-        var dressArray = [String]()
-        
-        
-        storageRef.getModels(Gown.self) { (closet, err) in
-            guard let pulledCloset = closet else {return}
-
-            self.closet = closet
-
-            userRef.document((Auth.auth().currentUser?.uid)!).getModel(Girl.self) { (girl, err) in
-                guard let pulledGirl = girl else {return}
-
-                self.user = pulledGirl
-                
-                if Auth.auth().currentUser?.uid != self.user?.documentID && self.closet?.count == 0
-                {
-                    debugPrint("error")
-                }
-                else
-                {
-                    userRef.document((self.user?.documentID)!).setModel(self.closet as! FirestoreModel)
-                }
-            }
-        }
+//        var poster = String()
+//        var documentId = String()
+//        
+//        var dressArray = [String]()
+//        
+//        
+//        storageRef.getModels(Gown.self) { (closet, err) in
+//            guard let pulledCloset = closet else {return}
+//
+//            self.closet = closet
+//
+//            userRef.document((Auth.auth().currentUser?.uid)!).getModel(Girl.self) { (girl, err) in
+//                guard let pulledGirl = girl else {return}
+//
+//                self.user = pulledGirl
+//                
+//                if Auth.auth().currentUser?.uid != self.user?.documentID && self.closet?.count == 0
+//                {
+//                    debugPrint("error")
+//                }
+//                else
+//                {
+//                    userRef.document((self.user?.documentID)!).setModel(self.closet as! FirestoreModel)
+//                }
+//            }
+//        }
         
 //            userRef.document((Auth.auth().currentUser?.uid)!).getModel(Girl.self) { (girl, err) in
 //                guard let pulledGirl = girl else {return}

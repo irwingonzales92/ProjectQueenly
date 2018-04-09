@@ -28,27 +28,27 @@ struct GownItems {
     
     public var items = [GownDataViewModelItem]()
         
-    init(gownObj: Gown)
+    init(gownObj: [String: Any?])
     {
-        if let displayName = gownObj.title
+        if let displayName = gownObj["username"] as? String
         {
             let gownDisplay = GownDataDisplayItem(displayName: displayName)
             items.append(gownDisplay)
         }
         
-        if let price = gownObj.priceRange1
+        if let price = gownObj["price"] as? Int
         {
             let gownPrice = GownDataPriceItem(price: price)
             items.append(gownPrice)
         }
         
-        if let color = gownObj.color
+        if let color = gownObj["color"] as? String
         {
             let gownColor = GownDataColorItem(dressColor: color)
             items.append(gownColor)
         }
         
-        if let description = gownObj.description
+        if let description = gownObj["description"] as? String
         {
             let gownDesc = GownDataDescriptionItem(dressDescription: description)
             items.append(gownDesc)

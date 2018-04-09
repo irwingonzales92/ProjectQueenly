@@ -40,17 +40,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         
-        var keys: NSDictionary?
-
-        if let path = Bundle.main.path(forResource: "SecretKey", ofType: "plist") {
-            keys = NSDictionary(contentsOfFile: path)
-        }
-
-        if let dict = keys
-        {
-            let stripeKey = dict["stripeKey"] as? String
-            STPPaymentConfiguration.shared().publishableKey = stripeKey!
-        }
+//        var keys: NSDictionary?
+//
+//        if let path = Bundle.main.path(forResource: "SecretKey", ofType: "plist") {
+//            keys = NSDictionary(contentsOfFile: path)
+//        }
+//
+//        if let dict = keys
+//        {
+//            let stripeKey = dict["stripeKey"] as? String
+//            STPPaymentConfiguration.shared().publishableKey = stripeKey!
+//        }
         
 //        STPPaymentConfiguration.shared().publishableKey = "test_dJnv13skfoa6Gs"
         
@@ -93,18 +93,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             {
                 // Show onboarding
                 print("Has not onboarded")
-                //print(UserDefaults.standard.value(forKey: "name") as! String)
                 vc = storyboard.instantiateViewController(withIdentifier: "OnboardingOneVC")
-                //            self.window.present(vc!, animated: true, completion: nil)
                 AppFunctions.setMainViewController(vc: vc)
             }
             else
             {
                 // Show main window
                 print("User is logged in")
-                //print(UserDefaults.standard.value(forKey: "name") as! String)
-                //window?.rootViewController = containerVC
-                //vc = storyboard.instantiateInitialViewController()!
                
                 AppFunctions.setMainViewController(vc: containerVC)
             }

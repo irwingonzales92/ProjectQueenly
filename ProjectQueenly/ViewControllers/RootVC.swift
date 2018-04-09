@@ -47,10 +47,9 @@ class RootVC: UIViewController, AddPostVCDelegate
     
     // Object Container Types
 //    var gowns = [[String:Any]]()
-    var gowns = [Gown]()
-    var gownObj: Gown?
+    var gownArray = [[String: Any?]]()
+    var gownObj: [String: Any?] = [:]
     var selectedGown: UIImage?
-    var girl: Girl?
     
     let postType = Variable<State>(.ISO)
     var selectedType: Observable<State> {
@@ -101,8 +100,6 @@ class RootVC: UIViewController, AddPostVCDelegate
         setUpDelegates()
         updateUI()
         
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -126,9 +123,9 @@ class RootVC: UIViewController, AddPostVCDelegate
         }
         else
         {
-            debugPrint(self.girl?.email)
+//            debugPrint(self.girl?.email)
             self.pullSavedDress()
-            print(gowns.count)
+//            print(gowns.count)
         }
         
         let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "Crown")!, iconInitialSize: CGSize(width: 80, height: 80), backgroundColor: UIColor.white)
@@ -149,7 +146,7 @@ class RootVC: UIViewController, AddPostVCDelegate
     {
         // If empty, display the empty message viewcontroller
         
-        if self.gowns.count == 0
+        if self.gownArray.count == 0
         {
             //init var
             
@@ -174,7 +171,7 @@ class RootVC: UIViewController, AddPostVCDelegate
         }
         else
         {
-            debugPrint(self.gowns.count)
+//            debugPrint(self.gowns.count)
             self.collectionView.reloadData()
             self.emptyStateView?.removeFromSuperview()
         }
@@ -198,7 +195,7 @@ class RootVC: UIViewController, AddPostVCDelegate
         // ...
         // and then dismiss the control
         
-        if self.gowns.count != self.gowns.count
+        if self.gownArray.count != self.gownArray.count
         {
             self.pullSavedDress()
             sender.endRefreshing()
@@ -220,42 +217,24 @@ class RootVC: UIViewController, AddPostVCDelegate
             }
             else
             {
-                for document in querySnapshot!.documents
+                if querySnapshot != nil
                 {
-                    let documentData = document.data()
-
-                    let ref = self.storageRef.document()
-                    ref.setModel(self.gownObj!)
-
-                    print(self.gowns.count)
-                    self.collectionView.reloadData()
+                    for document in querySnapshot!.documents
+                    {
+                        let documentData = document.data()
+                        
+                        let ref = self.storageRef.document()
+                        //                    ref.setModel(self.gownObj!)
+                        
+                        self.collectionView.reloadData()
+                    }
+                }
+                else
+                {
+                    print("No Wardrobes!")
                 }
             }
         }
-        
-//        storageRef.getModels(Gown.self) { (pulledGowns, err) in
-//
-//            if err == nil
-//            {
-//                if pulledGowns?.count == 0
-//                {
-//                    debugPrint("pulledGowns == 0")
-//                }
-//                else
-//                {
-//                    for gown in pulledGowns!
-//                    {
-//                        self.gownObj = gown
-//                        self.gowns.append(self.gownObj!)
-//                        self.collectionView.reloadData()
-//                    }
-//                }
-//            }
-//            else
-//            {
-//                debugPrint(err?.localizedDescription as! String)
-//            }
-//        }
     }
     
     
@@ -322,14 +301,14 @@ extension RootVC: UICollectionViewDataSource, UICollectionViewDelegate
 //    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.gowns.count
+        return self.gownArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         self.cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PostCVC
         
         
-        self.gownObj = gowns[indexPath.row]
+        self.gownObj = gownArray[indexPath.row]
         self.cell.designerLabel.text = self.gown["designer"] as? String
         print(self.cell.designerLabel.text)
         self.cell.backgroundColor = UIColor.red
@@ -348,7 +327,7 @@ extension RootVC: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        self.gownObj = gowns[indexPath.row]
+        self.gownObj = gownArray[indexPath.row]
         self.performSegue(withIdentifier: "toDetailVC", sender: self.cell)
     }
 }

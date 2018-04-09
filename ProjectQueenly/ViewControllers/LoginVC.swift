@@ -26,8 +26,9 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
     @IBOutlet var loginBtn: RoundedShadowButton!
     var emailTextField: UITextField?
     var passwordTextField: UITextField?
-    var confirmPasswordTextfield: UITextField?
     var usernameTextField: UITextField?
+    var confirmPasswordTextfield: UITextField?
+    var realUsernameTextField: UITextField?
     var fbBtn: FBSDKLoginButton?
 
     var window: UIWindow?
@@ -45,14 +46,14 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
         
         view.bindToKeyboard()
         
-//        self.webView = UIWebView(frame: view.frame)
-//        let htmlPath = Bundle.main.path(forResource: "WebViewContent", ofType: "html")
-//        let htmlURL = URL(fileURLWithPath: htmlPath!)
-//        let html = try? Data(contentsOf: htmlURL)
-//        
-//        self.webView.load(html!, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: htmlURL.deletingLastPathComponent())
-//        self.webView.isUserInteractionEnabled = false;
-//        self.view.addSubview(self.webView)
+        self.webView = UIWebView(frame: view.frame)
+        let htmlPath = Bundle.main.path(forResource: "WebViewContent", ofType: "html")
+        let htmlURL = URL(fileURLWithPath: htmlPath!)
+        let html = try? Data(contentsOf: htmlURL)
+        
+        self.webView.load(html!, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: htmlURL.deletingLastPathComponent())
+        self.webView.isUserInteractionEnabled = false;
+        self.view.addSubview(self.webView)
         
         
         self.fbBtn = FBSDKLoginButton(frame: CGRect(x: 192, y: 524, width: 166, height: 48))
@@ -165,9 +166,15 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
         }
         
         alert.addTextField { (textfield) in
+            self.realUsernameTextField = textfield
+            textfield.placeholder = "Username"
+        }
+        
+        alert.addTextField { (textfield) in
             self.passwordTextField = textfield
             textfield.placeholder = "Password"
         }
+        
         
         alert.addTextField { (textfield) in
             self.confirmPasswordTextfield = textfield
@@ -175,7 +182,7 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
         }
         
         let save = UIAlertAction(title: "Submit", style: .default) { (alert) in
-            AuthService.instance.registerUser(withEmail: (self.emailTextField?.text)!, Password: (self.passwordTextField?.text!)!, userCreationComplete: { (completed, error) in
+            AuthService.instance.registerUser(withEmail: (self.emailTextField?.text)!, Password: (self.passwordTextField?.text!)!, DisplayName: (self.realUsernameTextField?.text)!, userCreationComplete: { (completed, error) in
                 
                 if completed && self.confirmPasswordTextfield?.text! == self.passwordTextField?.text!
                 {
@@ -219,6 +226,8 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
                         }
                     }
                 }
+                
+               
             })
             
         }

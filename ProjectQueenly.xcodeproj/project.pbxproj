@@ -57,7 +57,6 @@
 		57A48A441F9A860900C7E654 /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A48A431F9A860900C7E654 /* PostDetailVC.swift */; };
 		57A48A4A1F9BA42C00C7E654 /* Dresses.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A48A491F9BA42B00C7E654 /* Dresses.xcassets */; };
 		57A48A4C1F9BA51100C7E654 /* Dress.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A48A4B1F9BA51100C7E654 /* Dress.plist */; };
-		57AF5268206B9BE00097D511 /* Key.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57AF5267206B9BE00097D511 /* Key.plist */; };
 		57C871361FBF8A3D009DF3EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C871351FBF8A3D009DF3EF /* Constants.swift */; };
 		57E747852030324300A750C9 /* RoundedCornerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E747802030324000A750C9 /* RoundedCornerTextField.swift */; };
 		57E747862030324300A750C9 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E747812030324100A750C9 /* RoundImageView.swift */; };
@@ -132,7 +131,6 @@
 		57A48A431F9A860900C7E654 /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostDetailVC.swift; path = ../../PostDetailVC.swift; sourceTree = "<group>"; };
 		57A48A491F9BA42B00C7E654 /* Dresses.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Dresses.xcassets; sourceTree = "<group>"; };
 		57A48A4B1F9BA51100C7E654 /* Dress.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dress.plist; sourceTree = "<group>"; };
-		57AF5267206B9BE00097D511 /* Key.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Key.plist; sourceTree = "<group>"; };
 		57C871351FBF8A3D009DF3EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		57E747802030324000A750C9 /* RoundedCornerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornerTextField.swift; sourceTree = "<group>"; };
 		57E747812030324100A750C9 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 			children = (
 				575284811FB6CE9400599963 /* GoogleService-Info.plist */,
 				5752847F1FB687FF00599963 /* Info.plist */,
-				57AF5267206B9BE00097D511 /* Key.plist */,
 			);
 			path = Plists;
 			sourceTree = "<group>";
@@ -432,7 +429,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Irwin Gonzales";
 				TargetAttributes = {
 					57F97CC41F7DDFEC00D71826 = {
@@ -471,7 +468,6 @@
 			files = (
 				57513FAD2069BDD100773DFB /* WebViewContent.html in Resources */,
 				57F97CD31F7DDFEC00D71826 /* LaunchScreen.storyboard in Resources */,
-				57AF5268206B9BE00097D511 /* Key.plist in Resources */,
 				575284821FB6CE9400599963 /* GoogleService-Info.plist in Resources */,
 				57A48A4A1F9BA42C00C7E654 /* Dresses.xcassets in Resources */,
 				57A48A4C1F9BA51100C7E654 /* Dress.plist in Resources */,
@@ -701,6 +697,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -708,6 +705,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -758,6 +756,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -765,6 +764,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

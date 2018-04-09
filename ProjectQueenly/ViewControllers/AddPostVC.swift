@@ -23,7 +23,11 @@ protocol AddPostVCDelegate
     func didSetPostType() -> State
 }
 
-class AddPostVC: UIViewController, UITextFieldDelegate {
+class AddPostVC: UIViewController {
+
+    
+
+    
     
     var state: State = .ISO
     var disposeBag = DisposeBag()
@@ -45,12 +49,23 @@ class AddPostVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var addColorBtn: RoundedShadowButton!
     
+    
+    @IBOutlet weak var detailPopUpView: UIView!
+    @IBOutlet weak var detailPopUpImage: UIImageView!
+    @IBOutlet weak var detailPopUpTitle: UILabel!
+    @IBOutlet weak var detailPopUpPrice: UILabel!
+    @IBOutlet weak var detailPopUpColor: UILabel!
+    @IBOutlet weak var detailPopUpDescription: UILabel!
+    @IBOutlet weak var detailPopUpBtn: UIButton!
+    
+    
     // Popup UI Elements
     @IBOutlet var conditionalPickerView: UIView!
     @IBOutlet var setDressConditionsBtn: UIView!
     @IBOutlet var cancelConditionBtn: UIButton!
     @IBOutlet var popUpCenterConstraint: NSLayoutConstraint!
     @IBOutlet var blurBackgroundConstraint: NSLayoutConstraint!
+    @IBOutlet var detailConstraint: NSLayoutConstraint!
     @IBOutlet var conditionPopUpView: UIView!
     @IBOutlet var pickerView: UIPickerView!
     @IBOutlet var blurView: UIVisualEffectView!
@@ -73,7 +88,7 @@ class AddPostVC: UIViewController, UITextFieldDelegate {
     var image = UIImage()
     var postType = String()
     
-    var gown: Gown?
+    var gown: [String:Any?]?
     
     var aSender: RoundedShadowButton?
 
@@ -130,12 +145,15 @@ class AddPostVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func addColorOnBtnPressed(_ sender: Any)
     {
-        self.checkButtonTag(sender: self.addColorBtn)
+        self.addConditionOnButtonPressed()
+
+//        self.checkButtonTag(sender: self.addColorBtn)
     }
     
     @IBAction func addMeasurementsOnBtnPressed(_ sender: Any)
     {
-        self.checkButtonTag(sender: self.addMeasurementsBtn)
+        self.addConditionOnButtonPressed()
+
     }
     @IBAction func setDressMeasurementsOnBtnPressed(_ sender: Any)
     {
@@ -144,7 +162,14 @@ class AddPostVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func submitBtnPressed(_ sender: Any)
     {
-        self.performSegue(withIdentifier: "toConfirmVC", sender: nil)
+        self.errorHandles()
+        self.setGownParams(type: self.postType)
+        self.checkDetailsOnBtnPressed()
+    }
+    
+    @IBAction func detailPopupBtnPressed(_ sender: Any)
+    {
+        self.dismissDetailsOnBtnPressed()
     }
     
     func setWardrobeType() {

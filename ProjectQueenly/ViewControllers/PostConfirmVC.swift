@@ -21,7 +21,12 @@ protocol GownElement
 }
 
 protocol CustomElementCell {
-    func configure(withGown: Gown)
+    func configure(withGown: [String: Any?])
+}
+
+protocol PostConfirmDelegate
+{
+    func didSetDress() -> [String: Any?]
 }
 
 class PostConfirmVC: UIViewController {
@@ -30,8 +35,10 @@ class PostConfirmVC: UIViewController {
     @IBOutlet var designerLabel: UILabel!
     @IBOutlet var postBtn: UIButton!
     
+    var delegate: PostConfirmDelegate?
+    
     var girl: Girl?
-    var gown: Gown?
+    var gown = [String:Any]()
         
     var data = [String: Any]()
     var dressArray = [String]()
@@ -60,12 +67,14 @@ class PostConfirmVC: UIViewController {
         super.viewDidLoad()
         
         print("Object Passed")
-        print(self.gown?.documentID ?? "")
+        print(self.gown)
         print(self.gownArray)
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.imageView.image = self.image
         
-        self.tableView.reloadData()
+//        self.data
+//        self.tableView.reloadData()
         
         // save for optimizing
 //        self.tableView.dataSource = GownViewModel() as UITableViewDataSource
@@ -83,14 +92,14 @@ class PostConfirmVC: UIViewController {
         
     }
     
-    func saveDressToDB(savingGown: Gown)
-    {
-    self.storageRef.document(savingGown.documentID).setModel(savingGown)
-    }
+//    func saveDressToDB(savingGown: [String:Any?])
+//    {
+//    self.storageRef.document(savingGown.documentID).setModel(savingGown)
+//    }
 //
     func setStuff()
     {
-        self.designerLabel.text = self.gown?.title
+//        self.designerLabel.text = self.gown["title"] as! String
 
 
     }
@@ -109,8 +118,8 @@ class PostConfirmVC: UIViewController {
     ///////// YOU ARE TRYING TO CONVERT STRING TO IMAGE
     func transferDataStringToImage()
     {
-        let encodedData = self.gown?.image
-        let decodedimage = UIImage(data: encodedData!)
+        let encodedData = self.gown["image"]
+        let decodedimage = UIImage(data: encodedData! as! Data)
         self.imageView.image = decodedimage
     }
     
@@ -130,7 +139,7 @@ class PostConfirmVC: UIViewController {
     @IBAction func actionBtnPressed(_ sender: Any)
     {
         self.transformImageToDataString()
-        self.saveDressToDB(savingGown: self.gown!)
+//        self.saveDressToDB(savingGown: self.gown)
 //        self.storageRef.document((self.gown?.documentID)!).setModel(self.gown!)
         
 //        self.storageRef.addDocument(data: self.data) { (error) in

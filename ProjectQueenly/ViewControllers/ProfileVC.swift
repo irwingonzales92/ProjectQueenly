@@ -32,6 +32,7 @@ class ProfileVC: UIViewController, AddPostVCDelegate
     var gowns = [[String:Any]]()
     var gown = [String: Any?]()
     var recievedGown = [String:Any?]()
+    var offeringArray: [[String: Any]]?
     
     
     @IBOutlet var tabBarNameLabel: UILabel!
@@ -112,7 +113,7 @@ class ProfileVC: UIViewController, AddPostVCDelegate
         super.viewWillAppear(true)
         
         
-        self.pullUserProfileDress()
+//        self.pullUserProfileDress()
         
     }
     func initalizeStuff()
@@ -137,15 +138,23 @@ class ProfileVC: UIViewController, AddPostVCDelegate
                     {
                         let documentData = document.data()
 //                        print(documentData)
-        
-                        poster = documentData["poster"] as! String
-//                        print(poster)
-        
-                        if Auth.auth().currentUser?.uid == poster
+                        
+                        if document != nil
                         {
-                            self.gowns.append(documentData)
-                            print("No Error, Dresses are in the Array!")
-                            self.collectionView.reloadData()
+                            poster = documentData["poster"] as! String
+                            //                        print(poster)
+                            
+                            if Auth.auth().currentUser?.uid == poster
+                            {
+                                self.gowns.append(documentData)
+                                print("No Error, Dresses are in the Array!")
+                                self.collectionView.reloadData()
+                            }
+                        }
+                        else
+                        {
+                            print("Nothing here! \(documentData)")
+
                         }
                     }
                 }
@@ -160,14 +169,30 @@ class ProfileVC: UIViewController, AddPostVCDelegate
 
     @IBAction func addToWardrobeBtnPressed(_ sender: Any)
     {
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let postVC = storyboard.instantiateViewController(withIdentifier: "AddPostVC") as? AddPostVC
-        
-        postVC?.delegate = self
-        print("Post Type Value: \(wardrobePost.value)")
-
-        present(postVC!, animated: true, completion: nil)
-        
+        if self.makingOffer == true
+        {
+            let alert = UIAlertController(title: "Do You Want To Make This Offer", message: "You will be offering the dresses you selected", preferredStyle: .alert)
+            
+            let acceptAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+                self.addWardrobeToIsoOffer()
+            }
+            alert.addAction(acceptAction)
+            
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        else
+        {
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let postVC = storyboard.instantiateViewController(withIdentifier: "AddPostVC") as? AddPostVC
+            
+            postVC?.delegate = self
+            print("Post Type Value: \(wardrobePost.value)")
+            
+            present(postVC!, animated: true, completion: nil)
+        }
     }
 }
 
@@ -183,18 +208,15 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! UICollectionViewCell
         
         self.cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! WardrobeCVC
         
         self.gown = gowns[indexPath.row]
         self.cell.designerLabel.text = self.gown["designer"] as? String
-//        print(self.cell.designerLabel.text)
         self.cell.backgroundColor = UIColor.red
         
         let imagesID = gown["image"] as? Data
         let decodedimage = UIImage(data: imagesID!)
-//        print(decodedimage)
         self.cell.imageView.image = decodedimage
         
         
@@ -204,9 +226,12 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
+        gown = gowns[indexPath.row]
         if self.makingOffer == true
         {
             self.cell.checkedBtnImgView.image = UIImage(named: "icons8-Checked Filled-50")
+            offeringArray?.append(gown)
+            
             print("offer made")
             
 //            self.addWardrobeToIsoOffer()            
@@ -221,39 +246,16 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate
     
     func addWardrobeToIsoOffer()
     {
-//        let dressId = self.recievedGown["id"] as! String
-//        print(dressId)
-//        var offeredDress = [[String:Any?]]()
-//
-//        offeredDress.append(self.gown)
-//
-////        dressStorageRef.document(dressId!).setData(offeredDress) { (err) in
-////            if err == nil
-////            {
-////                print("dress offered")
-////            }
-////            else
-////            {
-////                print()
-////            }
-////        }
-////        dressStorageRef.document(dressId!).setData(offeredDress) { (err) in
-////            if err == nil
-////            {
-////                print("dress offer made")
-////            }
-////            else
-////            {
-////                print(err.localizedDescription)
-////            }
-////        }
-//        dressStorageRef.document(dressId).setValue(offeredDress, forKeyPath: "isooffers")
-        
-//        NotificationCenter.default.post(name: WARDROBE_OFFER, object: self.key, userInfo: nil)
-        
-//        self.userRef.getModel(self.girl) { (girl, err) in
-//            <#code#>
-//        }
+        if self.makingOffer == true
+        {
+            let dressId = self.recievedGown["id"] as! String
+            print(dressId)
+            var offeredDress = [[String:Any?]]()
+            
+            offeredDress.append(self.gown)
+            
+            dressStorageRef.document(dressId).setValue(offeringArray, forKeyPath: "isooffers")
+        }
         
         NotificationCenter.default.post(name: WARDROBE_OFFER, object: nil, userInfo: self.gown)
     }
