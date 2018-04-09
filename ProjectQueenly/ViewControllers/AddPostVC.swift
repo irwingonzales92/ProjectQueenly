@@ -163,7 +163,6 @@ class AddPostVC: UIViewController {
     
     @IBAction func submitBtnPressed(_ sender: Any)
     {
-        self.errorHandles()
         self.setGownParams(type: self.postType)
         self.checkDetailsOnBtnPressed()
     }

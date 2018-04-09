@@ -10,8 +10,13 @@ import UIKit
 import Firebase
 import AZEmptyState
 
-class ISOOffersVC: UIViewController
+class ISOOffersVC: UIViewController, PostDetailVCDelegate
 {
+    func didSetPostType() -> MakingOffer {
+        var status = MakingOffer.offerAccepting
+        return status
+    }
+    
     @IBOutlet var tableView: UITableView!
     
     
@@ -186,6 +191,7 @@ class ISOOffersVC: UIViewController
     
     @IBAction func viewOfferBtnPressed(_ sender: Any)
     {
+        
 //        self.gown = gowns[indexPath.row]
         self.performSegue(withIdentifier: "fromOfferToDetailSegue", sender: self.cell)
         
@@ -217,5 +223,7 @@ extension ISOOffersVC: UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
+    
+    
     
 }

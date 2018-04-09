@@ -7,29 +7,43 @@
 
 import UIKit
 import CoreData
+import Firebase
+import Stripe
+
+enum MakingOffer
+{
+    case offerMaking, offerAccepting
+}
+
+protocol PostDetailVCDelegate
+{
+    func didSetPostType() -> MakingOffer
+}
 
 class PostDetailVC: UIViewController
 {
 //    var collectionView = UICollectionView()
+    
+    var makingOfferValue = MakingOffer.offerMaking
+    
+    var delegate: PostDetailVCDelegate?
+    
     var recievedGown = [String:Any?]()
     var offeredGown = [String:Any]()
     var collectionView: UICollectionView!
     var cell = UICollectionViewCell()
     
-    @IBOutlet var backgroundView: UIView!
+    @IBOutlet weak var measurementsBtn: UIButton!
     @IBOutlet var offerBtn: UIButton!
     var offerDressArray = [[String:Any?]]()
     var gown: [String: Any]?
 
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var designerLabel: UILabel!
-    @IBOutlet var sizeLabel: UILabel!
     @IBOutlet var colorLabel: UILabel!
-    @IBOutlet var shilouetteLabel: UILabel!
-    @IBOutlet var waistLabel: UILabel!
-    @IBOutlet var bustLabel: UILabel!
-    @IBOutlet var hipLabel: UILabel!
     @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var priceTwoLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
     
     var id = String()
     
@@ -45,6 +59,7 @@ class PostDetailVC: UIViewController
         self.updateUI()
         self.setupView()
         
+        self.makingOfferValue = (delegate?.didSetPostType())!
     }
     
     func updateUI()
@@ -114,14 +129,27 @@ class PostDetailVC: UIViewController
     
     @IBAction func offerBtnPressed(_ sender: Any)
     {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let settingsVC = SettingsViewController()
         
-        if self.offerBtn.titleLabel?.text == "Offer"
+        if self.makingOfferValue.hashValue == 0
         {
+            self.offerBtn.setTitle("Make Offer", for: .normal)
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC
             present(profileVC!, animated: true, completion: nil)
             
             NotificationCenter.default.post(name: FROM_POST_DETAIL_VC, object: nil)
+        }
+        else
+        {
+            self.offerBtn.setTitle("Accept Offer", for: .normal)
+            
+            
+            let checkoutViewController = CheckoutViewController(product: gown!["title"] as! String,
+                                                                price: gown!["price"] as! Int,
+                                                                settings: settingsVC.settings) as CheckoutViewController
+            self.navigationController?.pushViewController(checkoutViewController, animated: true)
         }
         
     }
@@ -132,45 +160,31 @@ class PostDetailVC: UIViewController
         let imagesID = self.recievedGown["image"] as! Data
         let decodedimage = UIImage(data: imagesID)!
         
-        let nameString = self.recievedGown["designer"] as! String
+        let nameString = self.recievedGown["title"] as! String
         let colorText = self.recievedGown["color"] as! String
-        let shilouetteText = self.recievedGown["shilouette"] as! String
+//        let shilouetteText = self.recievedGown["shilouette"] as! String
         
         // Int Values
-        let priceValue = self.recievedGown["price"] as! Int
+        let priceValue = self.recievedGown["priceOne"] as! Int
         let priceString = String(describing: priceValue)
         print(priceString)
         
-        let hipValue = self.recievedGown["hip"] as! Int
-        let hipString = String(describing: hipValue)
-        
-        let bustValue = self.recievedGown["bust"] as! Int
-        let bustString = String(describing: bustValue)
-        
-        let waistValue = self.recievedGown["waist"] as! Int
-        let waistString = String(describing: waistValue)
-        
-        let sizeValue = self.recievedGown["size"] as! Int
-        let sizeString = String(describing: sizeValue)
-        
-        self.designerLabel.text = nameString
-        self.imageView.image = decodedimage
-        self.colorLabel.text = colorText
-        self.shilouetteLabel.text = shilouetteText
+        let priceTwoValue = self.recievedGown["priceTwo"] as! Int
+        let priceTwoString = String(describing: priceTwoValue)
+        print(priceString)
+
         
         self.priceLabel.text = "$: \(priceString)"
+        self.priceLabel.text = "$: \(priceTwoString)"
+        self.designerLabel.text = self.recievedGown["poster"] as? String
+        self.colorLabel.text = colorText
+        self.descriptionLabel.text = self.recievedGown["poster"] as? String
         
-        self.waistLabel.text = waistString
-        
-        self.bustLabel.text = bustString
-        self.hipLabel.text = hipString
-        self.sizeLabel.text = sizeString
-        
-//        NotificationCenter.default.post(name: FROM_POST_DETAIL_VC, object: self.recievedGown)
-        
-//        print(self.itemDesignerLabel.text)
+
+    
     }
     
+    @IBOutlet weak var measurementBtnPressed: UIButton!
     func setupView()
     {
         self.imageView.layer.cornerRadius = self.imageView.frame.height / 2
@@ -180,6 +194,14 @@ class PostDetailVC: UIViewController
     @IBAction func cancelBtnPressed(_ sender: Any)
     {
          dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "checkMeasurementSegue"
+        {
+            let nextVC = segue.destination as? MeasurementsVC
+            nextVC?.recievedGown = self.recievedGown
+        }
     }
 }
 

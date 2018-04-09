@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            STPPaymentConfiguration.shared().publishableKey = stripeKey!
 //        }
         
-//        STPPaymentConfiguration.shared().publishableKey = "test_dJnv13skfoa6Gs"
+        STPPaymentConfiguration.shared().publishableKey = "test_dJnv13skfoa6Gs"
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         

@@ -26,7 +26,9 @@ class LeftPanelVC: UIViewController {
 
     @IBAction func feedBtnPressed(_ sender: Any)
     {
-        self.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let offerVC = storyboard.instantiateViewController(withIdentifier: "UserProfileVC") as? ProfileViewController
+        present(offerVC!, animated: true, completion: nil)
     }
     
     @IBAction func msgBtnPressed(_ sender: Any)

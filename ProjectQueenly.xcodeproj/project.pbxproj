@@ -58,6 +58,9 @@
 		57A48A4A1F9BA42C00C7E654 /* Dresses.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A48A491F9BA42B00C7E654 /* Dresses.xcassets */; };
 		57A48A4C1F9BA51100C7E654 /* Dress.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A48A4B1F9BA51100C7E654 /* Dress.plist */; };
 		57B9F83A207B47C600F4D120 /* FAQVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F839207B47C500F4D120 /* FAQVC.swift */; };
+		57B9F83C207B809A00F4D120 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F83B207B809A00F4D120 /* ProfileViewController.swift */; };
+		57B9F83E207B80B500F4D120 /* MeasurementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F83D207B80B500F4D120 /* MeasurementsVC.swift */; };
+		57B9F840207B8DEA00F4D120 /* MeasurementsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F83F207B8DEA00F4D120 /* MeasurementsCell.swift */; };
 		57C871361FBF8A3D009DF3EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C871351FBF8A3D009DF3EF /* Constants.swift */; };
 		57E747852030324300A750C9 /* RoundedCornerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E747802030324000A750C9 /* RoundedCornerTextField.swift */; };
 		57E747862030324300A750C9 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E747812030324100A750C9 /* RoundImageView.swift */; };
@@ -133,6 +136,9 @@
 		57A48A491F9BA42B00C7E654 /* Dresses.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Dresses.xcassets; sourceTree = "<group>"; };
 		57A48A4B1F9BA51100C7E654 /* Dress.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dress.plist; sourceTree = "<group>"; };
 		57B9F839207B47C500F4D120 /* FAQVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQVC.swift; sourceTree = "<group>"; };
+		57B9F83B207B809A00F4D120 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		57B9F83D207B80B500F4D120 /* MeasurementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsVC.swift; sourceTree = "<group>"; };
+		57B9F83F207B8DEA00F4D120 /* MeasurementsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsCell.swift; sourceTree = "<group>"; };
 		57C871351FBF8A3D009DF3EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		57E747802030324000A750C9 /* RoundedCornerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornerTextField.swift; sourceTree = "<group>"; };
 		57E747812030324100A750C9 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
@@ -256,6 +262,7 @@
 				576B783420678ECB0051A473 /* GownColorTableViewCell.swift */,
 				576B783620678EE00051A473 /* GownDescriptionTableViewCell.swift */,
 				576B783820678FF60051A473 /* GownMeasurementsTableViewCell.swift */,
+				57B9F83F207B8DEA00F4D120 /* MeasurementsCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -304,6 +311,8 @@
 				5797F0321F8B41EB00906E4C /* OrderSummaryVC.swift */,
 				57750136200F2D4400FCCCB0 /* ISOOffersVC.swift */,
 				57B9F839207B47C500F4D120 /* FAQVC.swift */,
+				57B9F83B207B809A00F4D120 /* ProfileViewController.swift */,
+				57B9F83D207B80B500F4D120 /* MeasurementsVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -613,6 +622,7 @@
 				577501392012900C00FCCCB0 /* GownTVC.swift in Sources */,
 				5797F0331F8B41EB00906E4C /* OrderSummaryVC.swift in Sources */,
 				576B783720678EE00051A473 /* GownDescriptionTableViewCell.swift in Sources */,
+				57B9F83C207B809A00F4D120 /* ProfileViewController.swift in Sources */,
 				5797F0291F8AF75E00906E4C /* AddPostVC.swift in Sources */,
 				57C871361FBF8A3D009DF3EF /* Constants.swift in Sources */,
 				5797F03B1F8C8FFC00906E4C /* UIViewExt.swift in Sources */,
@@ -642,6 +652,7 @@
 				57E747892030324300A750C9 /* RoundedShadowButton.swift in Sources */,
 				575284841FB8F31D00599963 /* PostConfirmVC.swift in Sources */,
 				5771BFAF20526AD000FC89F3 /* RoundedImageView.swift in Sources */,
+				57B9F840207B8DEA00F4D120 /* MeasurementsCell.swift in Sources */,
 				576B783920678FF60051A473 /* GownMeasurementsTableViewCell.swift in Sources */,
 				57E74795203670F200A750C9 /* CheckoutViewController.swift in Sources */,
 				572B4232203E1B2F001FB708 /* OnboardingImageHandlers.swift in Sources */,
@@ -655,6 +666,7 @@
 				576B782A206597510051A473 /* GownDataTableViewController.swift in Sources */,
 				57E747852030324300A750C9 /* RoundedCornerTextField.swift in Sources */,
 				57E747872030324300A750C9 /* CircleView.swift in Sources */,
+				57B9F83E207B80B500F4D120 /* MeasurementsVC.swift in Sources */,
 				578B3500202BE91800B2A14B /* OnboardingFiveVC.swift in Sources */,
 				5797F0371F8C846C00906E4C /* CenterVCDelegate.swift in Sources */,
 				57296C611FFC3C1700C96C6A /* WardrobeCVC.swift in Sources */,
