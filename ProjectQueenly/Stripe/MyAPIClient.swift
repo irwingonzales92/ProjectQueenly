@@ -30,7 +30,7 @@ class MyAPIClient: NSObject, STPEphemeralKeyProvider {
         let url = self.baseURL.appendingPathComponent("charge")
         var params: [String: Any] = [
             "source": result.source.stripeID,
-            "amount": amount
+            "amount": amount,
             "currency": "USD"
         ]
         params["shipping"] = STPAddress.shippingInfoForCharge(with: shippingAddress, shippingMethod: shippingMethod)
