@@ -39,8 +39,8 @@ class LeftPanelVC: UIViewController {
     @IBAction func orderBtnPressed(_ sender: Any)
     {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let orderVC = storyboard.instantiateViewController(withIdentifier: "OrderVC") as? OrderSummaryVC
-        present(orderVC!, animated: true, completion: nil)
+        let faqVC = storyboard.instantiateViewController(withIdentifier: "FAQVC") as? FAQVC
+        present(faqVC!, animated: true, completion: nil)
     }
     
     @IBAction func profileBtnPressed(_ sender: Any)

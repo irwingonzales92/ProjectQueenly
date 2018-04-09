@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import SkyFloatingLabelTextField
 
-class OnboardingThreeVC: UIViewController {
+class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var imageView: RoundImageView!
     @IBOutlet var usernameTxtField: SkyFloatingLabelTextField!
@@ -27,6 +27,7 @@ class OnboardingThreeVC: UIViewController {
         
         self.view.bindToKeyboard()
         self.usernameTxtField.text = self.userDisplayName
+        self.usernameTxtField.delegate = self
         
         self.setDelegates()
         
@@ -55,7 +56,7 @@ class OnboardingThreeVC: UIViewController {
 
         let userData = ["userId": Auth.auth().currentUser?.uid ?? String(), "displayName": self.userDisplayName, "userImage": metaData] as [String : Any]
         
-        userRef.document((Auth.auth().currentUser?.uid)!).updateData(userData)
+        userRef.document((Auth.auth().currentUser?.uid)!).setData(userData, options: SetOptions.merge())
 //
 //        UserDefaults.standard.set(self.userDisplayName, forKey: "name")
         
@@ -98,6 +99,12 @@ class OnboardingThreeVC: UIViewController {
             nextVC?.username = self.userDisplayName
             debugPrint(nextVC?.girl)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.usernameTxtField.resignFirstResponder()
+        
+        return true
     }
     
 //    @objc func keyboardWillShow(notification: NSNotification) {

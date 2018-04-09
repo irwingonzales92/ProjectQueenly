@@ -42,6 +42,7 @@ class AuthService
                 return
             }
             let userData = ["provider": user?.providerID, "email":user?.email, "username":user?.displayName, "uid":user?.uid]
+            userRef.document().setValue(user?.uid, forKey: "uid")
             userRef.document().setData(userData)
         }
     }

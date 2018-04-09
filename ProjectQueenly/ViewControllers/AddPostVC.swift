@@ -89,6 +89,7 @@ class AddPostVC: UIViewController {
     var postType = String()
     
     var gown: [String:Any?]?
+    var user: [String:Any?]?
     
     var aSender: RoundedShadowButton?
 

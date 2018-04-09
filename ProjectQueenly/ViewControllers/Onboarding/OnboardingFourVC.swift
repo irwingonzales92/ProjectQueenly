@@ -11,7 +11,7 @@ import Firebase
 import SkyFloatingLabelTextField
 
 
-class OnboardingFourVC: UIViewController {
+class OnboardingFourVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var designerTxtField: SkyFloatingLabelTextField!
     @IBOutlet var sizeTxtFld: SkyFloatingLabelTextField!
@@ -31,7 +31,7 @@ class OnboardingFourVC: UIViewController {
     var hip = Int()
     var height = Int()
     var image = UIImage()
-    var imageString = String()
+    var imageString = Data()
     var username = String()
     var userOnborded = Bool()
     
@@ -47,6 +47,15 @@ class OnboardingFourVC: UIViewController {
 
         print(girl)
         print(self.username)
+        
+        self.designerTxtField.delegate = self
+        self.favoriteColorTxtField.delegate = self
+        self.bustTxtField.delegate = self
+        self.heightTxtField.delegate = self
+        self.hipTxtField.delegate = self
+        self.waistTxtField.delegate = self
+        self.shilouetteTxtField.delegate = self 
+        
 
         // Do any additional setup after loading the view.
     }
@@ -62,11 +71,14 @@ class OnboardingFourVC: UIViewController {
         self.waist = ((self.waistTxtField.text! as NSString).integerValue)
         self.hip = ((self.hipTxtField.text! as NSString).integerValue)
         self.height = ((self.heightTxtField.text! as NSString).integerValue)
+        self.color = self.favoriteColorTxtField.text!
+        self.designer = self.designerTxtField.text!
+        self.imageString = self.transformImageToDataString(image: self.image)
         
-        var userData = ["size": self.size, "bust": self.bust, "waist": self.waist, "hip":self.hip, "height":self.height]
+        let userData = ["size": self.size, "bust": self.bust, "waist": self.waist, "hip":self.hip, "height":self.height, "favorite color": self.color, "favorite desginer": self.designer] as [String : Any]
         
             
-        userRef.document((Auth.auth().currentUser?.uid)!).updateData(userData)
+        userRef.document((Auth.auth().currentUser?.uid)!).setData(userData, options: SetOptions.merge())
         print("Model Set")
         print(self.girl)
         
@@ -93,6 +105,12 @@ class OnboardingFourVC: UIViewController {
         {
             var nextVC = segue.destination as? OnboardingFiveVC
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        
+        return true
     }
 
 }

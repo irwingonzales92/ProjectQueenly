@@ -55,6 +55,17 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         
     }
     
+    func userQuery()
+    {
+        userRef.document((Auth.auth().currentUser?.uid)!).getDocument { (snapshot, err) in
+            if snapshot != nil
+            {
+                let userData = snapshot?.data()
+                self.user = userData
+            }
+        }
+    }
+    
     
    @objc func handlerSelectedImageView()
     {
@@ -229,14 +240,13 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
             self.postType = postText
             print(self.postType)
 
-            gown = ["description": self.description, "title": self.dressTitle, "size": self.size, "bust": self.bust, "waist": self.waist, "hip": self.hip, "priceOne": self.priceRange1, "priceTwo":self.priceRange2, "poster":Auth.auth().currentUser?.displayName]
+            gown = ["description": self.description, "title": self.dressTitle, "size": self.size, "bust": self.user!["bust"], "waist": self.user!["waist"], "hip": self.user!["hip"], "height": self.user!["height"], "size":self.user!["size"], "priceOne": self.priceRange1, "priceTwo":self.priceRange2, "poster":Auth.auth().currentUser?.displayName]
             
             
             
             storageRef.document().setData(gown)
         }
         print(gown)
-//        return gown!
     }
     
     func setPopupView()

@@ -57,6 +57,7 @@
 		57A48A441F9A860900C7E654 /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A48A431F9A860900C7E654 /* PostDetailVC.swift */; };
 		57A48A4A1F9BA42C00C7E654 /* Dresses.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A48A491F9BA42B00C7E654 /* Dresses.xcassets */; };
 		57A48A4C1F9BA51100C7E654 /* Dress.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A48A4B1F9BA51100C7E654 /* Dress.plist */; };
+		57B9F83A207B47C600F4D120 /* FAQVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F839207B47C500F4D120 /* FAQVC.swift */; };
 		57C871361FBF8A3D009DF3EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C871351FBF8A3D009DF3EF /* Constants.swift */; };
 		57E747852030324300A750C9 /* RoundedCornerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E747802030324000A750C9 /* RoundedCornerTextField.swift */; };
 		57E747862030324300A750C9 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E747812030324100A750C9 /* RoundImageView.swift */; };
@@ -131,6 +132,7 @@
 		57A48A431F9A860900C7E654 /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostDetailVC.swift; path = ../../PostDetailVC.swift; sourceTree = "<group>"; };
 		57A48A491F9BA42B00C7E654 /* Dresses.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Dresses.xcassets; sourceTree = "<group>"; };
 		57A48A4B1F9BA51100C7E654 /* Dress.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dress.plist; sourceTree = "<group>"; };
+		57B9F839207B47C500F4D120 /* FAQVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQVC.swift; sourceTree = "<group>"; };
 		57C871351FBF8A3D009DF3EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		57E747802030324000A750C9 /* RoundedCornerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornerTextField.swift; sourceTree = "<group>"; };
 		57E747812030324100A750C9 /* RoundImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				5797F0301F8B41C800906E4C /* ProfileVC.swift */,
 				5797F0321F8B41EB00906E4C /* OrderSummaryVC.swift */,
 				57750136200F2D4400FCCCB0 /* ISOOffersVC.swift */,
+				57B9F839207B47C500F4D120 /* FAQVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				579310E51F904DF000418136 /* FeedCollectionViewCell.swift in Sources */,
 				576F8D481FAAAADA006A9A4E /* Gown.swift in Sources */,
 				572B42342044DDA1001FB708 /* WelcomeVC.swift in Sources */,
+				57B9F83A207B47C600F4D120 /* FAQVC.swift in Sources */,
 				576B782E206768440051A473 /* LoginVCHandlers.swift in Sources */,
 				577501392012900C00FCCCB0 /* GownTVC.swift in Sources */,
 				5797F0331F8B41EB00906E4C /* OrderSummaryVC.swift in Sources */,

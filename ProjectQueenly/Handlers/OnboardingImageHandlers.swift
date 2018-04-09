@@ -59,10 +59,7 @@ extension OnboardingThreeVC: UIImagePickerControllerDelegate, UINavigationContro
     {
         picker.dismiss(animated: true, completion: nil)
     }
-}
-
-extension OnboardingThreeVC: UITextFieldDelegate
-{
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.placeholder = ""
     }
@@ -72,3 +69,4 @@ extension OnboardingThreeVC: UITextFieldDelegate
         
     }
 }
+

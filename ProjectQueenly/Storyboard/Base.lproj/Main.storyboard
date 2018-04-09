@@ -954,7 +954,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0UI-vn-JDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1741.5999999999999" y="80.50974512743629"/>
+            <point key="canvasLocation" x="2014" y="81"/>
         </scene>
         <!--Post ConfirmVC-->
         <scene sceneID="hBd-IK-zf8">
@@ -1231,7 +1231,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rBT-IZ-wdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="dZv-VC-Bxr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3012" y="81"/>
+            <point key="canvasLocation" x="3822" y="81"/>
         </scene>
         <!--OffersVC-->
         <scene sceneID="9Ym-ZZ-vwN">
@@ -2183,7 +2183,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2u-B5-E0W">
                                 <rect key="frame" x="0.0" y="218" width="150" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Orders">
+                                <state key="normal" title="FAQ">
                                     <color key="titleColor" red="0.35302615510000002" green="0.0878323414" blue="0.4133161279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -2358,6 +2358,492 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="te1-46-4Lr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2014" y="806"/>
+        </scene>
+        <!--FAQVC-->
+        <scene sceneID="IVM-NY-F2s">
+            <objects>
+                <viewController storyboardIdentifier="FAQVC" id="bB7-hT-RFI" customClass="FAQVC" customModule="ProjectQueenly" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jG5-Vb-ONb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKk-En-4DL">
+                                <rect key="frame" x="0.0" y="20" width="375" height="593"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="FAQ's">
+                                        <attributes>
+                                            <font key="NSFont" size="36" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CiAKA
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="About Us:">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="24" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="24" name=".AppleSystemUIFont"/>
+                                            <font key="NSOriginalFont" size="24" name=".AppleSystemUIFont"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">What is Queenly's mission?
+ </string>
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSDisplay"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSDisplay"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+Queenly is a peer-to-peer marketplace dedicated towards formal wear fashion and the pageant industry through the means of a buyer-driven model called ISO (in search of). Queenly's purpose is to remind girls everywhere that you don't have to break the bank to be confidently beautiful. For a fraction of the price, you can attain that gown that you've always wanted to rock on stage or glide in on the dance floor. We are not a retail store; we are a revolutionary platform focused on fashion and we foster a community that uplifts and strives to help one another look incredible and feel like a queen on their special night.
+ 
+By reversing the typical buying process, we promote the idea of efficiency by giving the control to the buyers and letting the offers come to them instead. When preparing for a pageant competition or getting ready for a gala, girls already have in mind what kind of gown they want to wear. Whether it be the color, the style, the silhouette, etc., Queenly will give you the chance to let others know what you're looking for instead of browsing through different sites and scrolling endlessly on their inventory. 
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Where is Queenly available?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+Queenly is currently available everywhere in the US via the app and shipping.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Is Queenly available in the Apple App Store?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSDisplay"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSDisplay"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+Yes, we currently have an iOS application for your Apple device.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Is Queenly available in the Google Play Store?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+Unfortunately, we do not currently support Android devices but this is on our roadmap in the near future. Thank you for your patience!
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="What is the email I should contact if I have any questions, comments, suggestions, concerns?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+You can email info@queenlyapp.co we will try to get back to you within a 48-hour timeframe, during business days.
+ 
+ 
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Is there a membership fee to join?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+Being a member on Queenly is completely FREE! We do not charge any membership fee. Signing up simply means that you will always have access to see all of our users' wardrobes, look for your next gown and receive special discounts and updates from us.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Where is Queenly located?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+We are currently operating based in the San Francisco Bay Area.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="What types of clothing do you guys accept on your platform?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+Since our focus is mainly on formal wear, we allow postings of/for evening gowns, cocktail dresses and glam jumpsuits. We would love to expand later on to bridal gowns, as well as men's formal wear so we could make it more sustainable for more events and more people!
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Do I have to sign up for Queenly in order to use the app?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+Yes. You can sign up by either connecting your Facebook account or through your email address. We require every user to sign up, create a profile, and read &amp; agree our terms of service in order to use our app.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Is this app only for pageant girls?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+Of course not! This app is for women of all ages (at least 13) that want to be queenly for any special event! Whether it be prom, homecoming, gala, red carpet, cotillion, quinceneara, wedding, etc., Queenly will make it easier for you to find something to wear. We only emphasize the pageant industry as this was the source of inspiration for the creation of the app, as pageant girls have been using pageant resale methods for years. We hope that the pageant industry can help us start with the traction that we need in order to let more women know about our handy platform.
+ 
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Buyers:">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="24" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CiAKA
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="What is the whole point of ISO (in search of)?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+As a founder and as a female, I know how extremely difficult it is to find a gown for an occasion. Not only that, but how expensive it is as well when buying brand new and/or custom-made. Being in the pageant industry for years now, and also being part of many community groups on social media dedicated for pageant resale, I saw how women were utilizing this method to save money and to also earn money from gowns they own. By reversing the typical buying process and giving the control to the buyer, the process becomes more efficient and saves a whole lot of time and headaches. Instead of browsing through different websites, and/or walking around various department or boutique stores flipping through gowns, we let the buyers state what they prefer and what they are looking for and let the offers come to them instead. By stating your size, preferred styles, designers, colors, and price range upfront, you will have a better and more seamless transaction rather than never-ending browsing or negotiations.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Who handles dry cleaning?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+In order to make it easier for our users, we take care of the dry cleaning. That's why we handle everything in between, from the time that the seller ships us the gown to when it reaches the buyer's doors, we make sure that the gown is in perfect shape to give you your perfect look.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="What are your shipping options?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+We will have 3 different shipping options for our buyers, and they will vary by cost depending on your location and how soon you need it by. We are currently utilizing USPS. The buyer will be responsible for paying for the shipping option.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="How do refunds work?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+After the receipt of delivery of the gown, you have 24 hours to report a refund request. Refunds are only given if there is a damage that is significantly present that we didn't catch during quality check, and the buyer must email us right away with photos that can certify the complaint. You cannot get a refund if it doesn't fit right, or if you simply don't like it. Since we are only a platform to connect users to share their wardrobes, and we do not own the inventory ourselves, we cannot promise a refund for every transaction if it is not our fault. We deeply apologize for this current inconvenience, but we hope you can understand, and once Queenly starts to gain more traction and success, we would love to provide a 100% guarantee refund in the near future. It is up to the buyer to check all of the info that the seller includes in the offer post, to guarantee that the sizes match and that all the preferences are correct.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Sellers:">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="24" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CiAKA
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="How much do I get for the dress that I've sold on Queenly?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+                 	
+To make sure we run our platform successfully for our users, we take 20% commission on all transactions sold on Queenly. This is significantly lower than our competitors, so you'll be happy to know you're still keeping a big chunk of 80%. Through this process, we guarantee your safety online and that your transactions run through a trusted platform, excellent quality of gowns, and we take care of packaging and shipping so your experience is hassle-free so you can focus on looking and feeling like a queen!
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="How will I get paid?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+You will be able to see what you've earned off of your sold gown in your account after the buyer receives the package. Then you can withdraw your funds towards your PayPal account or we can mail you a check, whichever one is preferred.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="How do I ship the gown that I just sold to a buyer?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+We will send you a shipping label once your offer has been accepted by the buyer and their payment transaction has gone through. We currently use USPS to ship out all items, and you can utilize any box/envelope/packaging you want, as long as the gown is secure and that you put the shipping label clearly visible on the outside. You can then drop it off at any USPS designated USPS blue collection box nearest you, or at any USPS location.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="What types of photo should I use for my offer?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+We recommend to use a real-time photo of the gown, and please make sure that it is as clear as possible with a high resolution. Taking a photo in good natural lighting would be best, with the least amount of distractions in the background. Also, it would be great to take a photo of it being worn on a person's body, so the buyer can see how it fits and the length. If you don't have time to take one, you can just upload the retail photo from the store/designer's website from which you haves originally purchased it (but be certain that it is the same exact style and color).
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="General:">
+                                        <attributes>
+                                            <font key="NSFont" size="24" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="24" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CiAKA
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Can I be a buyer and a seller?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+Definitely! As a user, you can post an ISO and buy a gown from one of the offers you receive on your post. You can also offer to sell any gowns that you possess. We try to promote a more sustainable fashion economy, and we know that by giving women access to each other's wardrobes of gowns, this can be achieved.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Do you guys have a rental feature?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+We certainly recognize the need to take it a step further and to make it more sustainable for everyone, that is why we do plan to include this soon enough. We will notify all our users once this feature becomes available!
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="What forms of payment do you accept?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+We currently accept all major credit cards and payments made via PayPal, and this is processed by a third-party payments processor, Stripe.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="How secure is your payment system?">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name=".SFNSText"/>
+                                            <font key="NSOriginalFont" size="18" name=".SFNSText"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+ 
+Your debit/credit card information is completely secure. Our online payment service is provided by Stripe - an e-commerce online payment system trusted and used by e-commerce websites all over the world. For more information on their security structure, please visit https://stripe.com/docs/security/stripe.
+ 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="14"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hta-T4-s8B">
+                                <rect key="frame" x="0.0" y="621" width="375" height="46"/>
+                                <color key="backgroundColor" red="0.3162941635" green="0.054901130499999999" blue="0.47809296849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="LF4-uL-ahg"/>
+                                    <constraint firstAttribute="width" constant="375" id="NiA-Je-8rc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Dismiss">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissVCOnBtnPressed:" destination="bB7-hT-RFI" eventType="touchUpInside" id="rbG-Xz-Ua2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FKk-En-4DL" firstAttribute="top" secondItem="cl4-Gb-vbx" secondAttribute="top" id="6cK-ET-Kf9"/>
+                            <constraint firstItem="hta-T4-s8B" firstAttribute="top" secondItem="FKk-En-4DL" secondAttribute="bottom" constant="8" symbolic="YES" id="Jyw-gn-qLP"/>
+                            <constraint firstItem="FKk-En-4DL" firstAttribute="trailing" secondItem="hta-T4-s8B" secondAttribute="trailing" id="Mhg-zv-ZCz"/>
+                            <constraint firstItem="FKk-En-4DL" firstAttribute="leading" secondItem="jG5-Vb-ONb" secondAttribute="leading" id="cGF-PH-o8k"/>
+                            <constraint firstItem="FKk-En-4DL" firstAttribute="leading" secondItem="hta-T4-s8B" secondAttribute="leading" id="htc-lg-sIm"/>
+                            <constraint firstItem="hta-T4-s8B" firstAttribute="bottom" secondItem="cl4-Gb-vbx" secondAttribute="bottom" id="tU6-zC-jsT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cl4-Gb-vbx"/>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="FKk-En-4DL" id="asd-RQ-Y4l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ao6-yj-tW0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1010" y="1303"/>
         </scene>
     </scenes>
     <resources>
