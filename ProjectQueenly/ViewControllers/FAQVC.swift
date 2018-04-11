@@ -13,6 +13,8 @@ class FAQVC: UIViewController {
     @IBOutlet var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.textView.isEditable = false
 
         
     }

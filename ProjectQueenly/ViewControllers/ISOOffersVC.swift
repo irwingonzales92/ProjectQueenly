@@ -184,6 +184,12 @@ class ISOOffersVC: UIViewController, PostDetailVCDelegate
             }
         }
     }
+    
+    func pullUserDress()
+    {
+        // Pull dress of users first OR user collection
+    }
+    
     @IBAction func cancelBtnPressed(_ sender: Any)
     {
         dismiss(animated: true, completion: nil)
