@@ -18,7 +18,8 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
 
     var girl: Girl? = nil
     
-//    @IBOutlet var webView: WKWebView!
+    @IBOutlet var blurView: RoundedBlurView!
+    //    @IBOutlet var webView: WKWebView!
     @IBOutlet var logoImgView: UIImageView!
     @IBOutlet var webView: UIWebView!
     @IBOutlet var signupBtn: UIButton!
@@ -29,8 +30,9 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
     var usernameTextField: UITextField?
     var confirmPasswordTextfield: UITextField?
     var realUsernameTextField: UITextField?
-    var fbBtn: FBSDKLoginButton?
+//    var fbBtn: FBSDKLoginButton?
 
+    @IBOutlet var fbBtn: FBSDKLoginButton!
     var window: UIWindow?
     
     // Access Token
@@ -46,14 +48,7 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
         
         view.bindToKeyboard()
         
-        self.webView = UIWebView(frame: view.frame)
-        let htmlPath = Bundle.main.path(forResource: "WebViewContent", ofType: "html")
-        let htmlURL = URL(fileURLWithPath: htmlPath!)
-        let html = try? Data(contentsOf: htmlURL)
-        
-        self.webView.load(html!, mimeType: "text/html", textEncodingName: "UTF-8", baseURL: htmlURL.deletingLastPathComponent())
-        self.webView.isUserInteractionEnabled = false;
-        self.view.addSubview(self.webView)
+
         
         
         self.fbBtn = FBSDKLoginButton(frame: CGRect(x: 192, y: 524, width: 166, height: 48))
@@ -73,7 +68,7 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
         view.addSubview(self.loginBtn)
         
         
-        self.checkUserState()
+//        self.checkUserState()
         
     }
     
@@ -111,10 +106,10 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
                     self.girl?.email = self.emailTextField?.text
                     self.girl?.onboarded = false
 //                    userRef.document((Auth.auth().currentUser?.uid)!).setModel(self.girl!)
-                    self.initalizeUserObject()
-                    print(self.girl?.email)
-                    
-                    self.checkUserState()
+//                    self.initalizeUserObject()
+//                    print(self.girl?.email)
+//
+//                    self.checkUserState()
                     
 //                    NotificationCenter.default.addObserver(self, selector: #selector(self.dismissView), name: USER_IS_LOGGED_IN, object: nil)
                 }
@@ -168,17 +163,21 @@ class LoginVC: VideoSplashViewController, Alertable, FBSDKLoginButtonDelegate
         alert.addTextField { (textfield) in
             self.realUsernameTextField = textfield
             textfield.placeholder = "Username"
+            
         }
         
         alert.addTextField { (textfield) in
             self.passwordTextField = textfield
             textfield.placeholder = "Password"
+            textfield.isSecureTextEntry = true
         }
         
         
         alert.addTextField { (textfield) in
             self.confirmPasswordTextfield = textfield
             textfield.placeholder = "Confirm Password"
+            textfield.isSecureTextEntry = true
+
         }
         
         let save = UIAlertAction(title: "Submit", style: .default) { (alert) in

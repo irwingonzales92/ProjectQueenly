@@ -51,6 +51,7 @@ class LeftPanelVC: UIViewController {
         let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC
         present(profileVC!, animated: true, completion: nil)
     }
+
     @IBAction func authBtnPressed(_ sender: Any)
     {
         if Auth.auth().currentUser == nil

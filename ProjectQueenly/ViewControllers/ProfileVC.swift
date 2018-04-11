@@ -17,6 +17,9 @@ class ProfileVC: UIViewController, AddPostVCDelegate
         return wardrobePost.value
     }
     
+    @IBOutlet var addBtn: UIButton!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var backBtn: UIButton!
     @IBOutlet var collectionView: UICollectionView!
     
     enum makingOffer

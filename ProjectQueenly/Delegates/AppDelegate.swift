@@ -63,6 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var userRef = Firestore.firestore().collection("Users")
         
         
+        
         // Window and container elements
         containerVC = ContainerVC()
         self.window = UIWindow(frame: UIScreen.main.bounds)

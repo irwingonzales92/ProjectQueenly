@@ -22,6 +22,7 @@ target 'ProjectQueenly' do
 	pod 'FacebookCore'
 	pod 'FacebookLogin'
 	pod 'FacebookShare'
+
     
 	pod 'PMAlertController’
 	pod 'RevealingSplashView’

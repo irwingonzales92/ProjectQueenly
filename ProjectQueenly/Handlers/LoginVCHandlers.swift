@@ -30,30 +30,30 @@ extension LoginVC
 
     }
     
-    func checkUserState()
-    {
-        if self.girl != nil
-        {
-            if (self.girl?.onboarded == true)
-            {
-                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let rootVC = storyboard.instantiateViewController(withIdentifier: "RootVC") as? RootVC
-                present(rootVC!, animated: true, completion: nil)
-                debugPrint(self.girl?.onboarded)
-            }
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let onbVC = storyboard.instantiateViewController(withIdentifier: "OnboardingOneVC") as? OnboardingOneVC
-            present(onbVC!, animated: true, completion: nil)
-        }
-        
-    }
+//    func checkUserState()
+//    {
+//        if self.girl != nil
+//        {
+//            if (self.girl?.onboarded == true)
+//            {
+//                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//                let rootVC = storyboard.instantiateViewController(withIdentifier: "RootVC") as? RootVC
+//                present(rootVC!, animated: true, completion: nil)
+//                debugPrint(self.girl?.onboarded)
+//            }
+//
+//            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//            let onbVC = storyboard.instantiateViewController(withIdentifier: "OnboardingOneVC") as? OnboardingOneVC
+//            present(onbVC!, animated: true, completion: nil)
+//        }
     
-    func initalizeUserObject()
-    {
-        self.girl?.email = Auth.auth().currentUser?.email
-        print(self.girl?.documentID)
-    }
+//    }
+//    
+//    func initalizeUserObject()
+//    {
+//        self.girl?.email = Auth.auth().currentUser?.email
+//        print(self.girl?.documentID)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
