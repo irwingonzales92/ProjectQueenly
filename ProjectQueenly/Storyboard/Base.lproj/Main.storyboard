@@ -1034,7 +1034,9 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="What Are You Searching For?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGP-ef-FCy">
                                 <rect key="frame" x="71" y="13" width="233" height="44"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="233" id="2jh-8O-h2w"/>
                                     <constraint firstAttribute="width" constant="367" id="ARH-eu-8n8"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="WCa-9r-opO"/>
                                     <constraint firstAttribute="height" constant="44" id="iZo-a8-i0H"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -1161,7 +1163,6 @@
                             <constraint firstItem="6Kh-bg-HhQ" firstAttribute="leading" secondItem="wBL-Te-ekw" secondAttribute="leading" constant="9" id="5z0-OH-9cO"/>
                             <constraint firstItem="Ndy-Jn-tsN" firstAttribute="top" secondItem="OAw-ZP-xzj" secondAttribute="bottom" constant="13" id="6gN-m6-uA3"/>
                             <constraint firstItem="OGP-ef-FCy" firstAttribute="trailing" secondItem="jkf-am-CPp" secondAttribute="trailing" id="8T0-Kq-Ui9"/>
-                            <constraint firstItem="OGP-ef-FCy" firstAttribute="leading" secondItem="Ndy-Jn-tsN" secondAttribute="leading" id="JT5-tT-xgC"/>
                             <constraint firstItem="wBL-Te-ekw" firstAttribute="trailing" secondItem="6Kh-bg-HhQ" secondAttribute="trailing" constant="16" id="KNy-Wd-F6x"/>
                             <constraint firstItem="UMp-G1-l9s" firstAttribute="centerX" secondItem="RZY-dU-PsB" secondAttribute="centerX" constant="-400" id="Mhe-tg-LvS"/>
                             <constraint firstItem="Dff-4G-DXA" firstAttribute="leading" secondItem="6Kh-bg-HhQ" secondAttribute="leading" id="MtI-Px-erh"/>
@@ -1172,7 +1173,6 @@
                             <constraint firstItem="DWK-k2-jSO" firstAttribute="leading" secondItem="wBL-Te-ekw" secondAttribute="leading" constant="9" id="ZVs-Id-xxE"/>
                             <constraint firstItem="OGP-ef-FCy" firstAttribute="centerY" secondItem="jkf-am-CPp" secondAttribute="centerY" id="ZtL-AZ-31Y"/>
                             <constraint firstItem="nVh-Hx-Uge" firstAttribute="centerX" secondItem="RZY-dU-PsB" secondAttribute="centerX" constant="400" id="bTN-Z8-rNz"/>
-                            <constraint firstItem="OGP-ef-FCy" firstAttribute="leading" secondItem="RZY-dU-PsB" secondAttribute="leading" id="dDJ-vr-hyr"/>
                             <constraint firstItem="x32-ya-izz" firstAttribute="top" secondItem="OGP-ef-FCy" secondAttribute="bottom" constant="2" id="fLA-9H-OZn"/>
                             <constraint firstItem="OAw-ZP-xzj" firstAttribute="top" secondItem="DWK-k2-jSO" secondAttribute="bottom" constant="8" id="gSG-Ge-uL8"/>
                             <constraint firstItem="OAw-ZP-xzj" firstAttribute="top" secondItem="6AL-yT-utW" secondAttribute="bottom" constant="8" id="iSl-0e-CNL"/>
@@ -1215,7 +1215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0UI-vn-JDq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2014" y="81"/>
+            <point key="canvasLocation" x="2013.5999999999999" y="80.50974512743629"/>
         </scene>
         <!--Post ConfirmVC-->
         <scene sceneID="hBd-IK-zf8">
