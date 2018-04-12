@@ -41,7 +41,7 @@ class AuthService
                 userCreationComplete(false, err)
                 return
             }
-            let userData = ["provider": user?.providerID, "email":user?.email, "username":user?.displayName, "uid":user?.uid]
+            var userData = ["provider": user?.providerID, "email":user?.email, "username":user?.displayName, "uid":user?.uid] as! [String:Any]
             userRef.document().setData(userData)
         }
     }
@@ -59,5 +59,7 @@ class AuthService
 
         }
     }
+    
+    
     
 }

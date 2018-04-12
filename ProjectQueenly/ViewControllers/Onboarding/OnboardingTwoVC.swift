@@ -9,6 +9,10 @@
 import UIKit
 
 class OnboardingTwoVC: UIViewController {
+    
+    var email = String()
+    var username = String()
+    var password = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +36,10 @@ class OnboardingTwoVC: UIViewController {
     {
         if segue.identifier == "toOnboardingVCThreeSegue"
         {
-            var nextVC = segue.destination as? OnboardingTwoVC
-            //            nextVC?.recievedGown = self.gown
+            var nextVC = segue.destination as? OnboardingThreeVC
+            nextVC?.userUsername = self.username
+            nextVC?.userEmail = self.email
+            nextVC?.userPassword = self.password
         }
     }
 

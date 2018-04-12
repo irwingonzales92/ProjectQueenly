@@ -277,9 +277,7 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         gown = ["description": self.description, "title": self.dressTitle, "size": self.size, "bust": self.bust, "waist": self.waist, "hip": self.hip, "priceOne": self.priceRange1, "priceTwo":self.priceRange2, "poster":Auth.auth().currentUser?.displayName]
         
         
-        
-        storageRef.document().setData(gown)
-        
+        storageRef.document().setData(gown)        
 //        return gown
     }
     

@@ -15,6 +15,8 @@ PODS:
   - BoringSSL/Interface (10.0)
   - Differentiator (3.0.2)
   - DZNEmptyDataSet (1.8.1)
+  - Eureka (4.1.1)
+  - FaceAware (1.2.0)
   - FacebookCore (0.3.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.27)
@@ -103,6 +105,7 @@ PODS:
     - gRPC-Core (= 1.10.0)
     - gRPC-RxLibrary (= 1.10.0)
   - GTMSessionFetcher/Core (1.1.14)
+  - Instructions (1.1.0)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -120,15 +123,21 @@ PODS:
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
+  - SCLAlertView (0.8)
   - SkyFloatingLabelTextField (3.4.1)
   - Stripe (12.1.2)
   - TRMosaicLayout (1.0.0)
   - VideoSplashKit (1.2.1)
+  - XLActionController (4.0.1):
+    - XLActionController/Core (= 4.0.1)
+  - XLActionController/Core (4.0.1)
 
 DEPENDENCIES:
   - Alamofire
   - AZEmptyState
   - DZNEmptyDataSet
+  - Eureka
+  - FaceAware
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -138,16 +147,19 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Firestore
   - FirebaseStorage
+  - Instructions
   - PMAlertController
   - RevealingSplashView
   - RSKPlaceholderTextView
   - RxCocoa (~> 4.0)
   - RxDataSources
   - RxSwift (~> 4.0)
+  - SCLAlertView
   - SkyFloatingLabelTextField
   - Stripe
   - TRMosaicLayout
   - VideoSplashKit
+  - XLActionController
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -157,6 +169,8 @@ SPEC REPOS:
     - BoringSSL
     - Differentiator
     - DZNEmptyDataSet
+    - Eureka
+    - FaceAware
     - FacebookCore
     - FacebookLogin
     - FacebookShare
@@ -177,6 +191,7 @@ SPEC REPOS:
     - gRPC-ProtoRPC
     - gRPC-RxLibrary
     - GTMSessionFetcher
+    - Instructions
     - leveldb-library
     - nanopb
     - PMAlertController
@@ -186,10 +201,12 @@ SPEC REPOS:
     - RxCocoa
     - RxDataSources
     - RxSwift
+    - SCLAlertView
     - SkyFloatingLabelTextField
     - Stripe
     - TRMosaicLayout
     - VideoSplashKit
+    - XLActionController
 
 SPEC CHECKSUMS:
   Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
@@ -198,6 +215,8 @@ SPEC CHECKSUMS:
   BoringSSL: 32764dbaf5f5888cf51fbaa172a010126b41bcd4
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
+  FaceAware: 421436f9d16aacdb26ffcf8e5a39a1dd68630395
   FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
   FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
   FacebookShare: 0469964297ebd75f052be2c5083389a4208e82b7
@@ -218,6 +237,7 @@ SPEC CHECKSUMS:
   gRPC-ProtoRPC: 22712b23eb1bda656a59715fa5c1da0ea1493ea4
   gRPC-RxLibrary: a41a4652d220f230ba1c0491a94ce2ee04c6180a
   GTMSessionFetcher: 390ea358e5a0d0133153806f744662dad933d06b
+  Instructions: ff5738d6a637a46d1638a77d77261649f4da36a7
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   PMAlertController: 46047b840f6e1833c2a5395c91ccad29e72ae2c0
@@ -227,11 +247,13 @@ SPEC CHECKSUMS:
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
   RxSwift: e49536837d9901277638493ea537394d4b55f570
+  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
   SkyFloatingLabelTextField: 8085f20f57f74a00cfcae58099299faa1a971035
   Stripe: 3230cdf8a8b0c04902e45e86f222fb82a926239c
   TRMosaicLayout: 1875505c48dd2877afd69a8bea7b4c1c63afa5b5
   VideoSplashKit: 9d5670948cfb0be15262d973cedbfd3faecddcad
+  XLActionController: 007868251c0eed70d649d06c1625259b73b3a600
 
-PODFILE CHECKSUM: 479730248f7de48077d6b9631a99441b1a89859f
+PODFILE CHECKSUM: 862c48322096a4801c4c626f006c40e30bd95b10
 
 COCOAPODS: 1.5.0

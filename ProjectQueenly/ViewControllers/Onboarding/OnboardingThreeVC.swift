@@ -13,7 +13,14 @@ import SkyFloatingLabelTextField
 class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var imageView: RoundImageView!
-    @IBOutlet var usernameTxtField: SkyFloatingLabelTextField!
+    @IBOutlet var sizeTextField: SkyFloatingLabelTextField!
+    @IBOutlet var heightTextField: SkyFloatingLabelTextField!
+    @IBOutlet var bustTextField: SkyFloatingLabelTextField!
+    @IBOutlet var waistTextField: SkyFloatingLabelTextField!
+    @IBOutlet var hipTextField: SkyFloatingLabelTextField!
+    @IBOutlet var shilouetteTextField: SkyFloatingLabelTextField!
+    @IBOutlet var favoriteColorTextField: SkyFloatingLabelTextField!
+    @IBOutlet var favoriteDesignerTextField: SkyFloatingLabelTextField!
     
     var girl = Girl()
     
@@ -22,12 +29,26 @@ class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
     var userProfileImage = UIImage()
     var userDisplayName = String()
     
+    var userSize = Int()
+    var userHeight = Int()
+    var userBust = Int()
+    var userHip = Int()
+    var userWaist = Int()
+    var userShilouette = String()
+    var userColor = String()
+    var userDeisgner = String()
+    var userOnbaorded = true
+    
+    var userEmail = String()
+    var userPassword = String()
+    var userUsername = String()
+    
+    var data = [String:Any]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.bindToKeyboard()
-        self.usernameTxtField.text = self.userDisplayName
-        self.usernameTxtField.delegate = self
         
         self.setDelegates()
         
@@ -47,62 +68,109 @@ class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
 
     }
     
+    func registerUser(withData data: [String: Any])
+    {
+        AuthService.instance.registerUser(withEmail: self.userEmail, Password: self.userPassword, DisplayName: self.userUsername, userCreationComplete: { (completed, error) in
+            
+            if completed
+            {
+                print("It works!")
+                
+                print("User Successfully Signed up")
+                
+            }
+            else
+            {
+                print("Something went wrong")
+                debugPrint(error?.localizedDescription as! String)
+                
+                if error != nil
+                {
+                    if let errorCode = AuthErrorCode(rawValue: error!._code)
+                    {
+                        
+                        switch errorCode
+                        {
+                        case .emailAlreadyInUse:
+                            print("Email is in use")
+                            
+                        case .invalidEmail:
+                            print(ERROR_MSG_INVALID_EMAIL)
+                            
+                        default:
+                            print(ERROR_MSG_UNEXPECTED_ERROR)
+                            print(error as Any)
+                            debugPrint(error)
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
     func setUserParams()
     {
         self.userProfileImage = self.imageView.image!
-        self.userDisplayName = self.usernameTxtField.text!
+        self.userHeight = Int(self.heightTextField.text!)!
+        self.userSize = Int(self.sizeTextField.text!)!
+        self.userBust = Int(self.bustTextField.text!)!
+        self.userWaist = Int(self.waistTextField.text!)!
+        self.userHip = Int(self.hipTextField.text!)!
+        self.userShilouette = self.shilouetteTextField.text!
+        self.userColor = self.favoriteColorTextField.text!
+        self.userDeisgner = self.favoriteDesignerTextField.text!
 
         let metaData = UIImagePNGRepresentation(self.userProfileImage)
 
-        let userData = ["userId": Auth.auth().currentUser?.uid ?? String(), "displayName": self.userDisplayName, "userImage": metaData] as [String : Any]
         
-        userRef.document((Auth.auth().currentUser?.uid)!).setData(userData, options: SetOptions.merge())
-//
-//        UserDefaults.standard.set(self.userDisplayName, forKey: "name")
+        Auth.auth().createUser(withEmail: self.userEmail, password: self.userPassword) { (user, err) in
+            guard user != nil else {
+                
+                let userData = ["provider": user?.providerID,"email":self.userEmail, "username":self.userUsername, "uid":user?.uid,  "userSize": self.userSize, "userHeight": self.userHeight, "userWaist": self.userWaist, "userBust": self.userBust, "userHip":self.userHip, "userShilouette": self.userShilouette, "userColor": self.userColor, "favoriteDesigner": self.userDeisgner, "favoriteColor": self.userColor, "userImage": metaData, "onboarded":true] as [String : Any]
+                user?.setValuesForKeys(userData)
+                return
+            }
+        }
         
-        
-//        let ref = userRef.document((Auth.auth().currentUser?.uid)!)
-////        ref.getModel(Girl.self) { (girl, err) in
-////            if err == nil
-////            {
-////
-////            }
-//        ref.setModel(girl as! FirestoreModel)
-        
-        
+//        userRef.document((Auth.auth().currentUser?.uid)!).setData(userData, options: SetOptions.merge())
 
-        
-//        return userData
     }
     
     func setDelegates()
     {
         self.imagePickerController.delegate = self
-        self.usernameTxtField.delegate = self
+        self.heightTextField.delegate = self
+        self.sizeTextField.delegate = self
+        self.bustTextField.delegate = self
+        self.waistTextField.delegate = self
+        self.heightTextField.delegate = self
+        self.shilouetteTextField.delegate = self
+        self.favoriteColorTextField.delegate = self
+        self.favoriteDesignerTextField.delegate = self
     }
     
     
     
     @IBAction func buildProfileBtnPressed(_ sender: Any)
     {
+        self.setUserParams()
+//        self.registerUser(withData: self.data)
 //        UserDefaults.standard.set(self.usernameTxtField.text, forKey: "name")
-        self.performSegue(withIdentifier: "toOnboardingVCFourSegue", sender: nil)
+        self.performSegue(withIdentifier: "toOnboardingVCFiveSegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.identifier == "toOnboardingVCFourSegue"
+        if segue.identifier == "toOnboardingVCFiveSegue"
         {
             var nextVC = segue.destination as? OnboardingFourVC
-            self.setUserParams()
-            nextVC?.image = self.imageView.image!
-            nextVC?.username = self.userDisplayName
+//            self.setUserParams()
             debugPrint(nextVC?.girl)
         }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.usernameTxtField.resignFirstResponder()
+        self.view.endEditing(true)
         
         return true
     }

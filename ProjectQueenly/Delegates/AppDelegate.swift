@@ -89,8 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else
         {
-            if (UserDefaults.standard.value(forKey: "name") as? String) == nil
-//            if Auth.auth().currentUser?.displayName == nil
+            if Auth.auth().currentUser?.displayName == nil
             {
                 // Show onboarding
                 print("Has not onboarded")

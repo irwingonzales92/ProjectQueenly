@@ -35,4 +35,12 @@ target 'ProjectQueenly' do
 	pod 'SkyFloatingLabelTextField'
 	pod 'RSKPlaceholderTextView'
 
+	pod 'Eureka'
+	pod 'XLActionController'
+	pod 'SCLAlertView'
+	pod 'Instructions'
+	pod 'FaceAware' 
+
+
+
 end
