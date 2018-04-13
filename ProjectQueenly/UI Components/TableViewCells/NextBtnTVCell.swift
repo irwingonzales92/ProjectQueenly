@@ -8,18 +8,19 @@
 
 import UIKit
 
+protocol NextBtnTVCellDelegate: class
+{
+    func didSetGownParams()
+}
+
 class NextBtnTVCell: UITableViewCell {
+    
+    weak var delegate: NextBtnTVCellDelegate?
 
     @IBOutlet var callToActionBtn: UIButton!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func didPostOnBtnPressed(_ sender: Any)
+    {
+        delegate?.didSetGownParams()
     }
 
 }

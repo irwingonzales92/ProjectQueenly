@@ -26,9 +26,6 @@ protocol AddPostVCDelegate
 class AddPostVC: UIViewController {
 
     
-
-    
-    
     var state: State = .ISO
     var disposeBag = DisposeBag()
     

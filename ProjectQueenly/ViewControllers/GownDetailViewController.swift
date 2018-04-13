@@ -13,7 +13,7 @@ enum DetailType
     case iso, wardrobe
 }
 
-class GownDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GownDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NextBtnTVCellDelegate {
     
     var gownData = [String:Any]()
     
@@ -29,6 +29,8 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     var gownDescription = String()
     var key = String()
     
+    var nextBtnCell = NextBtnTVCell()
+    
     
     @IBOutlet var tableView: UITableView!
     
@@ -39,6 +41,7 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+//        self.nextBtnCell.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -59,16 +62,6 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         self.dismiss(animated: true, completion: nil)
     }
 
-    @IBAction func didSaveGownOnBtnPressed(_ sender: Any)
-    {
-        storageRef.document().setData(self.gownData) { (err) in
-            if err == nil
-            {
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
-    }
-    
     func transformImageToDataString(image:UIImage) -> Data
     {
         let metaData = UIImagePNGRepresentation(image)
@@ -79,6 +72,15 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 7
     }
+    
+    func didSetGownParams()
+    {
+        storageRef.document().setData(self.gownData)
+        NotificationCenter.default.post(name: ISO_POST, object: nil)
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -105,6 +107,7 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
             cell3.posterLabel.text = String(self.price2)
 //            cell3.priceLabel.text = self.gownData["priceOne"] as! String
 //            cell3.posterLabel.text = self.gownData["priceTwo"] as! String
+            // amitiitm2009@gmail.com
             return cell3
         case 3:
 //            cell4.colorLabel.text = self.color
@@ -116,6 +119,7 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         case 5:
             return cell6
         case 6:
+            cell7.delegate = self
             return cell7
             
         default:
@@ -145,6 +149,7 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
                 return 45
         }
     }
+    
     
     /*
     // MARK: - Navigation

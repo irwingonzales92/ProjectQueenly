@@ -48,7 +48,7 @@ class RootVC: UIViewController, AddPostVCDelegate
     // Object Container Types
 //    var gowns = [[String:Any]]()
     var gownArray = [[String: Any?]]()
-    var gownObj: [String: Any?] = [:]
+    var gownObj = [String: Any?]()
     var selectedGown: UIImage?
     
     let postType = Variable<State>(.ISO)
@@ -224,8 +224,9 @@ class RootVC: UIViewController, AddPostVCDelegate
                         let documentData = document.data()
                         
                         let ref = self.storageRef.document()
-                        //                    ref.setModel(self.gownObj!)
-                        
+//                        ref.setModel(self.gownObj)
+                        self.gownObj = documentData
+                        self.gownArray.append(self.gownObj)
                         self.collectionView.reloadData()
                     }
                 }
@@ -247,8 +248,6 @@ class RootVC: UIViewController, AddPostVCDelegate
             let nextVC = segue.destination as? GownDetailViewController
 //            nextVC?.recievedGown = self.gown
             nextVC?.gownData = self.gownObj
-            
-            
         }
         else
         {
@@ -303,6 +302,7 @@ extension RootVC: UICollectionViewDataSource, UICollectionViewDelegate
 //    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print(self.gownArray.count)
         return self.gownArray.count
     }
     
@@ -315,7 +315,7 @@ extension RootVC: UICollectionViewDataSource, UICollectionViewDelegate
         print(self.cell.designerLabel.text)
         self.cell.backgroundColor = UIColor.red
         
-        let imagesID = gown["image"] as? Data
+        let imagesID = self.gownObj["image"] as? Data
         let decodedimage = UIImage(data: imagesID!)
         self.cell.imageView.image = decodedimage
         
