@@ -97,7 +97,7 @@ class OnboardingOneVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func awesomeBtnPressed(_ sender: Any)
     {
-        self.userfieldCheck()
+//        self.userfieldCheck()
         self.performSegue(withIdentifier: "toOnboardingVCTwoSegue", sender: nil)
     }
     

@@ -52,16 +52,23 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         imageView.isUserInteractionEnabled = true
         imageView.image = UIImage(named: "dressicon")
         
+        self.userQuery()
+        
         
     }
     
     func userQuery()
     {
-        userRef.document((Auth.auth().currentUser?.uid)!).getDocument { (snapshot, err) in
-            if snapshot != nil
+        userRef.whereField("uid", isEqualTo: authUser?.uid).getDocuments { (snapshot, err) in
+            if err == nil
             {
-                let userData = snapshot?.data()
-                self.user = userData
+                let snapShotData = snapshot?.documents
+                
+                for data in snapShotData!
+                {
+                    self.user = data.data()
+                    print(self.user)
+                }
             }
         }
     }
@@ -178,9 +185,10 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
     
 
     
-    func setGownParams(type: String)
+    func setGownParams(type: String) -> [String: Any]
     {
-        
+        var gown = [String: Any?]()
+
         if (self.titleTxtField.text?.isEmpty)!
         {
             let alert = UIAlertController(title: "Missing Title!", message: "Please enter a title for this post!", preferredStyle: .alert)
@@ -232,21 +240,19 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
             self.hip = ((self.hipTxtField.text as NSString?)?.integerValue)!
             self.priceRange1 = Int(self.priceTxtField.text!)! //((self.priceTxtField.text as NSString?)?.integerValue)!
             self.priceRange2 = Int(self.price2TxtField.text!)! // ((self.price2TxtField.text as NSString?)?.integerValue)!
+            let metaData = UIImagePNGRepresentation(self.imageView.image!)
+
             
-            
-            var gown: [String: Any?]
             
             let postText = "IsoPost"
             self.postType = postText
             print(self.postType)
 
-            gown = ["description": self.description, "title": self.dressTitle, "size": self.size, "bust": self.user!["bust"], "waist": self.user!["waist"], "hip": self.user!["hip"], "height": self.user!["height"], "size":self.user!["size"], "priceOne": self.priceRange1, "priceTwo":self.priceRange2, "poster":Auth.auth().currentUser?.displayName]
-            
-            
-            
+            gown = ["description": self.gownDescription, "title": self.dressTitle, "size": self.user!["userSize"], "bust": self.user!["userBust"], "waist": self.user!["userWaist"], "hip": self.user!["userHip"], "height": self.user!["userHeight"], "priceOne": self.priceRange1, "priceTwo":self.priceRange2, "poster":Auth.auth().currentUser?.uid, "id": self.key, "image": metaData, "postType": postType, "color": self.color]
             storageRef.document().setData(gown)
         }
         print(gown)
+        return gown
     }
     
     func setPopupView()
@@ -255,30 +261,6 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
        self.detailPopUpTitle.text = self.titleTxtField.text
        self.detailPopUpPrice.text = self.priceTxtField.text
        self.detailPopUpDescription.text! = self.descriptionTextView.text
-    }
-    
-    func didSetDress(){
-        self.gownDescription = self.descriptionTextView.text!
-        self.dressTitle = self.titleTxtField.text!
-        self.size = ((self.titleTxtField.text as NSString?)?.integerValue)!
-        self.bust = ((self.bustTxtField.text as NSString?)?.integerValue)!
-        self.waist = ((self.waistTxtField.text as NSString?)?.integerValue)!
-        self.hip = ((self.hipTxtField.text as NSString?)?.integerValue)!
-        self.priceRange1 = Int(self.priceTxtField.text!)! //((self.priceTxtField.text as NSString?)?.integerValue)!
-        self.priceRange2 = Int(self.price2TxtField.text!)! // ((self.price2TxtField.text as NSString?)?.integerValue)!
-        
-        
-        var gown: [String: Any?]
-        
-        let postText = "IsoPost"
-        self.postType = postText
-        print(self.postType)
-        
-        gown = ["description": self.description, "title": self.dressTitle, "size": self.size, "bust": self.bust, "waist": self.waist, "hip": self.hip, "priceOne": self.priceRange1, "priceTwo":self.priceRange2, "poster":Auth.auth().currentUser?.displayName]
-        
-        
-        storageRef.document().setData(gown)        
-//        return gown
     }
     
     func addDelegates()
@@ -310,24 +292,32 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         return metaData!
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "toConfirmVC"
-//        {
-//            let nextVC = segue.destination as? PostConfirmVC
-//            nextVC?.image = imageView.image!
-//            nextVC?.key = self.key
-////            self.didSetDress()
-////            nextVC?.data = self.setGownParams(type: self.postType)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if segue.identifier == "toConfirmDetailsVC"
+        {
+            
+            self.gownToBePassed = self.setGownParams(type: self.postType)
+            let nextVC = segue.destination as? GownDetailViewController
+            nextVC?.image = imageView.image!
+            nextVC?.key = self.key
+            nextVC?.price = self.priceRange1
+            nextVC?.price2 = self.priceRange2
+            nextVC?.gownDescription = self.gownDescription
+            nextVC?.gownTitle = self.dressTitle
+            nextVC?.gownData = self.gownToBePassed
+            nextVC?.color = self.color
+            print(nextVC?.color)
+//            self.didSetDress()
+//            nextVC?.data = self.setGownParams(type: self.postType)
 //            self.gown = self.setGownParams(type: self.postType)
 //            if let gown = gown {
 //                let gownModel = GownItems(gownObj: gown)
 //                print("gownModel: \(gownModel)")
 //                nextVC?.gownArray = gownModel.items
-//
 //            }
-//        }
-//    }
+        }
+    }
     
     
     func errorHandles()

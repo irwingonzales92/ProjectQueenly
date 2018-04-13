@@ -17,6 +17,7 @@ class ProfileVC: UIViewController, AddPostVCDelegate
         return wardrobePost.value
     }
     
+    @IBOutlet var makeOfferBtn: RoundedShadowButton!
     @IBOutlet var addBtn: UIButton!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var backBtn: UIButton!
@@ -123,6 +124,10 @@ class ProfileVC: UIViewController, AddPostVCDelegate
     {
         self.collectionView.delegate = self as! UICollectionViewDelegate
         self.collectionView.dataSource = self as! UICollectionViewDataSource
+    }
+    @IBAction func makeOfferOnBtnPressed(_ sender: Any)
+    {
+        
     }
     
     func pullUserProfileDress()
@@ -257,7 +262,8 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate
             
             offeredDress.append(self.gown)
             
-            dressStorageRef.document(dressId).setValue(offeringArray, forKeyPath: "isooffers")
+//            dressStorageRef.document(dressId).setValue(offeringArray, forKeyPath: "isooffers")
+//            dressStorageRef.whereField(<#T##field: String##String#>, isEqualTo: <#T##Any#>)
         }
         
         NotificationCenter.default.post(name: WARDROBE_OFFER, object: nil, userInfo: self.gown)

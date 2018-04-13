@@ -86,10 +86,15 @@ class AddPostVC: UIViewController {
     var bust = Int()
     var hip = Int()
     var image = UIImage()
+    var imageData = Data()
     var postType = String()
+    
+    var authUser = Auth.auth().currentUser
     
     var gown: [String:Any?]?
     var user: [String:Any?]?
+    
+    var gownToBePassed = [String:Any]()
     
     var aSender: RoundedShadowButton?
 
@@ -148,7 +153,7 @@ class AddPostVC: UIViewController {
     {
         self.addConditionOnButtonPressed()
 
-//        self.checkButtonTag(sender: self.addColorBtn)
+        self.checkButtonTag(sender: self.addColorBtn)
     }
     
     @IBAction func addMeasurementsOnBtnPressed(_ sender: Any)
@@ -163,8 +168,9 @@ class AddPostVC: UIViewController {
     
     @IBAction func submitBtnPressed(_ sender: Any)
     {
-        self.setGownParams(type: self.postType)
-        self.checkDetailsOnBtnPressed()
+//        self.setGownParams(type: self.postType)
+//        self.checkDetailsOnBtnPressed()
+        performSegue(withIdentifier: "toConfirmDetailsVC", sender: nil)
     }
     
     @IBAction func detailPopupBtnPressed(_ sender: Any)

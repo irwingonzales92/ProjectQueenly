@@ -42,7 +42,6 @@ class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
     var userEmail = String()
     var userPassword = String()
     var userUsername = String()
-    
     var data = [String:Any]()
     
     override func viewDidLoad() {
@@ -56,10 +55,6 @@ class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlerSelectedImageView)))
         imageView.isUserInteractionEnabled = true
         self.imagePickerController.delegate = self
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-
     }
     
     func transformImageToDataString(dict: [String:Any?])
@@ -68,45 +63,6 @@ class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
 
     }
     
-    func registerUser(withData data: [String: Any])
-    {
-        AuthService.instance.registerUser(withEmail: self.userEmail, Password: self.userPassword, DisplayName: self.userUsername, userCreationComplete: { (completed, error) in
-            
-            if completed
-            {
-                print("It works!")
-                
-                print("User Successfully Signed up")
-                
-            }
-            else
-            {
-                print("Something went wrong")
-                debugPrint(error?.localizedDescription as! String)
-                
-                if error != nil
-                {
-                    if let errorCode = AuthErrorCode(rawValue: error!._code)
-                    {
-                        
-                        switch errorCode
-                        {
-                        case .emailAlreadyInUse:
-                            print("Email is in use")
-                            
-                        case .invalidEmail:
-                            print(ERROR_MSG_INVALID_EMAIL)
-                            
-                        default:
-                            print(ERROR_MSG_UNEXPECTED_ERROR)
-                            print(error as Any)
-                            debugPrint(error)
-                        }
-                    }
-                }
-            }
-        })
-    }
     
     func setUserParams()
     {
@@ -119,19 +75,30 @@ class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
         self.userShilouette = self.shilouetteTextField.text!
         self.userColor = self.favoriteColorTextField.text!
         self.userDeisgner = self.favoriteDesignerTextField.text!
-
         let metaData = UIImagePNGRepresentation(self.userProfileImage)
-
         
+
+
+
         Auth.auth().createUser(withEmail: self.userEmail, password: self.userPassword) { (user, err) in
-            guard user != nil else {
+            if err == nil
+            {
                 
                 let userData = ["provider": user?.providerID,"email":self.userEmail, "username":self.userUsername, "uid":user?.uid,  "userSize": self.userSize, "userHeight": self.userHeight, "userWaist": self.userWaist, "userBust": self.userBust, "userHip":self.userHip, "userShilouette": self.userShilouette, "userColor": self.userColor, "favoriteDesigner": self.userDeisgner, "favoriteColor": self.userColor, "userImage": metaData, "onboarded":true] as [String : Any]
-                user?.setValuesForKeys(userData)
-                return
+//                self.userUsername = (user?.displayName)!
+                userRef.document().setData(userData)
+            }
+            else
+            {
+                print("Onboarding Error: \(err?.localizedDescription)")
+                let alert = UIAlertController(title: "There was a problem!", message: "There was an errof: \(err)", preferredStyle: .alert)
+
+                let cancel = UIAlertAction(title: "Got it", style: .cancel, handler: nil)
+                alert.addAction(cancel)
+                self.present(alert, animated: true, completion: nil)
             }
         }
-        
+
 //        userRef.document((Auth.auth().currentUser?.uid)!).setData(userData, options: SetOptions.merge())
 
     }
@@ -154,8 +121,7 @@ class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
     @IBAction func buildProfileBtnPressed(_ sender: Any)
     {
         self.setUserParams()
-//        self.registerUser(withData: self.data)
-//        UserDefaults.standard.set(self.usernameTxtField.text, forKey: "name")
+
         self.performSegue(withIdentifier: "toOnboardingVCFiveSegue", sender: nil)
     }
     
@@ -175,20 +141,4 @@ class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
         return true
     }
     
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0{
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y != 0{
-//                self.view.frame.origin.y += keyboardSize.height
-//            }
-//        }
-//    }
-
 }

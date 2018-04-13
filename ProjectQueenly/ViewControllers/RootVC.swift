@@ -242,11 +242,13 @@ class RootVC: UIViewController, AddPostVCDelegate
     
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
-        if segue.identifier == "toDetailVC"
+        if segue.identifier == "didCheckPostSegue"
         {
-            let nextVC = segue.destination as? PostDetailVC
+            let nextVC = segue.destination as? GownDetailViewController
 //            nextVC?.recievedGown = self.gown
-            nextVC?.gown = self.gownObj
+            nextVC?.gownData = self.gownObj
+            
+            
         }
         else
         {
