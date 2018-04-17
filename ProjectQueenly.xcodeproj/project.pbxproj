@@ -27,7 +27,6 @@
 		57513FAD2069BDD100773DFB /* WebViewContent.html in Resources */ = {isa = PBXBuildFile; fileRef = 57513FAC2069BDD000773DFB /* WebViewContent.html */; };
 		57513FB12069C6CD00773DFB /* RoundedBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57513FB02069C6CD00773DFB /* RoundedBlurView.swift */; };
 		575284821FB6CE9400599963 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 575284811FB6CE9400599963 /* GoogleService-Info.plist */; };
-		575284841FB8F31D00599963 /* PostConfirmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575284831FB8F31D00599963 /* PostConfirmVC.swift */; };
 		57630E23204E84AF00A68F63 /* RootVCHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57630E22204E84AF00A68F63 /* RootVCHandlers.swift */; };
 		576A9B3C1FF8FBB500FE44E0 /* BackendStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A9B3B1FF8FBB500FE44E0 /* BackendStuff.swift */; };
 		576B782A206597510051A473 /* GownDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576B7829206597510051A473 /* GownDataTableViewController.swift */; };
@@ -62,7 +61,6 @@
 		5797F0371F8C846C00906E4C /* CenterVCDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5797F0361F8C846C00906E4C /* CenterVCDelegate.swift */; };
 		5797F0391F8C897200906E4C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5797F0381F8C897200906E4C /* AuthService.swift */; };
 		5797F03B1F8C8FFC00906E4C /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5797F03A1F8C8FFC00906E4C /* UIViewExt.swift */; };
-		57A48A441F9A860900C7E654 /* PostDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A48A431F9A860900C7E654 /* PostDetailVC.swift */; };
 		57A48A4A1F9BA42C00C7E654 /* Dresses.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57A48A491F9BA42B00C7E654 /* Dresses.xcassets */; };
 		57A48A4C1F9BA51100C7E654 /* Dress.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A48A4B1F9BA51100C7E654 /* Dress.plist */; };
 		57B9F83A207B47C600F4D120 /* FAQVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57B9F839207B47C500F4D120 /* FAQVC.swift */; };
@@ -113,7 +111,6 @@
 		57513FB02069C6CD00773DFB /* RoundedBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBlurView.swift; sourceTree = "<group>"; };
 		5752847F1FB687FF00599963 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		575284811FB6CE9400599963 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		575284831FB8F31D00599963 /* PostConfirmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostConfirmVC.swift; sourceTree = "<group>"; };
 		57630E22204E84AF00A68F63 /* RootVCHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCHandlers.swift; sourceTree = "<group>"; };
 		576A9B3B1FF8FBB500FE44E0 /* BackendStuff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendStuff.swift; sourceTree = "<group>"; };
 		576B7829206597510051A473 /* GownDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownDataTableViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +145,6 @@
 		5797F0361F8C846C00906E4C /* CenterVCDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterVCDelegate.swift; sourceTree = "<group>"; };
 		5797F0381F8C897200906E4C /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		5797F03A1F8C8FFC00906E4C /* UIViewExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
-		57A48A431F9A860900C7E654 /* PostDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PostDetailVC.swift; path = ../../PostDetailVC.swift; sourceTree = "<group>"; };
 		57A48A491F9BA42B00C7E654 /* Dresses.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Dresses.xcassets; sourceTree = "<group>"; };
 		57A48A4B1F9BA51100C7E654 /* Dress.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dress.plist; sourceTree = "<group>"; };
 		57B9F839207B47C500F4D120 /* FAQVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQVC.swift; sourceTree = "<group>"; };
@@ -328,8 +324,6 @@
 				5797F0191F8A09FE00906E4C /* LoginVC.swift */,
 				57F97CCA1F7DDFEC00D71826 /* RootVC.swift */,
 				5797F0281F8AF75D00906E4C /* AddPostVC.swift */,
-				575284831FB8F31D00599963 /* PostConfirmVC.swift */,
-				57A48A431F9A860900C7E654 /* PostDetailVC.swift */,
 				572D1B3720800D400026D257 /* GownDetailViewController.swift */,
 				5797F0301F8B41C800906E4C /* ProfileVC.swift */,
 				5797F0321F8B41EB00906E4C /* OrderSummaryVC.swift */,
@@ -654,7 +648,6 @@
 				57E74794203670F200A750C9 /* MyAPIClient.swift in Sources */,
 				57E74796203670F200A750C9 /* CheckoutRowView.swift in Sources */,
 				576B783520678ECB0051A473 /* GownColorTableViewCell.swift in Sources */,
-				57A48A441F9A860900C7E654 /* PostDetailVC.swift in Sources */,
 				57E74792203670F200A750C9 /* Buttons.swift in Sources */,
 				5793110D1F94A40C00418136 /* ProjectQueenly.xcdatamodeld in Sources */,
 				578B34F8202BE7B600B2A14B /* OnboardingOneVC.swift in Sources */,
@@ -673,7 +666,6 @@
 				5797F0311F8B41C800906E4C /* ProfileVC.swift in Sources */,
 				572D1B30208007DE0026D257 /* ColorTVCell.swift in Sources */,
 				57E747892030324300A750C9 /* RoundedShadowButton.swift in Sources */,
-				575284841FB8F31D00599963 /* PostConfirmVC.swift in Sources */,
 				572D1B3820800D400026D257 /* GownDetailViewController.swift in Sources */,
 				5771BFAF20526AD000FC89F3 /* RoundedImageView.swift in Sources */,
 				57B9F840207B8DEA00F4D120 /* MeasurementsCell.swift in Sources */,

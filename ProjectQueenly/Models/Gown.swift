@@ -39,13 +39,6 @@ enum ModelDataValue: String
     case postType = "PostType"
 }
 
-struct GownColor: GownElement {
-    var type: GownElementType = .color
-}
-
-struct GownImage: GownElement {
-    var type: GownElementType = .description
-}
 
 struct Gown {
     var title: String?
@@ -70,11 +63,7 @@ struct Gown {
 //    var timeStampEnd: Int?
 //
 //    var offerCount: Int?
-    
-    func toElementArray() -> [GownElement] {
-        var elements = [GownElement]()
-        return elements
-    }
+
     
     enum PostType: String, StringRawRepresentable
     {
@@ -86,40 +75,6 @@ struct Gown {
         case unused, excellent, good, okay, wearingdown, damaged
     }
     
-    
-    
-//    func setCondition(input: DressCondition)
-//    {
-//        switch input
-//        {
-//            case "unused":
-//                    .unused
-//                break
-//
-//            case .excellent:
-//                DressCondition.excellent
-//                break
-//
-//            case .good:
-//                DressCondition.good
-//                break
-//
-//            case .okay:
-//                DressCondition.okay
-//                break
-//
-//            case .wearingdown:
-//                DressCondition.wearingdown
-//                break
-//
-//            case .damaged:
-//                DressCondition.good
-//                break
-//        }
-//    }
-    
-//    var postType: PostType
-
 }
 
 extension Gown: FirestoreModel {

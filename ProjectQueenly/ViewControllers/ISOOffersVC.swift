@@ -10,12 +10,12 @@ import UIKit
 import Firebase
 import AZEmptyState
 
-class ISOOffersVC: UIViewController, PostDetailVCDelegate
+class ISOOffersVC: UIViewController
 {
-    func didSetPostType() -> MakingOffer {
-        var status = MakingOffer.offerAccepting
-        return status
-    }
+//    func didSetPostType() -> MakingOffer {
+//        var status = MakingOffer.offerAccepting
+//        return status
+//    }
     
     @IBOutlet var tableView: UITableView!
     
@@ -146,11 +146,11 @@ class ISOOffersVC: UIViewController, PostDetailVCDelegate
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        if segue.identifier == "fromOfferToDetailSegue"
-        {
-            var nextVC = segue.destination as? PostDetailVC
-            nextVC?.recievedGown = self.dress
-        }
+//        if segue.identifier == "fromOfferToDetailSegue"
+//        {
+//            var nextVC = segue.destination as? PostDetailVC
+//            nextVC?.recievedGown = self.dress
+//        }
     }
  
     
@@ -201,7 +201,6 @@ class ISOOffersVC: UIViewController, PostDetailVCDelegate
 //        self.gown = gowns[indexPath.row]
         self.performSegue(withIdentifier: "fromOfferToDetailSegue", sender: self.cell)
         
-        NotificationCenter.default.post(name: FROM_ISOOFFER_VC, object: nil)
     }
 }
 

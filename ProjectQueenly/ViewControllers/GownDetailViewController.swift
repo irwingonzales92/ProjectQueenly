@@ -78,7 +78,6 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         storageRef.document().setData(self.gownData)
         NotificationCenter.default.post(name: ISO_POST, object: nil)
         self.dismiss(animated: true, completion: nil)
-        
     }
 
     
@@ -96,21 +95,16 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         {
         case 0:
             cell1.gownImageView?.image = self.image
-//            cell1.gownImageView?.image = self.gownData[]
             return cell1
         case 1:
-//            cell2.titleLabel?.text = self.gownTitle
             cell2.titleLabel?.text = self.gownData["title"] as! String
             return cell2
         case 2:
             cell3.priceLabel.text = String(self.price)
             cell3.posterLabel.text = String(self.price2)
-//            cell3.priceLabel.text = self.gownData["priceOne"] as! String
-//            cell3.posterLabel.text = self.gownData["priceTwo"] as! String
             // amitiitm2009@gmail.com
             return cell3
         case 3:
-//            cell4.colorLabel.text = self.color
             cell4.colorLabel.text = self.gownData["color"] as! String
             return cell4
         case 4:
@@ -150,6 +144,39 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    /////////////////////////
+    /////////////////////////
+    // Did make offer func //
+    /////////////////////////
+    /////////////////////////
+    
+//    func didMakeOffer()
+//    {
+//        let window = UIWindow(frame: UIScreen.main.bounds)
+//        let settingsVC = SettingsViewController()
+//
+//        if self.makingOfferValue.hashValue == 0
+//        {
+//            self.offerBtn.setTitle("Make Offer", for: .normal)
+//            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//            let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC") as? ProfileVC
+//            present(profileVC!, animated: true, completion: nil)
+//
+//            NotificationCenter.default.post(name: FROM_POST_DETAIL_VC, object: nil)
+//        }
+//        else
+//        {
+//            self.offerBtn.setTitle("Accept Offer", for: .normal)
+//
+//
+//            let checkoutViewController = CheckoutViewController(product: gown!["title"] as! String,
+//                                                                price: gown!["price"] as! Int,
+//                                                                settings: settingsVC.settings) as CheckoutViewController
+//            self.navigationController?.pushViewController(checkoutViewController, animated: true)
+//        }
+//
+//    }
+    
     
     /*
     // MARK: - Navigation
@@ -162,3 +189,57 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     */
 
 }
+
+/////////////////////////
+/////////////////////////
+// MVVM IMPLEMENTATION //
+/////////////////////////
+/////////////////////////
+
+//extension PostConfirmVC: UITableViewDelegate, UITableViewDataSource
+//{
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if (gownArray != nil) {
+//            return gownArray!.count
+//        }
+//        return 0
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let userDisplayNameCell = tableView.dequeueReusableCell(withIdentifier: "userDisplayNameCell", for: indexPath) as! UserDisplayNameCell
+//        let gownPriceCell = tableView.dequeueReusableCell(withIdentifier: "gownPriceCell", for: indexPath) as! GownPriceTableViewCell
+//        let gownColorCell = tableView.dequeueReusableCell(withIdentifier: "gownColorCell", for: indexPath) as! GownColorTableViewCell
+//        let gownDescriptionCell = tableView.dequeueReusableCell(withIdentifier: "gownDescriptionCell", for: indexPath) as! GownDescriptionTableViewCell
+//
+//        if (gownArray != nil) {
+//            let gownItem = self.gownArray![indexPath.row]
+//
+//            switch gownItem.type
+//            {
+//            case .displayName:
+//                userDisplayNameCell.configure(with: gownItem as! GownDataDisplayItem)
+//                return userDisplayNameCell
+//            case .price:
+//                gownPriceCell.configure(with: gownItem as! GownDataPriceItem)
+//                return gownPriceCell
+//            case .color:
+//
+//                gownColorCell.configure(with: gownItem as! GownDataColorItem)
+//                return gownColorCell
+//
+//            case .description:
+//                gownDescriptionCell.configure(with: gownItem as! GownDataDescriptionItem)
+//                return gownDescriptionCell
+//            }
+//        }
+//
+//        return UITableViewCell()
+//
+//    }
+//
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//}
+
