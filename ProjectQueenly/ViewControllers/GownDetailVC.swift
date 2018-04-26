@@ -13,11 +13,22 @@ enum DetailType
     case iso, wardrobe
 }
 
-class GownDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NextBtnTVCellDelegate {
+enum UserAction
+{
+    case viewingOffer, makingOffer, acceptingOffer, confirmingPost, viewingPost, makingPost
+}
+
+protocol GownDetailVCDelegate
+{
+    func didSetPostType() -> UserAction
+}
+
+class GownDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NextBtnTVCellDelegate {
     
     var gownData = [String:Any]()
     
     var postType = DetailType.iso
+    var userAction = UserAction.viewingOffer
     
     var imageData = Data()
     var image = UIImage()
@@ -41,6 +52,10 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        self.notificationObservers()
+        
+
 //        self.nextBtnCell.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -60,6 +75,34 @@ class GownDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBAction func didExitViewOnBtnPressed(_ sender: Any)
     {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func notificationObservers()
+    {
+        NotificationCenter.default.addObserver(forName: USER_POSTING_ISO, object: nil, queue: OperationQueue.main) { (note) in
+            self.userAction = .makingPost
+            print(" posting Iso Action \(self.userAction)")
+        }
+        
+        NotificationCenter.default.addObserver(forName: USER_CONFIRMING_POST, object: nil, queue: OperationQueue.main) { (note) in
+            self.userAction = .confirmingPost
+            print(" confirming Iso Action \(self.userAction)")
+        }
+        
+        NotificationCenter.default.addObserver(forName: USER_VIEWING_OFFER, object: nil, queue: OperationQueue.main) { (note) in
+            self.userAction = .confirmingPost
+            print(" viewing offer Action \(self.userAction)")
+        }
+        
+        NotificationCenter.default.addObserver(forName: USER_MAKING_OFFER, object: nil, queue: OperationQueue.main) { (note) in
+            self.userAction = .confirmingPost
+            print(" making offer Action \(self.userAction)")
+        }
+        
+        NotificationCenter.default.addObserver(forName: USER_ACCEPTING_OFFER, object: nil, queue: OperationQueue.main) { (note) in
+            self.userAction = .confirmingPost
+            print(" accepting offer Action \(self.userAction)")
+        }
     }
 
     func transformImageToDataString(image:UIImage) -> Data
