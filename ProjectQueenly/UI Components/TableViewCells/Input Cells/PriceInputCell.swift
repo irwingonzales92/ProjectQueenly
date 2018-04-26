@@ -10,6 +10,10 @@ import UIKit
 
 class PriceInputCell: UITableViewCell {
 
+    @IBOutlet var priceRangeTextField1: UITextField!
+    @IBOutlet var priceRangeLabel2: UITextField!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

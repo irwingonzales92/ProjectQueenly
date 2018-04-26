@@ -176,6 +176,15 @@ class AddPostVC: UIViewController {
     }
     
     func setWardrobeType() {
+//        self.state = (delegate?.didSetPostType())!
+//
+//        switch self.state
+//        {
+//        case .ISO:
+//            self.addMeasurementsBtn.isHidden = true
+//        case .wardrobe:
+//            self.addMeasurementsBtn.isHidden = false
+//        }
         self.state = (delegate?.didSetPostType())!
         
         switch self.state

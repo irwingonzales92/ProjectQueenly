@@ -63,6 +63,57 @@ class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
 
     }
     
+    func checkTextField()
+    {
+//        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let textField = SkyFloatingLabelTextField()
+        let alertController = UIAlertController()
+        
+//        switch textField.text? = ""
+//        {
+//        case self.sizeTextField:
+//            alertController.title = "missing size"
+//
+//        case self.heightTextField:
+//            alertController.title = "missing height"
+//
+//        case self.bustTextField:
+//            alertController.title = "missing bust"
+//
+//        case self.waistTextField:
+//            alertController.title = "missing waist"
+//
+//        case self.hipTextField:
+//            alertController.title = "missing hip"
+//
+//        case self.shilouetteTextField:
+//            alertController.title = "missing shilouette"
+//
+//        case self.favoriteColorTextField:
+//            alertController.title = "missing color"
+//
+//        case self.favoriteDesignerTextField:
+//            alertController.title = "missing designer"
+//
+//
+////        case true:
+////            alertController.title = "missing info"
+////        case false:
+////            print("everything is good!")
+////            self.setUserParams()
+//        case .none:
+//            print("everything is good!")
+//            self.setUserParams()
+//
+//        case .some(_):
+//            alertController.title = "missing info"
+//        }
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+
+    }
     
     func setUserParams()
     {
@@ -120,7 +171,8 @@ class OnboardingThreeVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func buildProfileBtnPressed(_ sender: Any)
     {
-        self.setUserParams()
+//        self.setUserParams()
+        self.checkTextField()
 
         self.performSegue(withIdentifier: "toOnboardingVCFiveSegue", sender: nil)
     }

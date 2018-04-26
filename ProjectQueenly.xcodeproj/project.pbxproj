@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		570AB4D41FB0F8D300DAB147 /* Girl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570AB4D31FB0F8D300DAB147 /* Girl.swift */; };
+		5711E3EE2089C168003097DC /* AddISOVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5711E3ED2089C168003097DC /* AddISOVC.swift */; };
 		5712C6C3206C5775002DFF34 /* AppFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5712C6C2206C5775002DFF34 /* AppFunctions.swift */; };
 		57296C611FFC3C1700C96C6A /* WardrobeCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57296C601FFC3C1700C96C6A /* WardrobeCVC.swift */; };
 		572B4232203E1B2F001FB708 /* OnboardingImageHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572B4231203E1B2F001FB708 /* OnboardingImageHandlers.swift */; };
@@ -19,10 +20,15 @@
 		572D1B32208007EC0026D257 /* GownDescriptionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572D1B31208007EC0026D257 /* GownDescriptionTVCell.swift */; };
 		572D1B34208008050026D257 /* GownMeasurementBtnTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572D1B33208008050026D257 /* GownMeasurementBtnTVCell.swift */; };
 		572D1B36208008310026D257 /* NextBtnTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572D1B35208008310026D257 /* NextBtnTVCell.swift */; };
-		572D1B3820800D400026D257 /* GownDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572D1B3720800D400026D257 /* GownDetailViewController.swift */; };
+		572D1B3820800D400026D257 /* GownDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572D1B3720800D400026D257 /* GownDetailVC.swift */; };
 		5734939D1FB445BE0039853E /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734939C1FB445BE0039853E /* Alertable.swift */; };
 		5734939F1FB5F95D0039853E /* AddPostVCHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5734939E1FB5F95D0039853E /* AddPostVCHandlers.swift */; };
 		5749522E206B5074001A966C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5749522D206B5074001A966C /* CustomTableViewCell.swift */; };
+		57509263208FD3F60088DC9A /* TitleInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57509262208FD3F60088DC9A /* TitleInputCell.swift */; };
+		57509267208FD60A0088DC9A /* ImageInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57509266208FD60A0088DC9A /* ImageInputCell.swift */; };
+		57509269208FD6250088DC9A /* ColorInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57509268208FD6250088DC9A /* ColorInputCell.swift */; };
+		5750926B208FD6A00088DC9A /* PriceInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750926A208FD6A00088DC9A /* PriceInputCell.swift */; };
+		5750926D208FD72F0088DC9A /* DescriptionInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750926C208FD72F0088DC9A /* DescriptionInputCell.swift */; };
 		57513FAB2069BC1A00773DFB /* queenlysplash3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57513FAA2069BC1700773DFB /* queenlysplash3.gif */; };
 		57513FAD2069BDD100773DFB /* WebViewContent.html in Resources */ = {isa = PBXBuildFile; fileRef = 57513FAC2069BDD000773DFB /* WebViewContent.html */; };
 		57513FB12069C6CD00773DFB /* RoundedBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57513FB02069C6CD00773DFB /* RoundedBlurView.swift */; };
@@ -91,6 +97,7 @@
 /* Begin PBXFileReference section */
 		11FD097EC2888DA17E7E1179 /* Pods_ProjectQueenly.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectQueenly.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		570AB4D31FB0F8D300DAB147 /* Girl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Girl.swift; sourceTree = "<group>"; };
+		5711E3ED2089C168003097DC /* AddISOVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddISOVC.swift; sourceTree = "<group>"; };
 		5712C6C2206C5775002DFF34 /* AppFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFunctions.swift; sourceTree = "<group>"; };
 		57296C601FFC3C1700C96C6A /* WardrobeCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardrobeCVC.swift; sourceTree = "<group>"; };
 		572B4231203E1B2F001FB708 /* OnboardingImageHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingImageHandlers.swift; sourceTree = "<group>"; };
@@ -102,10 +109,15 @@
 		572D1B31208007EC0026D257 /* GownDescriptionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownDescriptionTVCell.swift; sourceTree = "<group>"; };
 		572D1B33208008050026D257 /* GownMeasurementBtnTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownMeasurementBtnTVCell.swift; sourceTree = "<group>"; };
 		572D1B35208008310026D257 /* NextBtnTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextBtnTVCell.swift; sourceTree = "<group>"; };
-		572D1B3720800D400026D257 /* GownDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownDetailViewController.swift; sourceTree = "<group>"; };
+		572D1B3720800D400026D257 /* GownDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GownDetailVC.swift; sourceTree = "<group>"; };
 		5734939C1FB445BE0039853E /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		5734939E1FB5F95D0039853E /* AddPostVCHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostVCHandlers.swift; sourceTree = "<group>"; };
 		5749522D206B5074001A966C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		57509262208FD3F60088DC9A /* TitleInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleInputCell.swift; sourceTree = "<group>"; };
+		57509266208FD60A0088DC9A /* ImageInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInputCell.swift; sourceTree = "<group>"; };
+		57509268208FD6250088DC9A /* ColorInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInputCell.swift; sourceTree = "<group>"; };
+		5750926A208FD6A00088DC9A /* PriceInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceInputCell.swift; sourceTree = "<group>"; };
+		5750926C208FD72F0088DC9A /* DescriptionInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionInputCell.swift; sourceTree = "<group>"; };
 		57513FAA2069BC1700773DFB /* queenlysplash3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = queenlysplash3.gif; sourceTree = "<group>"; };
 		57513FAC2069BDD000773DFB /* WebViewContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WebViewContent.html; sourceTree = "<group>"; };
 		57513FB02069C6CD00773DFB /* RoundedBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBlurView.swift; sourceTree = "<group>"; };
@@ -257,6 +269,43 @@
 			path = Plists;
 			sourceTree = "<group>";
 		};
+		57509264208FD4F80088DC9A /* MVVM Cells */ = {
+			isa = PBXGroup;
+			children = (
+				576B783020678E820051A473 /* UserDisplayNameCell.swift */,
+				576B783220678EA70051A473 /* GownPriceTableViewCell.swift */,
+				576B783420678ECB0051A473 /* GownColorTableViewCell.swift */,
+				576B783620678EE00051A473 /* GownDescriptionTableViewCell.swift */,
+				576B783820678FF60051A473 /* GownMeasurementsTableViewCell.swift */,
+			);
+			path = "MVVM Cells";
+			sourceTree = "<group>";
+		};
+		57509265208FD57C0088DC9A /* Display Cells */ = {
+			isa = PBXGroup;
+			children = (
+				57B9F83F207B8DEA00F4D120 /* MeasurementsCell.swift */,
+				572D1B29207FE8580026D257 /* GownImageTableViewCell.swift */,
+				572D1B2B208007330026D257 /* GownTitleTVCell.swift */,
+				572D1B2D208007CD0026D257 /* GownPriceAndPosterTvCell.swift */,
+				572D1B2F208007DE0026D257 /* ColorTVCell.swift */,
+				572D1B31208007EC0026D257 /* GownDescriptionTVCell.swift */,
+			);
+			path = "Display Cells";
+			sourceTree = "<group>";
+		};
+		5750926E208FD77A0088DC9A /* Input Cells */ = {
+			isa = PBXGroup;
+			children = (
+				57509262208FD3F60088DC9A /* TitleInputCell.swift */,
+				57509266208FD60A0088DC9A /* ImageInputCell.swift */,
+				57509268208FD6250088DC9A /* ColorInputCell.swift */,
+				5750926A208FD6A00088DC9A /* PriceInputCell.swift */,
+				5750926C208FD72F0088DC9A /* DescriptionInputCell.swift */,
+			);
+			path = "Input Cells";
+			sourceTree = "<group>";
+		};
 		57522DC11FE6FEC000EFCC4C /* NonViewVCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,17 +318,9 @@
 		576B782F20678E330051A473 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				576B783020678E820051A473 /* UserDisplayNameCell.swift */,
-				576B783220678EA70051A473 /* GownPriceTableViewCell.swift */,
-				576B783420678ECB0051A473 /* GownColorTableViewCell.swift */,
-				576B783620678EE00051A473 /* GownDescriptionTableViewCell.swift */,
-				576B783820678FF60051A473 /* GownMeasurementsTableViewCell.swift */,
-				57B9F83F207B8DEA00F4D120 /* MeasurementsCell.swift */,
-				572D1B29207FE8580026D257 /* GownImageTableViewCell.swift */,
-				572D1B2B208007330026D257 /* GownTitleTVCell.swift */,
-				572D1B2D208007CD0026D257 /* GownPriceAndPosterTvCell.swift */,
-				572D1B2F208007DE0026D257 /* ColorTVCell.swift */,
-				572D1B31208007EC0026D257 /* GownDescriptionTVCell.swift */,
+				57509264208FD4F80088DC9A /* MVVM Cells */,
+				57509265208FD57C0088DC9A /* Display Cells */,
+				5750926E208FD77A0088DC9A /* Input Cells */,
 				572D1B33208008050026D257 /* GownMeasurementBtnTVCell.swift */,
 				572D1B35208008310026D257 /* NextBtnTVCell.swift */,
 			);
@@ -324,7 +365,8 @@
 				5797F0191F8A09FE00906E4C /* LoginVC.swift */,
 				57F97CCA1F7DDFEC00D71826 /* RootVC.swift */,
 				5797F0281F8AF75D00906E4C /* AddPostVC.swift */,
-				572D1B3720800D400026D257 /* GownDetailViewController.swift */,
+				5711E3ED2089C168003097DC /* AddISOVC.swift */,
+				572D1B3720800D400026D257 /* GownDetailVC.swift */,
 				5797F0301F8B41C800906E4C /* ProfileVC.swift */,
 				5797F0321F8B41EB00906E4C /* OrderSummaryVC.swift */,
 				57750136200F2D4400FCCCB0 /* ISOOffersVC.swift */,
@@ -634,6 +676,7 @@
 				57B9F83A207B47C600F4D120 /* FAQVC.swift in Sources */,
 				576B782E206768440051A473 /* LoginVCHandlers.swift in Sources */,
 				577501392012900C00FCCCB0 /* GownTVC.swift in Sources */,
+				5750926B208FD6A00088DC9A /* PriceInputCell.swift in Sources */,
 				5797F0331F8B41EB00906E4C /* OrderSummaryVC.swift in Sources */,
 				576B783720678EE00051A473 /* GownDescriptionTableViewCell.swift in Sources */,
 				572D1B34208008050026D257 /* GownMeasurementBtnTVCell.swift in Sources */,
@@ -653,6 +696,7 @@
 				578B34F8202BE7B600B2A14B /* OnboardingOneVC.swift in Sources */,
 				576B783120678E820051A473 /* UserDisplayNameCell.swift in Sources */,
 				57E74793203670F200A750C9 /* PaymentContextFooterView.swift in Sources */,
+				57509267208FD60A0088DC9A /* ImageInputCell.swift in Sources */,
 				57630E23204E84AF00A68F63 /* RootVCHandlers.swift in Sources */,
 				5712C6C3206C5775002DFF34 /* AppFunctions.swift in Sources */,
 				57F97CC91F7DDFEC00D71826 /* AppDelegate.swift in Sources */,
@@ -666,10 +710,11 @@
 				5797F0311F8B41C800906E4C /* ProfileVC.swift in Sources */,
 				572D1B30208007DE0026D257 /* ColorTVCell.swift in Sources */,
 				57E747892030324300A750C9 /* RoundedShadowButton.swift in Sources */,
-				572D1B3820800D400026D257 /* GownDetailViewController.swift in Sources */,
+				572D1B3820800D400026D257 /* GownDetailVC.swift in Sources */,
 				5771BFAF20526AD000FC89F3 /* RoundedImageView.swift in Sources */,
 				57B9F840207B8DEA00F4D120 /* MeasurementsCell.swift in Sources */,
 				572D1B36208008310026D257 /* NextBtnTVCell.swift in Sources */,
+				5711E3EE2089C168003097DC /* AddISOVC.swift in Sources */,
 				576B783920678FF60051A473 /* GownMeasurementsTableViewCell.swift in Sources */,
 				572D1B2A207FE8580026D257 /* GownImageTableViewCell.swift in Sources */,
 				57E74795203670F200A750C9 /* CheckoutViewController.swift in Sources */,
@@ -678,9 +723,11 @@
 				5797F0391F8C897200906E4C /* AuthService.swift in Sources */,
 				578EAC59204D37BB00506792 /* FirestoreModel.swift in Sources */,
 				576B783320678EA70051A473 /* GownPriceTableViewCell.swift in Sources */,
+				57509263208FD3F60088DC9A /* TitleInputCell.swift in Sources */,
 				57E74798203670F200A750C9 /* SettingsViewController.swift in Sources */,
 				578B34FE202BE90800B2A14B /* OnboardingFourVC.swift in Sources */,
 				57E747882030324300A750C9 /* RoundedShadowView.swift in Sources */,
+				57509269208FD6250088DC9A /* ColorInputCell.swift in Sources */,
 				576B782A206597510051A473 /* GownDataTableViewController.swift in Sources */,
 				57E747852030324300A750C9 /* RoundedCornerTextField.swift in Sources */,
 				57E747872030324300A750C9 /* CircleView.swift in Sources */,
@@ -690,6 +737,7 @@
 				57296C611FFC3C1700C96C6A /* WardrobeCVC.swift in Sources */,
 				5797F01A1F8A09FE00906E4C /* LoginVC.swift in Sources */,
 				57513FB12069C6CD00773DFB /* RoundedBlurView.swift in Sources */,
+				5750926D208FD72F0088DC9A /* DescriptionInputCell.swift in Sources */,
 				576B782C20664D330051A473 /* GownDataTableView.swift in Sources */,
 				578B34FC202BE8B200B2A14B /* OnboardingThreeVC.swift in Sources */,
 			);

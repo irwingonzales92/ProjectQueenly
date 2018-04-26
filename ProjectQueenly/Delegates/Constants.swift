@@ -8,16 +8,19 @@
 
 import Foundation
 
-// Location
-let COORDINATE = "coordinate"
 
 // Storyboard
 let MAIN_STORYBOARD = "Main"
 
 
-//USERS
-let USER_IS_LEADER = "userIsLeader"
-let USER_IS_GUEST = "userIsGuest"
+// USER ACTION SEGUE IDs
+let USER_POSTING_ISO =  NSNotification.Name("POSTING_ISO")
+let USER_CONFIRMING_POST = NSNotification.Name("CONFIRMING_POST")
+let USER_VIEWING_OFFER = NSNotification.Name("VIEWING_OFFER")
+let USER_MAKING_OFFER = NSNotification.Name("MAKING_OFFER")
+let USER_ACCEPTING_OFFER = NSNotification.Name("ACCEPTING_OFFER")
+let USER_VIEWING_POST = NSNotification.Name("VIEWING_POST")
+
 
 //USER STATE
 let USER_IS_LOGGED_IN = Notification.Name.init(rawValue: "UserLoggedIn")
@@ -32,8 +35,6 @@ let ISO_POST = NSNotification.Name("userPostedDressForIso")
 let WARDROBE_POST = NSNotification.Name("userPostedDressForWardrobe")
 let WARDROBE_OFFER = Notification.Name("WardrobeOffered")
 
-//View Stuff
-let VIEW_DRESS_POST = NSNotification.Name("viewDress")
 
 // Cell Identifiers
 let CELL_DISPLAYNAME_ID = "userDisplayNameCell"

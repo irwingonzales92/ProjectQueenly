@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import RSKPlaceholderTextView
 
 class DescriptionInputCell: UITableViewCell {
 
+    @IBOutlet var gownDescriptionTextView: RSKPlaceholderTextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

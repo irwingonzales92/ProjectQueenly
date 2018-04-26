@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if Auth.auth().currentUser == nil
         {
             vc = storyboard.instantiateViewController(withIdentifier: "LoginVC")
-            
+            print(Auth.auth().currentUser)
             AppFunctions.setMainViewController(vc: vc)
             
 
@@ -93,6 +93,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             {
                 // Show onboarding
                 print("Has not onboarded")
+                print("This User Has Not Onboarded:\(Auth.auth().currentUser)")
+
                 vc = storyboard.instantiateViewController(withIdentifier: "OnboardingOneVC")
                 AppFunctions.setMainViewController(vc: vc)
             }
@@ -100,7 +102,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             {
                 // Show main window
                 print("User is logged in")
-               
+                print("This User Has Onboarded:\(Auth.auth().currentUser)")
+
                 AppFunctions.setMainViewController(vc: containerVC)
             }
         }

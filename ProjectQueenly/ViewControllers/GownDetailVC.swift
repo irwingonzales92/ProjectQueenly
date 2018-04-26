@@ -15,7 +15,7 @@ enum DetailType
 
 enum UserAction
 {
-    case viewingOffer, makingOffer, acceptingOffer, confirmingPost, viewingPost, makingPost
+    case viewingOffer, makingOffer, acceptingOffer, confirmingPost, viewingPost
 }
 
 protocol GownDetailVCDelegate
@@ -57,7 +57,6 @@ class GownDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         
 
 //        self.nextBtnCell.delegate = self
-        // Do any additional setup after loading the view.
     }
     
     func unloadDictionary(dict: [String:Any])
@@ -79,32 +78,39 @@ class GownDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     func notificationObservers()
     {
-        NotificationCenter.default.addObserver(forName: USER_POSTING_ISO, object: nil, queue: OperationQueue.main) { (note) in
-            self.userAction = .makingPost
-            print(" posting Iso Action \(self.userAction)")
-        }
         
+        // Notification coming from AddPostVC after clicking call to action
         NotificationCenter.default.addObserver(forName: USER_CONFIRMING_POST, object: nil, queue: OperationQueue.main) { (note) in
             self.userAction = .confirmingPost
             print(" confirming Iso Action \(self.userAction)")
         }
         
+        // Notification coming from ProfileVC after clicking "view" button
         NotificationCenter.default.addObserver(forName: USER_VIEWING_OFFER, object: nil, queue: OperationQueue.main) { (note) in
-            self.userAction = .confirmingPost
+            self.userAction = .viewingOffer
             print(" viewing offer Action \(self.userAction)")
         }
         
+        // Notification coming from THIS VC after clicking call to action when offer is set to "viewing post"
         NotificationCenter.default.addObserver(forName: USER_MAKING_OFFER, object: nil, queue: OperationQueue.main) { (note) in
-            self.userAction = .confirmingPost
+            self.userAction = .makingOffer
             print(" making offer Action \(self.userAction)")
         }
         
+        // Notification coming from THIS VC after clicking call to action when offer is set to "viewing offer"
         NotificationCenter.default.addObserver(forName: USER_ACCEPTING_OFFER, object: nil, queue: OperationQueue.main) { (note) in
-            self.userAction = .confirmingPost
+            self.userAction = .acceptingOffer
             print(" accepting offer Action \(self.userAction)")
+        }
+        
+        // Notification coming from RootVC after clicking post cell
+        NotificationCenter.default.addObserver(forName: USER_VIEWING_POST, object: nil, queue: OperationQueue.main) { (note) in
+            self.userAction = .viewingPost
+            print(" viewing post Action \(self.userAction)")
         }
     }
 
+    // Helper Functions
     func transformImageToDataString(image:UIImage) -> Data
     {
         let metaData = UIImagePNGRepresentation(image)
@@ -112,17 +118,41 @@ class GownDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         return metaData!
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
-    }
-    
+    // Call To Action Btn Delegate Methods
     func didSetGownParams()
     {
         storageRef.document().setData(self.gownData)
         NotificationCenter.default.post(name: ISO_POST, object: nil)
         self.dismiss(animated: true, completion: nil)
     }
-
+    
+    
+    func isAcceptingOffer() {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC")
+        self.present(profileVC, animated: true, completion: nil)
+    }
+    
+    func isMakingOffer() {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC")
+        self.present(profileVC, animated: true, completion: nil)
+    }
+    
+    func isViewingPost() {
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileVC")
+        self.present(profileVC, animated: true, completion: nil)
+    }
+    
+    // TableView Functions
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -186,6 +216,8 @@ class GownDetailVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                 return 45
         }
     }
+    
+    
     
     /////////////////////////
     /////////////////////////

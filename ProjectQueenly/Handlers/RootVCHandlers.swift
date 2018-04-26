@@ -160,14 +160,9 @@ extension RootVC
         
         if segue.identifier == "didCheckPostSegue"
         {
-            let nextVC = segue.destination as? GownDetailViewController
+            let nextVC = segue.destination as? GownDetailVC
             //            nextVC?.recievedGown = self.gown
             nextVC?.gownData = self.gownObj
-        }
-        else
-        {
-            NotificationCenter.default.post(name: VIEW_DRESS_POST, object: nil)
-            print("View Notification Posted")
         }
     }
     
@@ -217,6 +212,7 @@ extension RootVC: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         self.gownObj = gownArray[indexPath.row]
+        NotificationCenter.default.post(name: USER_VIEWING_POST, object: nil)
         self.performSegue(withIdentifier: "didCheckPostSegue", sender: self.cell)
     }
 }
@@ -236,5 +232,16 @@ extension RootVC: TRMosaicLayoutDelegate
         return 150
     }
 }
+
+extension RootVC: AddISODelegate
+{
+    func didSetPostType() -> PostType {
+        return self.wardrobeType 
+    }
+    
+    
+}
+
+
 
 

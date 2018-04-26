@@ -38,6 +38,8 @@ class RootVC: UIViewController, AddPostVCDelegate
         return postType.asObservable()
     }
     
+    let wardrobeType: PostType = .ISO
+    
     // DB Refrence & Delegate
     let appDelegate = AppDelegate.getAppDelegate()
     var delegate: CenterVCDelegate?
@@ -94,8 +96,21 @@ class RootVC: UIViewController, AddPostVCDelegate
     
     @IBAction func postButtonPressed(_ sender: Any)
     {
+//        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//        let postVC = storyboard.instantiateViewController(withIdentifier: "AddPostVC") as? AddPostVC
+//
+//        postType.value = .ISO
+//        print("Post Type Value: \(postType.value)")
+//
+//        postVC?.delegate = self
+//
+//
+//
+////        print(FROM_ROOT_VC)
+//        present(postVC!, animated: true, completion: nil)
+        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let postVC = storyboard.instantiateViewController(withIdentifier: "AddPostVC") as? AddPostVC
+        let postVC = storyboard.instantiateViewController(withIdentifier: "AddISOVC") as? AddISOVC
         
         postType.value = .ISO
         print("Post Type Value: \(postType.value)")
@@ -104,7 +119,7 @@ class RootVC: UIViewController, AddPostVCDelegate
         
         
         
-        print(FROM_ROOT_VC)
+        //        print(FROM_ROOT_VC)
         present(postVC!, animated: true, completion: nil)
 
     }

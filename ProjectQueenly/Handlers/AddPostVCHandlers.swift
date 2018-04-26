@@ -298,7 +298,7 @@ extension AddPostVC: UIImagePickerControllerDelegate, UINavigationControllerDele
         {
             
             self.gownToBePassed = self.setGownParams(type: self.postType)
-            let nextVC = segue.destination as? GownDetailViewController
+            let nextVC = segue.destination as? GownDetailVC
             nextVC?.image = imageView.image!
             nextVC?.key = self.key
             nextVC?.price = self.priceRange1

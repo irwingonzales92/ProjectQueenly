@@ -10,6 +10,8 @@ import UIKit
 
 class ColorInputCell: UITableViewCell {
 
+    @IBOutlet var colorTextField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -35,6 +35,7 @@ class ProfileVC: UIViewController, AddPostVCDelegate
     
     var gowns = [[String:Any]]()
     var gown = [String: Any?]()
+    var currentUser = [String: Any?]()
     var recievedGown = [String:Any?]()
     var offeringArray: [[String: Any]]?
     
@@ -62,7 +63,7 @@ class ProfileVC: UIViewController, AddPostVCDelegate
     
     
     var dressStorageRef = Firestore.firestore().collection("Dress")
-    var userRef = Firestore.firestore().collection("Users").document((Auth.auth().currentUser?.uid)!)
+    var userRef = Firestore.firestore().collection("Users")
     
     var user = Auth.auth().currentUser
     
@@ -71,11 +72,45 @@ class ProfileVC: UIViewController, AddPostVCDelegate
         super.viewDidLoad()
         
         self.updateUI()
+        
     }
     
     func updateUI()
     {
+        
+//        var dataArray = [String:Any?]()
+//        userRef.getDocuments { (snapshot , err) in
+//            if err == nil
+//            {
+//                for documents in (snapshot?.documents)!
+//                {
+//                    let userData = documents.data()
+//                    dataArray = userData
+//
+//
+//                    print("Current User List From Query:\(dataArray)")
+//
+//                    for data in dataArray
+//                    {
+//                        let dataKey = data["uid"]
+//                        if Auth.auth().currentUser?.uid == dataKey
+//                        {
+//
+//                        }
+//                    }
+//
+////                    if self.currentUser["uid"] ==  Auth.auth().currentUser?.uid
+////                    {
+////
+////                    }
+//
+//                }
+//            }
+//        }
+        // Query Current User 
+        userRef.whereField("uid", isEqualTo: Auth.auth().currentUser?.uid)
         self.initalizeStuff()
+        self.pullUserProfileDress()
         
         //        NotificationCenter.default.addObserver(self, selector: #selector(setWardrobeParams), name: FROM_POST_DETAIL_VC, object: nil)
         
@@ -150,13 +185,17 @@ class ProfileVC: UIViewController, AddPostVCDelegate
                         if document != nil
                         {
                             poster = documentData["poster"] as! String
-                            //                        print(poster)
+                            print(poster)
                             
                             if Auth.auth().currentUser?.uid == poster
                             {
                                 self.gowns.append(documentData)
                                 print("No Error, Dresses are in the Array!")
                                 self.collectionView.reloadData()
+                            }
+                            else
+                            {
+                                print("no matching UID")
                             }
                         }
                         else

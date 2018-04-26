@@ -78,7 +78,7 @@ class OnboardingFourVC: UIViewController, UITextFieldDelegate {
         let userData = ["size": self.size, "bust": self.bust, "waist": self.waist, "hip":self.hip, "height":self.height, "favorite color": self.color, "favorite desginer": self.designer] as [String : Any]
         
             
-        userRef.document((Auth.auth().currentUser?.uid)!).setData(userData, options: SetOptions.merge())
+        userRef.document().setData(userData, options: SetOptions.merge())
         print("Model Set")
         print(self.girl)
         

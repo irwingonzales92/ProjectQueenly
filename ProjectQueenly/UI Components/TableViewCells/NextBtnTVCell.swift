@@ -10,7 +10,19 @@ import UIKit
 
 protocol NextBtnTVCellDelegate: class
 {
+    // Adding ISO
     func didSetGownParams()
+    
+    // Viewed Offer, Accepting
+    func isAcceptingOffer()
+    
+    // Viewed Post, Making Offer
+    func isMakingOffer()
+    
+    // Viewing Post
+    func isViewingPost()
+    
+    
 }
 
 class NextBtnTVCell: UITableViewCell {

@@ -10,6 +10,7 @@ import UIKit
 
 class TitleInputCell: UITableViewCell {
 
+    @IBOutlet var titleTextField: UITextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
