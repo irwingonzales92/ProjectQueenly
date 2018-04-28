@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum UserButtonAction
+{
+    case setGown, acceptingOffer, makingOffer, viewingOffer
+}
+
 protocol NextBtnTVCellDelegate: class
 {
     // Adding ISO
@@ -28,11 +33,24 @@ protocol NextBtnTVCellDelegate: class
 class NextBtnTVCell: UITableViewCell {
     
     weak var delegate: NextBtnTVCellDelegate?
+    var action: UserButtonAction = .setGown
 
     @IBOutlet var callToActionBtn: UIButton!
     @IBAction func didPostOnBtnPressed(_ sender: Any)
     {
-        delegate?.didSetGownParams()
+        
+        switch self.action
+        {
+        case .setGown:
+            delegate?.didSetGownParams()
+        case .acceptingOffer:
+            delegate?.isAcceptingOffer()
+        case .makingOffer:
+            delegate?.isMakingOffer()
+        case .viewingOffer:
+            delegate?.isViewingPost()
+        }
+//        delegate?.didSetGownParams()
     }
 
 }

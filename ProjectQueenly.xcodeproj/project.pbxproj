@@ -29,6 +29,7 @@
 		57509269208FD6250088DC9A /* ColorInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57509268208FD6250088DC9A /* ColorInputCell.swift */; };
 		5750926B208FD6A00088DC9A /* PriceInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750926A208FD6A00088DC9A /* PriceInputCell.swift */; };
 		5750926D208FD72F0088DC9A /* DescriptionInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750926C208FD72F0088DC9A /* DescriptionInputCell.swift */; };
+		575092702091BFAD0088DC9A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750926F2091BFAD0088DC9A /* AppCoordinator.swift */; };
 		57513FAB2069BC1A00773DFB /* queenlysplash3.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57513FAA2069BC1700773DFB /* queenlysplash3.gif */; };
 		57513FAD2069BDD100773DFB /* WebViewContent.html in Resources */ = {isa = PBXBuildFile; fileRef = 57513FAC2069BDD000773DFB /* WebViewContent.html */; };
 		57513FB12069C6CD00773DFB /* RoundedBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57513FB02069C6CD00773DFB /* RoundedBlurView.swift */; };
@@ -118,6 +119,7 @@
 		57509268208FD6250088DC9A /* ColorInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInputCell.swift; sourceTree = "<group>"; };
 		5750926A208FD6A00088DC9A /* PriceInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceInputCell.swift; sourceTree = "<group>"; };
 		5750926C208FD72F0088DC9A /* DescriptionInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionInputCell.swift; sourceTree = "<group>"; };
+		5750926F2091BFAD0088DC9A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		57513FAA2069BC1700773DFB /* queenlysplash3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = queenlysplash3.gif; sourceTree = "<group>"; };
 		57513FAC2069BDD000773DFB /* WebViewContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WebViewContent.html; sourceTree = "<group>"; };
 		57513FB02069C6CD00773DFB /* RoundedBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBlurView.swift; sourceTree = "<group>"; };
@@ -306,6 +308,14 @@
 			path = "Input Cells";
 			sourceTree = "<group>";
 		};
+		575092712091BFC60088DC9A /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				5750926F2091BFAD0088DC9A /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		57522DC11FE6FEC000EFCC4C /* NonViewVCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +465,7 @@
 			children = (
 				57F9CFD320555011005DC45C /* ProjectQueenly.entitlements */,
 				573493A21FB60B8D0039853E /* Delegates */,
+				575092712091BFC60088DC9A /* Coordinators */,
 				57E7478A2036707200A750C9 /* Stripe */,
 				573493A11FB60B770039853E /* Services */,
 				5797F01B1F8A0A0900906E4C /* ViewControllers */,
@@ -719,6 +730,7 @@
 				572D1B2A207FE8580026D257 /* GownImageTableViewCell.swift in Sources */,
 				57E74795203670F200A750C9 /* CheckoutViewController.swift in Sources */,
 				572B4232203E1B2F001FB708 /* OnboardingImageHandlers.swift in Sources */,
+				575092702091BFAD0088DC9A /* AppCoordinator.swift in Sources */,
 				5734939F1FB5F95D0039853E /* AddPostVCHandlers.swift in Sources */,
 				5797F0391F8C897200906E4C /* AuthService.swift in Sources */,
 				578EAC59204D37BB00506792 /* FirestoreModel.swift in Sources */,

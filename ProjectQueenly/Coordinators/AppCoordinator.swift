@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import UIKit
+
+class AppCoordinator {
+    var window: UIWindow?
+    
+    fileprivate var isLoggedIn = false
+    fileprivate let navigationController:UINavigationController
+    fileprivate var childCoordinators = [Coordinator]()
+    
+    init(window: UIWindow)
+    {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        var vc = UIViewController()
+        
+        
+    }
+}
